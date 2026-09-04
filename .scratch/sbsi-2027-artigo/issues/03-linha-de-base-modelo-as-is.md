@@ -26,10 +26,10 @@ termos, 17 conceitos, atributos, constantes, verbos, condições e fórmulas.
 
 ## Comments
 
-Baseline entregue em `ontologia/`: o modelo *as-is* em `baseline/ontompo-as-is.ontouml.json`, a OWL
+Baseline entregue em `artifacts/ontology/`: o modelo *as-is* em `baseline/ontompo-as-is.ontouml.json`, a OWL
 em `.ttl` e `.owl`, os dois relatórios, o controle do verificador, e a leitura de tudo isso em
-`evidencias-A1-A9.md`. O ferramental está em `scripts/ontouml/` e `scripts/rodar_oops.py`, e a
-conferência da checklist em `scripts/verificar_baseline.py`.
+`evidencias-A1-A9.md`. O ferramental está em `tools/` e `tools/verification/rodar_oops.py`, e a
+conferência da checklist em `tools/verification/verificar_baseline.py`.
 
 **Como o modelo foi remontado.** A fonte primária foi `mpo_formalization.png`, o diagrama integrado
 da dissertação, que é superconjunto dos três por camada. Os diagramas por camada foram lidos em
@@ -93,7 +93,7 @@ ticket 04 seria ilegível. O `to_canonical_graph` da rdflib não serve: desempat
 sorteio e falha uma em cada cinco execuções. Só `relatorio-oops.xml` muda entre execuções, porque o
 serviço carimba um identificador de requisição novo.
 
-**Conferência.** `scripts/verificar_baseline.py` reprova quando o modelo diverge da segunda leitura
+**Conferência.** `tools/verification/verificar_baseline.py` reprova quando o modelo diverge da segunda leitura
 dos diagramas — transcrita de novo, das imagens, e deliberadamente não importada de
 `modelo-as-is.js` —, quando um defeito é corrigido de passagem, quando A2 ou A3 não sobrevivem à
 transformação gUFO, quando falta seção de alguma das nove deficiências, quando o controle registra

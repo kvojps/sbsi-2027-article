@@ -26,10 +26,10 @@ incluindo o rebuttal.
 
 ## Comments
 
-Pacote entregue em `submissao/jems3-pacote-registro.md`, com título, resumo estruturado, palavras-chave
+Pacote entregue em `artifacts/submission/jems3-pacote-registro.md`, com título, resumo estruturado, palavras-chave
 e tópicos prontos para copiar campo a campo no formulário.
 
-Conferência automática em `scripts/verificar_pacote_jems3.py`: título exato, sete labels presentes e na
+Conferência automática em `tools/verification/verificar_pacote_jems3.py`: título exato, sete labels presentes e na
 ordem da chamada, contagem de palavras, *Related IS Theory* nomeando Representation Theory (Wand &
 Weber), *Proposed Solution* declarando análise + modelo revisado e negando a formalização, *Summary of
 Results* quantificando as deficiências, varredura de anonimato e os quatro tópicos.

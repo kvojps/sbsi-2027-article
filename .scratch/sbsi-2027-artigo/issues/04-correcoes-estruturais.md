@@ -28,12 +28,12 @@ Deficiências desta rodada:
 
 ## Comments
 
-Rodada entregue em `ontologia/rodada-1/`: o modelo revisado em
+Rodada entregue em `artifacts/ontology/rodada-1/`: o modelo revisado em
 `ontompo-rodada-1.ontouml.json`, a OWL em `.ttl`, o relatório do plugin, o relatório do verificador
 complementar, o controle e o diff estrutural. A leitura de tudo isso, com o par antes/depois e a
-justificativa ontológica de cada correção, está em `ontologia/correcoes-rodada-1.md`. O ferramental
-novo é `scripts/ontouml/modelo-rodada-1.js`, `gerar-rodada-1.js`, `verificador-ufo-extra.js` e
-`diff-modelos.js`, mais `scripts/verificar_rodada1.py` para a conferência da checklist.
+justificativa ontológica de cada correção, está em `artifacts/ontology/correcoes-rodada-1.md`. O ferramental
+novo é `tools/model/ontompo-rodada-1.js`, `gerar-rodada-1.js`, `verificador-ufo-extra.js` e
+`diff-modelos.js`, mais `tools/verification/verificar_rodada1.py` para a conferência da checklist.
 
 **O que foi feito em cada correção.** A1: `CrudOperation` continua provendo identidade e ganha uma
 partição disjunta e completa em `Create`, `Read`, `Update` e `Delete` — e a decomposição torna
@@ -81,7 +81,7 @@ permanecem latentes.
 customização; rodá-lo agora, sobre uma OWL que ainda vai mudar em 05 e 06, produziria um número que
 o próprio ticket 06 invalidaria.
 
-**Conferência.** `scripts/verificar_rodada1.py` reprova quando o modelo diverge do que o ticket
+**Conferência.** `tools/verification/verificar_rodada1.py` reprova quando o modelo diverge do que o ticket
 pediu, quando qualquer uma das seis correções é desfeita, quando o baseline é corrigido de passagem,
 quando as correções de A1 a A4 e A9 não sobrevivem à transformação gUFO, quando alguma regra do
 verificador complementar deixa de disparar sobre o baseline, quando a rodada não mede melhora,

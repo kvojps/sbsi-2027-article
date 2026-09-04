@@ -21,9 +21,9 @@ um scaffold LaTeX que **compila em branco** no template SBC, e a bibliografia po
 
 ## Comments
 
-Andaime entregue em `artigo/`: `esqueleto.md` (a superfície de escrita), `artigo.tex` (o scaffold),
+Andaime entregue em `artifacts/paper/`: `esqueleto.md` (a superfície de escrita), `artigo.tex` (o scaffold),
 `referencias.bib` (a bibliografia) e cópias de `sbc-template.sty` e `sbc.bst`, para que o diretório
-suba inteiro para o Overleaf sem depender de `template-latex/`.
+suba inteiro para o Overleaf sem depender de `sources/sbc-template/`.
 
 **Compilação.** Não havia toolchain LaTeX na máquina. MiKTeX foi instalado (`winget install
 MiKTeX.MiKTeX`, escopo de usuário) com instalação de pacotes sob demanda ligada. O ciclo
@@ -68,7 +68,7 @@ de endereço, e a publicação não foi localizada para completá-la; `junior202
 do próprio autor e identificaria a autoria numa revisão duplamente anônima. O conteúdo das duas está
 coberto por `sbsi_estendido` e `junior2022opupe`.
 
-**Conferência automática** em `scripts/verificar_andaime.py`, no mesmo formato de
+**Conferência automática** em `tools/verification/verificar_andaime.py`, no mesmo formato de
 `verificar_pacote_jems3.py`. Ela reprova quando o `latin1` volta, quando os nomes de seção divergem
 entre `esqueleto.md` e `artigo.tex`, quando o orçamento sai do intervalo de 15 a 20, quando uma
 entrada perde um campo obrigatório do seu tipo, quando um placeholder sobrevive, quando falta
@@ -87,4 +87,4 @@ o aviso trocaria uma entrada correta por uma errada.
 quando as citações reais existirem. O `resumo` em português está vazio, com TODO para o ticket 13: o
 corpo é em português, então o template SBC pede abstract e resumo, e esse texto ainda não foi escrito
 em lugar nenhum. O abstract em inglês é cópia literal do texto congelado em
-`submissao/jems3-pacote-registro.md` e não deve divergir dele.
+`artifacts/submission/jems3-pacote-registro.md` e não deve divergir dele.

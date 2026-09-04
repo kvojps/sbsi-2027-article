@@ -2,13 +2,13 @@ __pycache__/
 *.pyc
 
 # Artefatos de compilacao LaTeX
-artigo/*.aux
-artigo/*.bbl
-artigo/*.blg
-artigo/*.log
-artigo/*.out
-artigo/*.toc
-artigo/*.pdf
+artifacts/paper/*.aux
+artifacts/paper/*.bbl
+artifacts/paper/*.blg
+artifacts/paper/*.log
+artifacts/paper/*.out
+artifacts/paper/*.toc
+artifacts/paper/*.pdf
 
 # Dependencias do ferramental OntoUML
-scripts/ontouml/node_modules/
+tools/node_modules/
