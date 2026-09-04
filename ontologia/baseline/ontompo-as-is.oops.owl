@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:nodeID="nde41d04cab9f19883cec">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Processor"/>
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Load_Processor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Observation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:subClassOf rdf:nodeID="n18cbe450198b0ebd7513"/>
+    <rdfs:subClassOf rdf:nodeID="n32623888cab4d588cbf0"/>
+    <rdfs:subClassOf rdf:nodeID="nfac221f0c557174ea6ae"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Relator"/>
+    <rdfs:label xml:lang="en">Observation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Load">
+    <rdfs:subClassOf rdf:nodeID="n82bebb28bd9c0cb55eb3"/>
+    <rdfs:subClassOf rdf:nodeID="nde41d04cab9f19883cec"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Relator"/>
+    <rdfs:label xml:lang="en">Load</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#System">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    <rdfs:label xml:lang="en">System</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://example.org/ontompo/as-is#Agent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Observation_Agent">
+    <rdfs:label xml:lang="en">mediation_Observation_Agent</rdfs:label>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Agent"/>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Observation"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n82bebb28bd9c0cb55eb3">
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Load_Storer"/>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Storer"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n5fd3054177bce982cfee">
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Network"/>
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Connection_Network"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nc64c9bb5635057526563">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Collector"/>
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Transform_Collector"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Transform_Collector">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Collector"/>
+    <rdfs:label xml:lang="en">mediation_Transform_Collector</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Transform"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Agent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdfs:label xml:lang="en">Agent</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#CrudOperation">
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Relator"/>
+    <rdfs:subClassOf rdf:nodeID="ncd3f13917941a2d9cbff"/>
+    <rdfs:subClassOf rdf:nodeID="nbfbe087c714b8074ab02"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdfs:label xml:lang="en">CrudOperation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Operation_Service">
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Service"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Operation"/>
+    <rdfs:label xml:lang="en">mediation_Operation_Service</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Connection_Network">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdfs:label xml:lang="en">mediation_Connection_Network</rdfs:label>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Connection"/>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Network"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Observation_Knowledge">
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Observation"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdfs:label xml:lang="en">mediation_Observation_Knowledge</rdfs:label>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Knowledge"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Extract">
+    <rdfs:subClassOf rdf:nodeID="nb77a9b8ac8c845896a03"/>
+    <rdfs:subClassOf rdf:nodeID="n26928c33f4bb3d7c55ae"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Relator"/>
+    <rdfs:label xml:lang="en">Extract</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="neb004b73aa3a6206e011">
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#View"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Management_View"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Connection_Hardware">
+    <rdfs:label xml:lang="en">mediation_Connection_Hardware</rdfs:label>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Hardware"/>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Connection"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Software">
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="en">Software</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Observation_Disseminator">
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Disseminator"/>
+    <rdfs:label xml:lang="en">mediation_Observation_Disseminator</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Observation"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Log_Relator">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">mediation_Log_Relator</rdfs:label>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Relator"/>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Log"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#memberOf_ObservatoryGroup_ObservatoryUser">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#isCollectionMemberOf"/>
+    <rdfs:label xml:lang="en">memberOf_ObservatoryGroup_ObservatoryUser</rdfs:label>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#ObservatoryGroup"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#ObservatoryUser"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Knowledge">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    <rdfs:subClassOf rdf:nodeID="n71b6a120f4ea44e01f44"/>
+    <rdfs:label xml:lang="en">Knowledge</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Load_Storer">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Storer"/>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Load"/>
+    <rdfs:label xml:lang="en">mediation_Load_Storer</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Log">
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Relator"/>
+    <rdfs:subClassOf rdf:nodeID="n688f55258c33af2f023c"/>
+    <rdfs:subClassOf rdf:nodeID="na90f44ee07b84dd4424b"/>
+    <rdfs:label xml:lang="en">Log</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Processor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    <rdfs:subClassOf rdf:nodeID="n19132d49c10ca1562003"/>
+    <rdfs:subClassOf rdf:nodeID="ne9aed20209d48b4e94e6"/>
+    <rdfs:subClassOf rdf:resource="https://example.org/ontompo/as-is#DataManager"/>
+    <rdfs:label xml:lang="en">Processor</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Management_View">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">mediation_Management_View</rdfs:label>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#View"/>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Management"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Hardware">
+    <rdfs:label xml:lang="en">Hardware</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n18cbe450198b0ebd7513">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Disseminator"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Observation_Disseminator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Management_DataManager">
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Management"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#DataManager"/>
+    <rdfs:label xml:lang="en">mediation_Management_DataManager</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Extract_Collector">
+    <rdfs:label xml:lang="en">mediation_Extract_Collector</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Extract"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Collector"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Operation_Hardware">
+    <rdfs:label xml:lang="en">mediation_Operation_Hardware</rdfs:label>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Operation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Hardware"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Service">
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdfs:label xml:lang="en">Service</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#ObservatoryGroup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#VariableCollection"/>
+    <rdfs:label xml:lang="en">ObservatoryGroup</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#StakeHolder">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="en">StakeHolder</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://example.org/ontompo/as-is#Agent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#ProjectObservatory">
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#SubKind"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="en">ProjectObservatory</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://example.org/ontompo/as-is#Software"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nb77a9b8ac8c845896a03">
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Extract_DataSource"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#DataSource"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Storer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:subClassOf rdf:nodeID="ncc9dbf0ba0b5dd367066"/>
+    <rdfs:subClassOf rdf:resource="https://example.org/ontompo/as-is#DataManager"/>
+    <rdfs:label xml:lang="en">Storer</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_CrudOperation_Agent">
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#CrudOperation"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">mediation_CrudOperation_Agent</rdfs:label>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Agent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_CrudOperation_CrudView">
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#CrudOperation"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdfs:label xml:lang="en">mediation_CrudOperation_CrudView</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#CrudView"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#DataManager">
+    <rdfs:label xml:lang="en">DataManager</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://example.org/ontompo/as-is#ProjectObservatory"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n57644bd0a8a8083f0b2d">
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Agent"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_SocialInteraction_Agent"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nfac221f0c557174ea6ae">
+    <owl:someValuesFrom rdf:resource="https://example.org/ontompo/as-is#Knowledge"/>
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Observation_Knowledge"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#CrudRepository">
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">CrudRepository</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://example.org/ontompo/as-is#DataManager"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71b6a120f4ea44e01f44">
+    <owl:someValuesFrom rdf:resource="https://example.org/ontompo/as-is#Observation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:nodeID="n3cbb06243b632e3858d5"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Collector">
+    <rdfs:subClassOf rdf:resource="https://example.org/ontompo/as-is#DataManager"/>
+    <rdfs:subClassOf rdf:nodeID="n5dfe88de2c7d4fddfb0b"/>
+    <rdfs:subClassOf rdf:nodeID="nec1e1656e6cdcd560da2"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="en">Collector</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Management">
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Relator"/>
+    <rdfs:subClassOf rdf:nodeID="na1b37e260c4d2fc124ff"/>
+    <rdfs:subClassOf rdf:nodeID="n44731525d6b99613dc12"/>
+    <rdfs:subClassOf rdf:nodeID="neb004b73aa3a6206e011"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdfs:label xml:lang="en">Management</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Operation_Software">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Operation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Software"/>
+    <rdfs:label xml:lang="en">mediation_Operation_Software</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n44731525d6b99613dc12">
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Management_DataManager"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#DataManager"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n5dfe88de2c7d4fddfb0b">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:nodeID="n2d5bf726f63b95278bf3"/>
+    <owl:someValuesFrom rdf:resource="https://example.org/ontompo/as-is#Transform"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#SocialInteraction">
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Relator"/>
+    <rdfs:subClassOf rdf:nodeID="n57644bd0a8a8083f0b2d"/>
+    <rdfs:subClassOf rdf:nodeID="na8ce9347167cb0c74fd5"/>
+    <rdfs:label xml:lang="en">SocialInteraction</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#memberOf_ObservatoryGroup_StakeHolder">
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#isCollectionMemberOf"/>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#StakeHolder"/>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#ObservatoryGroup"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">memberOf_ObservatoryGroup_StakeHolder</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Transform">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Transform</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="nd36b777a075b1b180e14"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Relator"/>
+    <rdfs:subClassOf rdf:nodeID="nc64c9bb5635057526563"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n12443c3e02d503fbc5a4">
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Operation_Service"/>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Service"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_SocialInteraction_Relator">
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#SocialInteraction"/>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Relator"/>
+    <rdfs:label xml:lang="en">mediation_SocialInteraction_Relator</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Network">
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Network</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="na1b37e260c4d2fc124ff">
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Management_Project"/>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Project"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#ObservatoryUser">
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="en">ObservatoryUser</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://example.org/ontompo/as-is#Agent"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n688f55258c33af2f023c">
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Agent"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Log_Agent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#View">
+    <rdfs:label xml:lang="en">View</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:subClassOf rdf:resource="https://example.org/ontompo/as-is#ProjectObservatory"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Disseminator">
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Disseminator</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://example.org/ontompo/as-is#View"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n492c820469eefb636a3a">
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Connection_Hardware"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Hardware"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n2f60720a025dcc3e5eea">
+    <owl:inverseOf rdf:resource="https://example.org/ontompo/as-is#mediation_Load_Storer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Connection">
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Relator"/>
+    <rdfs:subClassOf rdf:nodeID="n5fd3054177bce982cfee"/>
+    <rdfs:subClassOf rdf:nodeID="n492c820469eefb636a3a"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdfs:label xml:lang="en">Connection</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#CrudView">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:subClassOf rdf:resource="https://example.org/ontompo/as-is#View"/>
+    <rdfs:label xml:lang="en">CrudView</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nd36b777a075b1b180e14">
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Transform_Processor"/>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Processor"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n26928c33f4bb3d7c55ae">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Collector"/>
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Extract_Collector"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#DataSource">
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    <rdfs:subClassOf rdf:nodeID="n62d0f041e82fa3652066"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdfs:label xml:lang="en">DataSource</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Load_Processor">
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Load"/>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Processor"/>
+    <rdfs:label xml:lang="en">mediation_Load_Processor</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Extract_DataSource">
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Extract"/>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#DataSource"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdfs:label xml:lang="en">mediation_Extract_DataSource</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Management_Project">
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Project"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdfs:label xml:lang="en">mediation_Management_Project</rdfs:label>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Management"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_SocialInteraction_Agent">
+    <rdfs:label xml:lang="en">mediation_SocialInteraction_Agent</rdfs:label>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Agent"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#SocialInteraction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Log_Agent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">mediation_Log_Agent</rdfs:label>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Agent"/>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Log"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#memberOf_ObservatoryGroup_System">
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#System"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#isCollectionMemberOf"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">memberOf_ObservatoryGroup_System</rdfs:label>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#ObservatoryGroup"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Transform_Processor">
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Transform"/>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Processor"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">mediation_Transform_Processor</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="na90f44ee07b84dd4424b">
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Log_Relator"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Relator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Project">
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#FunctionalComplex"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdfs:label xml:lang="en">Project</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Operation">
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Kind"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:subClassOf rdf:nodeID="n12443c3e02d503fbc5a4"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/nemo/gufo#Relator"/>
+    <rdfs:label xml:lang="en">Operation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n32623888cab4d588cbf0">
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_Observation_Agent"/>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Agent"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n62d0f041e82fa3652066">
+    <owl:onProperty rdf:nodeID="n8443bff605b1984da4e7"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:someValuesFrom rdf:resource="https://example.org/ontompo/as-is#Extract"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ne9aed20209d48b4e94e6">
+    <owl:onProperty rdf:nodeID="n0e65b822da815587cefa"/>
+    <owl:someValuesFrom rdf:resource="https://example.org/ontompo/as-is#Load"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#Relator">
+    <rdfs:subClassOf rdf:resource="https://example.org/ontompo/as-is#View"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdf:type rdf:resource="http://purl.org/nemo/gufo#Role"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="en">Relator</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ncd3f13917941a2d9cbff">
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_CrudOperation_CrudView"/>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#CrudView"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n19132d49c10ca1562003">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:someValuesFrom rdf:resource="https://example.org/ontompo/as-is#Transform"/>
+    <owl:onProperty rdf:nodeID="n528020edbb4dcd9fd318"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="ncc9dbf0ba0b5dd367066">
+    <owl:onProperty rdf:nodeID="n2f60720a025dcc3e5eea"/>
+    <owl:someValuesFrom rdf:resource="https://example.org/ontompo/as-is#Load"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nbfbe087c714b8074ab02">
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Agent"/>
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_CrudOperation_Agent"/>
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="nec1e1656e6cdcd560da2">
+    <owl:onProperty rdf:nodeID="n80fb21986b37363affde"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:someValuesFrom rdf:resource="https://example.org/ontompo/as-is#Extract"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#componentOf_Hardware_Software">
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Software"/>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Hardware"/>
+    <rdfs:label xml:lang="en">componentOf_Hardware_Software</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#isComponentOf"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n2d5bf726f63b95278bf3">
+    <owl:inverseOf rdf:resource="https://example.org/ontompo/as-is#mediation_Transform_Collector"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is#mediation_Operation_Network">
+    <rdfs:label xml:lang="en">mediation_Operation_Network</rdfs:label>
+    <rdfs:domain rdf:resource="https://example.org/ontompo/as-is#Operation"/>
+    <rdfs:range rdf:resource="https://example.org/ontompo/as-is#Network"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/nemo/gufo#mediates"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n80fb21986b37363affde">
+    <owl:inverseOf rdf:resource="https://example.org/ontompo/as-is#mediation_Extract_Collector"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n528020edbb4dcd9fd318">
+    <owl:inverseOf rdf:resource="https://example.org/ontompo/as-is#mediation_Transform_Processor"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="na8ce9347167cb0c74fd5">
+    <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onClass rdf:resource="https://example.org/ontompo/as-is#Relator"/>
+    <owl:onProperty rdf:resource="https://example.org/ontompo/as-is#mediation_SocialInteraction_Relator"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n8443bff605b1984da4e7">
+    <owl:inverseOf rdf:resource="https://example.org/ontompo/as-is#mediation_Extract_DataSource"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n3cbb06243b632e3858d5">
+    <owl:inverseOf rdf:resource="https://example.org/ontompo/as-is#mediation_Observation_Knowledge"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://example.org/ontompo/as-is">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n0e65b822da815587cefa">
+    <owl:inverseOf rdf:resource="https://example.org/ontompo/as-is#mediation_Load_Processor"/>
+  </rdf:Description>
+</rdf:RDF>

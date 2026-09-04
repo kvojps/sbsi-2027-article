@@ -9,3 +9,6 @@ artigo/*.log
 artigo/*.out
 artigo/*.toc
 artigo/*.pdf
+
+# Dependencias do ferramental OntoUML
+scripts/ontouml/node_modules/

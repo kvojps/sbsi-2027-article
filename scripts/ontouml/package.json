@@ -1,0 +1,12 @@
+{
+  "name": "ontompo-ontouml",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reconstrucao do modelo OntoUML da OntoMPO e execucao das verificacoes automaticas.",
+  "scripts": {
+    "baseline": "node gerar-baseline.js"
+  },
+  "dependencies": {
+    "ontouml-js": "0.5.0"
+  }
+}
