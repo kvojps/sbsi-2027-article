@@ -21,7 +21,8 @@ OntoMPO: Ontological Analysis and Refinement of the Model for Project Observator
 ```
 
 O título anuncia a contribuição reposicionada: o que a análise ontológica revelou sobre o MPO e o
-modelo revisado dela resultante — não a formalização do MPO.
+modelo revisado dela resultante — não a formalização do MPO. A análise é *do* MPO, conduzida
+**através** da formalização publicada; o título continua correto sob esse enquadramento.
 
 ---
 
@@ -31,34 +32,52 @@ Sete labels nomeados, em inglês, dentro do limite de 300 palavras.
 
 <!-- campo: resumo -->
 ```text
-Research Context. Project observatories are organizational units, processes or information systems that continuously observe projects, centralizing and disseminating information to sustain transparency and accountability. The Model for Project Observatories (MPO), the reference conceptual model of this domain, organizes 61 concepts in three levels and is described in natural language.
+Research Context. Project observatories observe a set of projects and disseminate information about them to sustain transparency and accountability. The Model for Project Observatories (MPO), the reference conceptual model of this domain, is described in natural language and has been formalized in OntoUML and OWL by published work.
 
-Scientific and/or Practical Problem. Natural-language reference models carry representational deficiencies invisible to those who apply them. Two initiatives may declare adherence to MPO while adopting semantically incompatible interpretations, so adherence is unverifiable and comparison between observatories rests on terminological coincidence.
+Scientific and/or Practical Problem. Natural-language reference models underdetermine their own formalization. Two initiatives may declare adherence to MPO while adopting semantically incompatible interpretations, so adherence is unverifiable and comparison between observatories rests on terminological coincidence.
 
-Proposed Solution and/or Analysis. MPO is submitted to an ontological analysis grounded in the Unified Foundational Ontology; the resulting revised model is delivered as the artifact. The contribution is that analysis and the revised model, not the formalization of MPO as published.
+Proposed Solution and/or Analysis. MPO is submitted to an ontological analysis grounded in the Unified Foundational Ontology and conducted through its published formalization: each deficiency is located in that artifact and traced to where MPO leaves the interpretation open. The revised model is the contribution, not the formalization of MPO.
 
-Related IS Theory. Representation Theory (Wand & Weber) supplies the typology used to classify every finding: construct overload, redundancy, excess and deficit.
+Related IS Theory. Representation Theory (Wand & Weber) supplies the typology that classifies every finding: construct overload, redundancy, excess and deficit.
 
-Research Method. Design Science Research frames the work, continuing the cycle that produced MPO; Methontology guides artifact construction. The revised OntoUML model is transformed into OWL through gUFO, instantiated over an observatory scenario from the literature and interrogated by seven domain competency questions in SPARQL, with syntactic and pitfall verification before and after revision.
+Research Method. Design Science Research frames the work, continuing the cycle that produced MPO; Methontology guides construction. The published model is reconstructed as a baseline, revised, transformed into OWL through gUFO, instantiated over an observatory scenario and interrogated by seven domain competency questions in SPARQL, verified before and after revision.
 
-Summary of Results. The analysis exposed nine representational deficiencies: construct overload, invalid mereological relations, semantic collapse and missing event and agent microtheories, each classified and corrected. Every competency question returned non-empty, semantically correct answers, and automated verification reports improved between runs.
+Summary of Results. Nine representational deficiencies were exposed in the published formalization, spanning construct overload, invalid mereology, semantic collapse and missing event and agent microtheories, each classified, traced to MPO and corrected. Every competency question returned correct answers, and verification reports improved between runs.
 
-Contributions and Impact to IS area. The work delivers a verifiable semantic basis for auditing adherence to MPO, provenance traceability for accountability, and a reusable procedure for auditing natural-language reference models, addressing semantic interoperability among information ecosystems, a named challenge of the Brazilian IS agenda.
+Contributions and Impact to IS area. The work delivers a verifiable basis for auditing adherence to MPO, provenance traceability for accountability, and a reusable procedure for auditing natural-language reference models, addressing semantic interoperability among information ecosystems, a named challenge of the Brazilian IS agenda.
 ```
 
 Notas de redação, para o caso de o campo precisar ser reaberto antes de 14/09:
 
+- **Onde estão as deficiências.** As nove são falhas da *formalização publicada*, não do MPO em
+  linguagem natural. O MPO descreve três dimensões, subdimensões e elementos em prosa; ele não
+  contém `CrudOperation`, não declara software como composto de hardware nem hierarquiza
+  `DataManager` sob observatório. Esses são estereótipos e relações escolhidos na etapa de
+  formalização — a dissertação os enuncia como decisão de modelagem. Atribuir as nove ao MPO é
+  falsificável por qualquer revisor que abra a fonte do MPO e não as encontre lá.
+- **O que sustenta a contribuição, então.** Não é "o MPO é defeituoso": é que o MPO **subdetermina
+  sua própria formalização**. Uma formalização sistemática, seguindo Methontology, produziu nove
+  desvios, e cada um cai num ponto em que o MPO não fixa a interpretação. Isso converte o campo
+  *Problem* — duas iniciativas aderentes com interpretações incompatíveis — de afirmação em
+  demonstração, porque a demonstração é uma tentativa real de formalizar.
+- **Cada deficiência precisa do seu traço até o MPO.** Sem esse traço, o achado é conserto de erro
+  próprio; com ele, é evidência sobre o modelo de referência. É critério de aceite do ticket 10.
+- **Limitação a declarar no artigo.** n=1: um formalizador. Não se demonstra que outro cometeria os
+  mesmos desvios, apenas que o MPO os permite.
+- **Objeto de análise em terceira pessoa.** A formalização analisada é trabalho publicado, citado
+  como de terceiros — o que a revisão duplamente anônima exige de qualquer forma.
 - *Proposed Solution and/or Analysis* declara explicitamente a análise ontológica e o modelo revisado
   como contribuição, e nega a formalização do MPO — é a virada que responde à rejeição no ONTOBRAS.
 - *Related IS Theory* nomeia Representation Theory (Wand & Weber) e a usa operacionalmente, como
   tipologia de classificação, e não como citação decorativa.
-- *Summary of Results* quantifica os achados: nove deficiências representacionais.
+- *Summary of Results* quantifica os achados: nove deficiências representacionais, localizadas na
+  formalização publicada.
 - *Summary of Results* fala no passado sobre resultados que os tickets 06 a 08 ainda vão produzir.
   É o normal em registro antecipado, mas vira compromisso: se alguma questão de competência voltar
   vazia ou os relatórios não melhorarem, o resumo congelado passa a divergir do PDF. Tratar como
   critério de aceite dos tickets 07 e 08.
 - Sem nome de autor, instituição, financiador, link ou ferramenta que identifique. O cenário de
-  instanciação aparece em terceira pessoa, como "an observatory scenario from the literature".
+  instanciação aparece em terceira pessoa, como "an observatory scenario".
 
 ---
 

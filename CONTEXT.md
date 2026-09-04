@@ -29,10 +29,26 @@ da análise.
 ### A análise
 
 **Deficiência**:
-Uma falha representacional do MPO exposta pela análise ontológica. São nove, identificadas de **A1** a
-**A9**, cada uma com classificação BWW e correção. Toda deficiência aparece em três lugares — modelo
-revisado, relatório de verificação e texto da análise; deficiência órfã é defeito.
-_Avoid_: erro, bug — a deficiência é do modelo original, e é achado do método, não falha de execução.
+Uma falha representacional da **formalização publicada** do MPO, exposta pela análise ontológica. São
+nove, identificadas de **A1** a **A9**, cada uma com classificação BWW, [[traço]] até o MPO e
+correção. Toda deficiência aparece em três lugares — modelo revisado, relatório de verificação e
+texto da análise; deficiência órfã é defeito.
+_Avoid_: "deficiência do MPO" — o MPO é prosa, e não contém `CrudOperation`, composição de software
+por hardware nem hierarquia de `DataManager` sob observatório; esses são estereótipos e relações
+escolhidos na formalização. Atribuí-los ao MPO é falsificável por quem abrir a fonte.
+_Avoid_: erro, bug — é achado do método, não falha de execução.
+
+**Traço**:
+O caminho registrado de cada deficiência até o ponto do MPO que a permitiu. Sem traço, o achado é
+conserto de erro próprio; com traço, é evidência de que o MPO **subdetermina sua própria
+formalização** — que é a contribuição. Toda deficiência tem um.
+
+**Subdeterminação**:
+A propriedade do MPO que o trabalho demonstra: descrito em linguagem natural, ele não fixa a
+interpretação em nove pontos, e formalizações aderentes a ele podem divergir entre si. É o que
+converte "duas iniciativas podem se declarar aderentes com interpretações incompatíveis" de
+afirmação em demonstração. Limite a declarar: n=1 formalizador — demonstra-se que o MPO permite os
+desvios, não que outro formalizador os cometeria.
 
 **Achado**:
 Uma deficiência apresentada como resultado do trabalho, no par antes/depois com justificativa

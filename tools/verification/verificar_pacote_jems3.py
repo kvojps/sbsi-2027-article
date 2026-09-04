@@ -164,6 +164,22 @@ def verificar(caminho: Path) -> list[str]:
         re.IGNORECASE,
     ):
         falhas.append("Summary of Results nao quantifica as deficiencias representacionais")
+    # As nove deficiencias sao da formalizacao publicada, nao do MPO em linguagem
+    # natural: o MPO e' prosa e nao contem os estereotipos e relacoes em que elas
+    # estao. Atribui-las ao MPO e' falsificavel por quem abrir a fonte do MPO.
+    if not re.search(r"formaliz", resultados, re.IGNORECASE):
+        falhas.append(
+            "Summary of Results nao localiza as deficiencias na formalizacao publicada"
+        )
+    atribuicao_ao_mpo = re.search(
+        r"deficienc\w*\s+(in|of)\s+MPO|MPO['’]s\s+\w*\s*deficienc",
+        resumo,
+        re.IGNORECASE,
+    )
+    if atribuicao_ao_mpo:
+        falhas.append(
+            f"resumo atribui as deficiencias ao MPO: {atribuicao_ao_mpo.group(0)!r}"
+        )
 
     baixo = resumo.lower()
     achados = [termo for termo in TERMOS_IDENTIFICADORES if termo in baixo]
