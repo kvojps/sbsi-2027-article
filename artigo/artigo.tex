@@ -1,0 +1,217 @@
+% =====================================================================
+% OntoMPO: Ontological Analysis and Refinement of the Model for Project
+% Observatories -- SBSI 2027, Trilha de Pesquisa em SI.
+%
+% Scaffold derivado de template-latex/sbc-template.tex. Compila em branco.
+% As nove secoes, seus labels do resumo estruturado e o orcamento de paginas
+% estao em artigo/esqueleto.md; os nomes de secao aqui sao os mesmos, na mesma
+% ordem.
+%
+% Diferencas deliberadas em relacao ao template original:
+%   - O \usepackage[latin1]{inputenc} duplicado foi REMOVIDO. O template traz
+%     utf8 e latin1 nesta ordem, e o segundo vence: com ele, todo acento do
+%     corpo em portugues quebra. Nao reintroduzir.
+%   - Sem \author, sem \address e sem agradecimento: a revisao e duplamente
+%     anonima. O bloco de titulo foi reduzido para nao deixar linha vazia nem
+%     marcador de instituicao no lugar deles.
+%   - \usepackage[T1]{fontenc} acrescentado. Sem ele o pdflatex compoe cada
+%     acento como glifo sobreposto: o PDF sai certo aos olhos, mas a extracao
+%     de texto devolve "Introduc,a~o" -- e e' sobre o texto extraido que a
+%     varredura de anonimato do ticket 14 trabalha.
+%   - A opcao de babel passou de 'brazil', deprecada e ruidosa no log, para
+%     'brazilian'.
+%   - \nocite{*} e provisorio, so do scaffold: forca todas as entradas de
+%     referencias.bib a passarem pelo sbc.bst, de modo que uma entrada quebrada
+%     apareca agora e nao na vespera da submissao. O ticket 13 remove esta linha
+%     quando as citacoes reais existirem.
+% =====================================================================
+
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage{graphicx,url}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazilian]{babel}
+
+\sloppy
+
+\title{OntoMPO: Ontological Analysis and Refinement of the\\ Model for Project Observatories}
+
+% Revisao duplamente anonima: sem autoria e sem instituicao.
+\author{}
+\address{}
+
+\makeatletter
+% Bloco de titulo do sbc-template sem as linhas de autor e de instituicao.
+\renewcommand{\@maketitle}{\newpage
+  \begin{center}
+    \vspace*{-.7cm}
+    {\XVIPT\bf\@title\par}
+    \vglue 6pt plus 3pt minus 3pt
+  \end{center}\par}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+% ---------------------------------------------------------------------
+% Frontmatter -- orcamento 1,00 pagina. Ticket 13.
+% O abstract abaixo e' o texto congelado no JEMS3 em
+% submissao/jems3-pacote-registro.md (campo: resumo). Depois de 14/09/2026 o
+% registro nao pode mais ser alterado: qualquer divergencia entre este texto e
+% o registrado e' achado de conformidade do ticket 14. Nao editar sem editar la'.
+% ---------------------------------------------------------------------
+\begin{abstract}
+  \textbf{Research Context.} Project observatories are organizational units,
+  processes or information systems that continuously observe projects,
+  centralizing and disseminating information to sustain transparency and
+  accountability. The Model for Project Observatories (MPO), the reference
+  conceptual model of this domain, organizes 61 concepts in three levels and is
+  described in natural language.
+
+  \textbf{Scientific and/or Practical Problem.} Natural-language reference
+  models carry representational deficiencies invisible to those who apply them.
+  Two initiatives may declare adherence to MPO while adopting semantically
+  incompatible interpretations, so adherence is unverifiable and comparison
+  between observatories rests on terminological coincidence.
+
+  \textbf{Proposed Solution and/or Analysis.} MPO is submitted to an
+  ontological analysis grounded in the Unified Foundational Ontology; the
+  resulting revised model is delivered as the artifact. The contribution is
+  that analysis and the revised model, not the formalization of MPO as
+  published.
+
+  \textbf{Related IS Theory.} Representation Theory (Wand \& Weber) supplies
+  the typology used to classify every finding: construct overload, redundancy,
+  excess and deficit.
+
+  \textbf{Research Method.} Design Science Research frames the work, continuing
+  the cycle that produced MPO; Methontology guides artifact construction. The
+  revised OntoUML model is transformed into OWL through gUFO, instantiated over
+  an observatory scenario from the literature and interrogated by seven domain
+  competency questions in SPARQL, with syntactic and pitfall verification
+  before and after revision.
+
+  \textbf{Summary of Results.} The analysis exposed nine representational
+  deficiencies: construct overload, invalid mereological relations, semantic
+  collapse and missing event and agent microtheories, each classified and
+  corrected. Every competency question returned non-empty, semantically correct
+  answers, and automated verification reports improved between runs.
+
+  \textbf{Contributions and Impact to IS area.} The work delivers a verifiable
+  semantic basis for auditing adherence to MPO, provenance traceability for
+  accountability, and a reusable procedure for auditing natural-language
+  reference models, addressing semantic interoperability among information
+  ecosystems, a named challenge of the Brazilian IS agenda.
+
+  \textbf{Keywords.} Project Observatory; Ontological Analysis; Representation
+  Theory; Conceptual Modeling; Design Science Research.
+\end{abstract}
+
+\begin{resumo}
+  % TODO ticket 13: versao em portugues do resumo estruturado, com os mesmos
+  % sete labels. O corpo do artigo e' em portugues, entao o template SBC pede
+  % abstract e resumo.
+\end{resumo}
+
+% ---------------------------------------------------------------------
+% 1. Introducao -- Research Context; Scientific and/or Practical Problem.
+% Orcamento 1,25 pagina. Ticket 11.
+% ---------------------------------------------------------------------
+\section{Introdução}
+\label{sec:introducao}
+
+% ---------------------------------------------------------------------
+% 2. Referencial Teorico -- Research Context; Related IS Theory.
+% Orcamento 2,50 paginas. Ticket 11.
+% ---------------------------------------------------------------------
+\section{Referencial Teórico}
+\label{sec:referencial}
+
+\subsection{Observatórios de Projetos}
+\label{sec:observatorios}
+
+\subsection{O Modelo para Observatórios de Projetos}
+\label{sec:mpo}
+
+\subsection{Representation Theory}
+\label{sec:representation-theory}
+
+\subsection{UFO e OntoUML}
+\label{sec:ufo}
+
+% ---------------------------------------------------------------------
+% 3. Trabalhos Relacionados -- Research Context.
+% Orcamento 0,75 pagina. Ticket 11.
+% ---------------------------------------------------------------------
+\section{Trabalhos Relacionados}
+\label{sec:relacionados}
+
+% ---------------------------------------------------------------------
+% 4. Metodo de Pesquisa -- Research Method.
+% Orcamento 1,25 pagina. Ticket 11.
+% ---------------------------------------------------------------------
+\section{Método de Pesquisa}
+\label{sec:metodo}
+
+% ---------------------------------------------------------------------
+% 5. Analise Ontologica do MPO -- Proposed Solution and/or Analysis.
+% Orcamento 3,25 paginas. Ticket 10. Nao e' candidata a corte de paginas:
+% e' onde a contribuicao mora.
+% ---------------------------------------------------------------------
+\section{Análise Ontológica do MPO}
+\label{sec:analise}
+
+% ---------------------------------------------------------------------
+% 6. A OntoMPO Revisada -- Proposed Solution and/or Analysis.
+% Orcamento 1,75 pagina. Ticket 12.
+% ---------------------------------------------------------------------
+\section{A OntoMPO Revisada}
+\label{sec:ontompo}
+
+% ---------------------------------------------------------------------
+% 7. Avaliacao -- Research Method; Summary of Results.
+% Orcamento 1,75 pagina. Ticket 12.
+% ---------------------------------------------------------------------
+\section{Avaliação}
+\label{sec:avaliacao}
+
+% ---------------------------------------------------------------------
+% 8. Discussao e Limitacoes -- Summary of Results; Contributions and Impact
+% to IS area. Orcamento 1,00 pagina. Ticket 12.
+% ---------------------------------------------------------------------
+\section{Discussão e Limitações}
+\label{sec:discussao}
+
+% ---------------------------------------------------------------------
+% 9. Conclusao e Trabalhos Futuros -- Contributions and Impact to IS area.
+% Orcamento 0,75 pagina. Ticket 12.
+% ---------------------------------------------------------------------
+\section{Conclusão e Trabalhos Futuros}
+\label{sec:conclusao}
+
+% ---------------------------------------------------------------------
+% Declaracao de uso de IA generativa -- exigida pelo Codigo de Conduta da SBC.
+% Orcamento 0,25 pagina. Ticket 12. Sem numeracao e sem identificar autoria.
+% ---------------------------------------------------------------------
+\section*{Declaração de Uso de IA Generativa}
+\label{sec:declaracao-ia}
+
+% ---------------------------------------------------------------------
+% Referencias -- orcamento 1,50 pagina.
+% \nocite{*} e' provisorio: ver o cabecalho deste arquivo. Ticket 13 remove.
+% ---------------------------------------------------------------------
+\nocite{*}
+\bibliographystyle{sbc}
+\bibliography{referencias}
+
+% ---------------------------------------------------------------------
+% Apendice A -- consultas SPARQL e resultados completos.
+% Orcamento 1,00 pagina. Ticket 13.
+% ---------------------------------------------------------------------
+\section*{Apêndice A -- Consultas SPARQL e Resultados}
+\label{sec:apendice-sparql}
+
+\end{document}
