@@ -10,4 +10,4 @@ Modelo sem mutacao: 0 problema(s).
 | Software passa a especializar View | `generalization_incompatible_class_rigidity` | um tipo rigido nao pode especializar um tipo antirrigido | sim |
 | ProjectObservatory passa a especializar tambem Project | `class_multiple_identity_providers` | duas ancestralidades ate sortais ultimos distintos dao dois principios de identidade | sim |
 
-Reproduzir com `node scripts/ontouml/controle-verificacao.js`.
+Reproduzir com `node scripts/ontouml/controle-verificacao.js --modelo=as-is`.

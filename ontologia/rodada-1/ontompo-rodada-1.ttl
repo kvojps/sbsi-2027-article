@@ -1,0 +1,468 @@
+@prefix ontompo: <https://example.org/ontompo/rodada-1#>.
+@prefix gufo: <http://purl.org/nemo/gufo#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+<https://example.org/ontompo/rodada-1> rdf:type owl:Ontology;
+    owl:imports gufo:.
+ontompo:ObservatoryGroup rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:VariableCollection;
+    rdfs:label "ObservatoryGroup"@en.
+ontompo:ObservatoryUser rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "ObservatoryUser"@en.
+ontompo:StakeHolder rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "StakeHolder"@en.
+ontompo:System rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "System"@en.
+ontompo:Agent rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Agent"@en.
+ontompo:Knowledge rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Knowledge"@en.
+ontompo:Observation rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "Observation"@en.
+ontompo:SocialInteraction rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "SocialInteraction"@en.
+ontompo:Log rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "Log"@en.
+ontompo:CrudOperation rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "CrudOperation"@en.
+ontompo:CreateOperation rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "CreateOperation"@en.
+ontompo:ReadOperation rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "ReadOperation"@en.
+ontompo:UpdateOperation rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "UpdateOperation"@en.
+ontompo:DeleteOperation rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "DeleteOperation"@en.
+ontompo:CrudRepository rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "CrudRepository"@en.
+ontompo:Project rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Project"@en.
+ontompo:Disseminator rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Disseminator"@en.
+ontompo:Reporter rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Reporter"@en.
+ontompo:CrudView rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "CrudView"@en.
+ontompo:DataManager rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "DataManager"@en.
+ontompo:View rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "View"@en.
+ontompo:ProjectDataManagement rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "ProjectDataManagement"@en.
+ontompo:ViewProvision rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "ViewProvision"@en.
+ontompo:Collector rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Collector"@en.
+ontompo:Processor rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Processor"@en.
+ontompo:Storer rdf:type owl:Class, gufo:Role, owl:NamedIndividual;
+    rdfs:label "Storer"@en.
+ontompo:Extract rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "Extract"@en.
+ontompo:Transform rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "Transform"@en.
+ontompo:Load rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "Load"@en.
+ontompo:DataSource rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "DataSource"@en.
+ontompo:ProjectObservatory rdf:type owl:Class, gufo:SubKind, owl:NamedIndividual;
+    rdfs:label "ProjectObservatory"@en.
+ontompo:Software rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Software"@en.
+ontompo:Service rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Service"@en.
+ontompo:Hardware rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Hardware"@en.
+ontompo:SoftwareExecution rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "SoftwareExecution"@en.
+ontompo:ServiceProvision rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "ServiceProvision"@en.
+ontompo:Connection rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:Relator;
+    rdfs:label "Connection"@en.
+ontompo:Network rdf:type owl:Class, gufo:Kind, owl:NamedIndividual;
+    rdfs:subClassOf gufo:FunctionalComplex;
+    rdfs:label "Network"@en.
+ontompo:ObservatoryUser rdfs:subClassOf ontompo:Agent.
+ontompo:StakeHolder rdfs:subClassOf ontompo:Agent.
+ontompo:System rdfs:subClassOf ontompo:Agent.
+ontompo:CreateOperation rdfs:subClassOf ontompo:CrudOperation.
+ontompo:ReadOperation rdfs:subClassOf ontompo:CrudOperation.
+ontompo:UpdateOperation rdfs:subClassOf ontompo:CrudOperation.
+ontompo:DeleteOperation rdfs:subClassOf ontompo:CrudOperation.
+ontompo:CrudRepository rdfs:subClassOf ontompo:DataManager.
+ontompo:Collector rdfs:subClassOf ontompo:DataManager.
+ontompo:Processor rdfs:subClassOf ontompo:DataManager.
+ontompo:Storer rdfs:subClassOf ontompo:DataManager.
+ontompo:Disseminator rdfs:subClassOf ontompo:View.
+ontompo:Reporter rdfs:subClassOf ontompo:View.
+ontompo:CrudView rdfs:subClassOf ontompo:View.
+ontompo:DataManager rdfs:subClassOf ontompo:Software.
+ontompo:View rdfs:subClassOf ontompo:Software.
+ontompo:ProjectObservatory rdfs:subClassOf ontompo:Software.
+[ rdf:type owl:AllDisjointClasses ] owl:members (ontompo:CreateOperation ontompo:ReadOperation ontompo:UpdateOperation ontompo:DeleteOperation).
+ontompo:CrudOperation owl:equivalentClass [
+  rdf:type owl:Class;
+  owl:unionOf (ontompo:CreateOperation ontompo:ReadOperation ontompo:UpdateOperation ontompo:DeleteOperation)
+].
+ontompo:memberOf_ObservatoryUser_ObservatoryGroup rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:ObservatoryUser;
+    rdfs:range ontompo:ObservatoryGroup;
+    rdfs:label "memberOf_ObservatoryUser_ObservatoryGroup"@en;
+    rdfs:subPropertyOf gufo:isCollectionMemberOf.
+ontompo:memberOf_StakeHolder_ObservatoryGroup rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:StakeHolder;
+    rdfs:range ontompo:ObservatoryGroup;
+    rdfs:label "memberOf_StakeHolder_ObservatoryGroup"@en;
+    rdfs:subPropertyOf gufo:isCollectionMemberOf.
+ontompo:memberOf_System_ObservatoryGroup rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:System;
+    rdfs:range ontompo:ObservatoryGroup;
+    rdfs:label "memberOf_System_ObservatoryGroup"@en;
+    rdfs:subPropertyOf gufo:isCollectionMemberOf.
+ontompo:componentOf_DataManager_ProjectObservatory rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:DataManager;
+    rdfs:range ontompo:ProjectObservatory;
+    rdfs:label "componentOf_DataManager_ProjectObservatory"@en;
+    rdfs:subPropertyOf gufo:isComponentOf.
+ontompo:componentOf_View_ProjectObservatory rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:View;
+    rdfs:range ontompo:ProjectObservatory;
+    rdfs:label "componentOf_View_ProjectObservatory"@en;
+    rdfs:subPropertyOf gufo:isComponentOf.
+ontompo:mediation_Observation_Knowledge rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:Observation;
+    rdfs:range ontompo:Knowledge;
+    rdfs:label "mediation_Observation_Knowledge"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_Observation_Agent rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:Observation;
+    rdfs:range ontompo:Agent;
+    rdfs:label "mediation_Observation_Agent"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_Observation_Disseminator rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:Observation;
+    rdfs:range ontompo:Disseminator;
+    rdfs:label "mediation_Observation_Disseminator"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_SocialInteraction_Agent rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:SocialInteraction;
+    rdfs:range ontompo:Agent;
+    rdfs:label "mediation_SocialInteraction_Agent"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_SocialInteraction_Reporter rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:SocialInteraction;
+    rdfs:range ontompo:Reporter;
+    rdfs:label "mediation_SocialInteraction_Reporter"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_Log_Agent rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:Log;
+    rdfs:range ontompo:Agent;
+    rdfs:label "mediation_Log_Agent"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_Log_Reporter rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:Log;
+    rdfs:range ontompo:Reporter;
+    rdfs:label "mediation_Log_Reporter"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_CrudOperation_Agent rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:CrudOperation;
+    rdfs:range ontompo:Agent;
+    rdfs:label "mediation_CrudOperation_Agent"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_CrudOperation_CrudView rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:CrudOperation;
+    rdfs:range ontompo:CrudView;
+    rdfs:label "mediation_CrudOperation_CrudView"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_ProjectDataManagement_DataManager rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:ProjectDataManagement;
+    rdfs:range ontompo:DataManager;
+    rdfs:label "mediation_ProjectDataManagement_DataManager"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_ProjectDataManagement_Project rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:ProjectDataManagement;
+    rdfs:range ontompo:Project;
+    rdfs:label "mediation_ProjectDataManagement_Project"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_ViewProvision_DataManager rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:ViewProvision;
+    rdfs:range ontompo:DataManager;
+    rdfs:label "mediation_ViewProvision_DataManager"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_ViewProvision_View rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:ViewProvision;
+    rdfs:range ontompo:View;
+    rdfs:label "mediation_ViewProvision_View"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_Extract_Collector rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:Extract;
+    rdfs:range ontompo:Collector;
+    rdfs:label "mediation_Extract_Collector"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_Extract_DataSource rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:Extract;
+    rdfs:range ontompo:DataSource;
+    rdfs:label "mediation_Extract_DataSource"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_Transform_Collector rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:Transform;
+    rdfs:range ontompo:Collector;
+    rdfs:label "mediation_Transform_Collector"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_Transform_Processor rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:Transform;
+    rdfs:range ontompo:Processor;
+    rdfs:label "mediation_Transform_Processor"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_Load_Processor rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:Load;
+    rdfs:range ontompo:Processor;
+    rdfs:label "mediation_Load_Processor"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_Load_Storer rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:Load;
+    rdfs:range ontompo:Storer;
+    rdfs:label "mediation_Load_Storer"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_SoftwareExecution_Software rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:SoftwareExecution;
+    rdfs:range ontompo:Software;
+    rdfs:label "mediation_SoftwareExecution_Software"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_SoftwareExecution_Hardware rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:SoftwareExecution;
+    rdfs:range ontompo:Hardware;
+    rdfs:label "mediation_SoftwareExecution_Hardware"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_ServiceProvision_Service rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:ServiceProvision;
+    rdfs:range ontompo:Service;
+    rdfs:label "mediation_ServiceProvision_Service"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_ServiceProvision_Software rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:ServiceProvision;
+    rdfs:range ontompo:Software;
+    rdfs:label "mediation_ServiceProvision_Software"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_Connection_Hardware rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:Connection;
+    rdfs:range ontompo:Hardware;
+    rdfs:label "mediation_Connection_Hardware"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:mediation_Connection_Network rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:Connection;
+    rdfs:range ontompo:Network;
+    rdfs:label "mediation_Connection_Network"@en;
+    rdfs:subPropertyOf gufo:mediates.
+ontompo:material_Software_Hardware rdf:type owl:ObjectProperty;
+    rdfs:domain ontompo:Software;
+    rdfs:range ontompo:Hardware;
+    rdfs:label "material_Software_Hardware"@en;
+    rdf:type gufo:MaterialRelationshipType;
+    gufo:isDerivedFrom ontompo:SoftwareExecution.
+ontompo:Knowledge rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf ontompo:mediation_Observation_Knowledge ];
+  owl:someValuesFrom ontompo:Observation
+].
+ontompo:Observation rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_Observation_Knowledge;
+  owl:someValuesFrom ontompo:Knowledge
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_Observation_Agent;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Agent
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_Observation_Disseminator;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Disseminator
+].
+ontompo:SocialInteraction rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_SocialInteraction_Agent;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Agent
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_SocialInteraction_Reporter;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Reporter
+].
+ontompo:Log rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_Log_Agent;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Agent
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_Log_Reporter;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Reporter
+].
+ontompo:CrudOperation rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_CrudOperation_Agent;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Agent
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_CrudOperation_CrudView;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:CrudView
+].
+ontompo:ProjectDataManagement rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_ProjectDataManagement_DataManager;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:DataManager
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_ProjectDataManagement_Project;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Project
+].
+ontompo:ViewProvision rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_ViewProvision_DataManager;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:DataManager
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_ViewProvision_View;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:View
+].
+ontompo:Collector rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf ontompo:mediation_Extract_Collector ];
+  owl:someValuesFrom ontompo:Extract
+].
+ontompo:Extract rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_Extract_Collector;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Collector
+].
+ontompo:DataSource rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf ontompo:mediation_Extract_DataSource ];
+  owl:someValuesFrom ontompo:Extract
+].
+ontompo:Extract rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_Extract_DataSource;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:DataSource
+].
+ontompo:Collector rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf ontompo:mediation_Transform_Collector ];
+  owl:someValuesFrom ontompo:Transform
+].
+ontompo:Transform rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_Transform_Collector;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Collector
+].
+ontompo:Processor rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf ontompo:mediation_Transform_Processor ];
+  owl:someValuesFrom ontompo:Transform
+].
+ontompo:Transform rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_Transform_Processor;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Processor
+].
+ontompo:Processor rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf ontompo:mediation_Load_Processor ];
+  owl:someValuesFrom ontompo:Load
+].
+ontompo:Load rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_Load_Processor;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Processor
+].
+ontompo:Storer rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf ontompo:mediation_Load_Storer ];
+  owl:someValuesFrom ontompo:Load
+].
+ontompo:Load rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_Load_Storer;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Storer
+].
+ontompo:Software rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf ontompo:mediation_SoftwareExecution_Software ];
+  owl:someValuesFrom ontompo:SoftwareExecution
+].
+ontompo:SoftwareExecution rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_SoftwareExecution_Software;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Software
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_SoftwareExecution_Hardware;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Hardware
+].
+ontompo:Service rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty [ owl:inverseOf ontompo:mediation_ServiceProvision_Service ];
+  owl:someValuesFrom ontompo:ServiceProvision
+].
+ontompo:ServiceProvision rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_ServiceProvision_Service;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Service
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_ServiceProvision_Software;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Software
+].
+ontompo:Connection rdfs:subClassOf [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_Connection_Hardware;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Hardware
+], [
+  rdf:type owl:Restriction;
+  owl:onProperty ontompo:mediation_Connection_Network;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+  owl:onClass ontompo:Network
+].
