@@ -81,6 +81,14 @@ Execução deliberada de um verificador sobre um modelo com defeitos conhecidos,
 dispara. Sem controle positivo, um relatório vazio sobre o modelo revisado não é interpretável — pode
 significar "sem problemas" ou "regra que nunca dispara".
 
+**Regra de medição / regra de guarda**:
+Os dois tipos de regra dos verificadores estruturais. Uma **regra de medição** dispara sobre o
+baseline e mede a distância até o revisado; seu controle positivo é o próprio baseline. Uma **regra
+de guarda** vigia um construto que só a revisão introduziu — um evento sem participante, uma
+participação invertida — e por isso não tem o que dizer sobre o baseline; seu controle positivo é uma
+mutação do modelo revisado. Cobrar de uma regra de guarda que dispare sobre o baseline a tornaria
+impossível; dispensar as duas do controle tornaria o zero do revisado ininterpretável.
+
 **Verificador**:
 Script que confere a checklist de um ticket, em `tools/verification/`. Um por ticket. Lê o artefato
 como terceiro, sem importar do código que o gerou — a duplicação é o teste.

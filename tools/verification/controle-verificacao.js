@@ -18,6 +18,7 @@ const path = require('path');
 const { OntoumlVerification } = require('ontouml-js');
 const { construirModeloAsIs } = require('../model/ontompo-as-is');
 const { construirModeloRodada1 } = require('../model/ontompo-rodada-1');
+const { construirModeloRodada2 } = require('../model/ontompo-rodada-2');
 
 const RAIZ = path.resolve(__dirname, '..', '..');
 
@@ -93,6 +94,48 @@ const MODELOS = {
         },
       },
       MUTACAO_DOIS_PROVEDORES,
+    ],
+  },
+  'rodada-2': {
+    construir: construirModeloRodada2,
+    saida: path.join(RAIZ, 'artifacts', 'ontology', 'rodada-2', 'controle-verificacao.md'),
+    descricao: 'o modelo revisado (rodada 2)',
+    mutacoes: [
+      {
+        // A das rodadas anteriores nao serve: depois de A7, o provedor de
+        // identidade de `System` e `ComputationalSystem`, e nao mais `Agent`,
+        // que virou a «category» nao-sortal da UFO-C.
+        nome: 'System perde a generalizacao para ComputationalSystem',
+        esperado: 'class_missing_identity_provider',
+        porque: 'um sortal sem sortal ultimo acima dele fica sem principio de identidade',
+        aplicar: (projeto) => removerGeneralizacao(projeto, 'ComputationalSystem', 'System'),
+      },
+      {
+        nome: 'Hardware passa a especializar DataManager',
+        esperado: 'generalization_incompatible_class_rigidity',
+        porque: 'um tipo rigido nao pode especializar um tipo antirrigido',
+        aplicar(projeto) {
+          projeto.model.createGeneralization(
+            classe(projeto, 'DataManager'),
+            classe(projeto, 'Hardware'),
+          );
+        },
+      },
+      MUTACAO_DOIS_PROVEDORES,
+      {
+        // A mutacao que so faz sentido depois de UFO-B: o plugin nao sabe
+        // dizer que `Extract` deveria ser evento, mas sabe recusar um evento
+        // especializando um endurante.
+        nome: 'Extract passa a especializar Collector',
+        esperado: 'generalization_incompatible_natures',
+        porque: 'um perdurante nao pode especializar um endurante',
+        aplicar(projeto) {
+          projeto.model.createGeneralization(
+            classe(projeto, 'Collector'),
+            classe(projeto, 'Extract'),
+          );
+        },
+      },
     ],
   },
 };

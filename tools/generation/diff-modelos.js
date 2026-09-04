@@ -1,13 +1,18 @@
 /**
- * Diff estrutural entre o modelo *as-is* e o da rodada 1.
+ * Diff estrutural entre dois modelos da OntoMPO.
  *
  * A secao de analise ontologica do artigo precisa de um par antes/depois por
  * correcao. Escrever esses pares a mao convida a divergencia: o modelo muda, a
  * tabela nao. Aqui eles sao derivados dos dois modelos a cada execucao, de
- * modo que `artifacts/ontology/correcoes-rodada-1.md` possa argumentar sobre uma
- * tabela que nao pode estar errada sobre os fatos.
+ * modo que `artifacts/ontology/correcoes-rodada-N.md` possa argumentar sobre
+ * uma tabela que nao pode estar errada sobre os fatos.
  *
- * Uso: `node tools/generation/diff-modelos.js [arquivo-de-saida]`
+ * Cada rodada compara com a anterior, e nao com o baseline: o antes/depois que
+ * a rodada tem de justificar e o que ela mesma mudou. A distancia acumulada
+ * ate o *as-is* esta nos relatorios dos verificadores, que rodam sobre os tres
+ * modelos.
+ *
+ * Uso: `node tools/generation/diff-modelos.js [--de=as-is] [--para=rodada-1] [arquivo-de-saida]`
  */
 
 const fs = require('fs');
@@ -15,16 +20,15 @@ const path = require('path');
 
 const { construirModeloAsIs } = require('../model/ontompo-as-is');
 const { construirModeloRodada1 } = require('../model/ontompo-rodada-1');
+const { construirModeloRodada2 } = require('../model/ontompo-rodada-2');
 
-const SAIDA_PADRAO = path.resolve(
-  __dirname,
-  '..',
-  '..',
-  'artifacts',
-  'ontology',
-  'rodada-1',
-  'diff-as-is-rodada-1.md',
-);
+const MODELOS = {
+  'as-is': { construir: construirModeloAsIs, rotulo: '*as-is*' },
+  'rodada-1': { construir: construirModeloRodada1, rotulo: 'rodada 1' },
+  'rodada-2': { construir: construirModeloRodada2, rotulo: 'rodada 2' },
+};
+
+const RAIZ = path.resolve(__dirname, '..', '..');
 
 function classes(projeto) {
   return new Map(
@@ -73,7 +77,7 @@ function conjuntos(projeto) {
   );
 }
 
-function secaoDeDiff(titulo, antes, depois) {
+function secaoDeDiff(titulo, antes, depois, rotulos) {
   const removidos = [...antes.keys()].filter((chave) => !depois.has(chave));
   const acrescentados = [...depois.keys()].filter((chave) => !antes.has(chave));
   const alterados = [...antes.keys()].filter(
@@ -85,7 +89,7 @@ function secaoDeDiff(titulo, antes, depois) {
     linhas.push('Sem mudanca.', '');
     return linhas;
   }
-  linhas.push('| | Elemento | *as-is* | rodada 1 |', '|---|---|---|---|');
+  linhas.push(`| | Elemento | ${rotulos.antes} | ${rotulos.depois} |`, '|---|---|---|---|');
   for (const chave of removidos) {
     linhas.push(`| sai | \`${chave}\` | ${antes.get(chave)} | — |`);
   }
@@ -100,21 +104,39 @@ function secaoDeDiff(titulo, antes, depois) {
 }
 
 function principal() {
-  const caminhoSaida = process.argv[2] ? path.resolve(process.argv[2]) : SAIDA_PADRAO;
+  const argumentos = process.argv.slice(2);
+  const opcao = (prefixo, padrao) =>
+    (argumentos.find((a) => a.startsWith(`${prefixo}=`)) || `=${padrao}`).split('=')[1];
 
-  const antes = construirModeloAsIs();
-  const depois = construirModeloRodada1();
+  const de = opcao('--de', 'as-is');
+  const para = opcao('--para', 'rodada-1');
+  for (const escolha of [de, para]) {
+    if (!MODELOS[escolha]) {
+      console.log(`modelo desconhecido: ${escolha}. Use ${Object.keys(MODELOS).join(', ')}.`);
+      process.exitCode = 1;
+      return;
+    }
+  }
+
+  const posicional = argumentos.find((a) => !a.startsWith('--'));
+  const caminhoSaida = posicional
+    ? path.resolve(posicional)
+    : path.join(RAIZ, 'artifacts', 'ontology', para, `diff-${de}-${para}.md`);
+
+  const rotulos = { antes: MODELOS[de].rotulo, depois: MODELOS[para].rotulo };
+  const antes = MODELOS[de].construir();
+  const depois = MODELOS[para].construir();
 
   const linhas = [
-    '# Diff estrutural: *as-is* -> rodada 1',
+    `# Diff estrutural: ${rotulos.antes} -> ${rotulos.depois}`,
     '',
     'Derivado dos dois modelos a cada execucao de `tools/generation/diff-modelos.js`. E a ' +
       'materia-prima dos pares antes/depois; a leitura ontologica de cada um esta em ' +
-      '`../correcoes-rodada-1.md`.',
+      `\`../correcoes-${para}.md\`.`,
     '',
     '## Contagens',
     '',
-    '| | *as-is* | rodada 1 |',
+    `| | ${rotulos.antes} | ${rotulos.depois} |`,
     '|---|---|---|',
     `| classes | ${antes.getAllClasses().length} | ${depois.getAllClasses().length} |`,
     `| generalizacoes | ${antes.getAllGeneralizations().length} | ${depois.getAllGeneralizations().length} |`,
@@ -123,10 +145,10 @@ function principal() {
     '',
     '## Mudancas',
     '',
-    ...secaoDeDiff('Classes', classes(antes), classes(depois)),
-    ...secaoDeDiff('Generalizacoes', generalizacoes(antes), generalizacoes(depois)),
-    ...secaoDeDiff('Conjuntos de generalizacao', conjuntos(antes), conjuntos(depois)),
-    ...secaoDeDiff('Relacoes', relacoes(antes), relacoes(depois)),
+    ...secaoDeDiff('Classes', classes(antes), classes(depois), rotulos),
+    ...secaoDeDiff('Generalizacoes', generalizacoes(antes), generalizacoes(depois), rotulos),
+    ...secaoDeDiff('Conjuntos de generalizacao', conjuntos(antes), conjuntos(depois), rotulos),
+    ...secaoDeDiff('Relacoes', relacoes(antes), relacoes(depois), rotulos),
   ];
 
   fs.mkdirSync(path.dirname(caminhoSaida), { recursive: true });

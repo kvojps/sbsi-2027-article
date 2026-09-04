@@ -6,9 +6,12 @@
   "scripts": {
     "baseline": "node generation/gerar-baseline.js",
     "rodada-1": "node generation/gerar-rodada-1.js",
+    "rodada-2": "node generation/gerar-rodada-2.js",
     "diff": "node generation/diff-modelos.js",
+    "diff-rodada-2": "node generation/diff-modelos.js --de=rodada-1 --para=rodada-2",
     "controle": "node verification/controle-verificacao.js",
-    "verificar-extra": "node verification/verificador-ufo-extra.js"
+    "verificar-extra": "node verification/verificador-ufo-extra.js",
+    "verificar-ufo-b-c": "node verification/verificador-ufo-b-c.js"
   },
   "dependencies": {
     "ontouml-js": "0.5.0"

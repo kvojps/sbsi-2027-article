@@ -218,10 +218,15 @@ const REGRAS = [
   },
 ];
 
-/** Roda as cinco regras sobre um projeto e devolve a lista achatada de achados. */
-function verificar(projeto) {
+/**
+ * Roda um conjunto de regras sobre um projeto e devolve a lista achatada de
+ * achados. Fica generico sobre as regras porque o verificador de microteorias
+ * do ticket 05 aplica as cinco daqui e as suas proprias pelo mesmo caminho de
+ * codigo — se a forma do achado mudar, muda para os dois relatorios.
+ */
+function aplicarRegras(regras, projeto) {
   const problemas = [];
-  for (const regra of REGRAS) {
+  for (const regra of regras) {
     for (const achado of regra.aplicar(projeto)) {
       problemas.push({
         code: regra.codigo,
@@ -232,6 +237,11 @@ function verificar(projeto) {
     }
   }
   return problemas;
+}
+
+/** Roda as cinco regras sobre um projeto e devolve a lista achatada de achados. */
+function verificar(projeto) {
+  return aplicarRegras(REGRAS, projeto);
 }
 
 function contarPorRegra(problemas) {
@@ -356,4 +366,4 @@ if (require.main === module) {
   principal();
 }
 
-module.exports = { REGRAS, verificar };
+module.exports = { REGRAS, aplicarRegras, verificar };

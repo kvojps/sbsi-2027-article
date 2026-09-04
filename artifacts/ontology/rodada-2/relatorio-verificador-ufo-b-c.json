@@ -1,0 +1,97 @@
+{
+  "as-is": [
+    {
+      "code": "memberof_whole_not_collective",
+      "severity": "error",
+      "element": "memberOf_ObservatoryGroup_ObservatoryUser",
+      "description": "o todo declarado e `ObservatoryUser`, de natureza functional-complex, e nao um coletivo"
+    },
+    {
+      "code": "memberof_whole_not_collective",
+      "severity": "error",
+      "element": "memberOf_ObservatoryGroup_StakeHolder",
+      "description": "o todo declarado e `StakeHolder`, de natureza functional-complex, e nao um coletivo"
+    },
+    {
+      "code": "parthood_ends_undeclared",
+      "severity": "error",
+      "element": "memberOf_ObservatoryGroup_System",
+      "description": "«memberOf» sem losango em nenhuma das duas pontas"
+    },
+    {
+      "code": "mediation_optional_relatum",
+      "severity": "error",
+      "element": "mediation_Operation_Software",
+      "description": "Operation medeia Software com `0..*` na ponta mediada"
+    },
+    {
+      "code": "mediation_optional_relatum",
+      "severity": "error",
+      "element": "mediation_Operation_Hardware",
+      "description": "Operation medeia Hardware com `0..*` na ponta mediada"
+    },
+    {
+      "code": "mediation_optional_relatum",
+      "severity": "error",
+      "element": "mediation_Operation_Network",
+      "description": "Operation medeia Network com `0..*` na ponta mediada"
+    },
+    {
+      "code": "class_name_collides_with_metaconcept",
+      "severity": "error",
+      "element": "Relator",
+      "description": "«role» de dominio homonima do metaconceito da UFO"
+    },
+    {
+      "code": "relator_arity_above_binary",
+      "severity": "warning",
+      "element": "Observation",
+      "description": "medeia 3 relata: Knowledge, Agent, Disseminator"
+    },
+    {
+      "code": "relator_arity_above_binary",
+      "severity": "warning",
+      "element": "Management",
+      "description": "medeia 3 relata: Project, DataManager, View"
+    },
+    {
+      "code": "relator_arity_above_binary",
+      "severity": "warning",
+      "element": "Operation",
+      "description": "medeia 4 relata: Software, Service, Hardware, Network"
+    },
+    {
+      "code": "modelo_sem_perdurante",
+      "severity": "error",
+      "element": "OntoMPO",
+      "description": "nenhuma das 32 classes tem natureza evento ou situacao: a UFO-B nao foi adotada"
+    },
+    {
+      "code": "modelo_sem_relacao_temporal",
+      "severity": "error",
+      "element": "OntoMPO",
+      "description": "nenhuma das 28 relacoes tem estereotipo da UFO-B: nao ha participacao, criacao nem terminacao no modelo"
+    }
+  ],
+  "rodada-1": [
+    {
+      "code": "relator_arity_above_binary",
+      "severity": "warning",
+      "element": "Observation",
+      "description": "medeia 3 relata: Knowledge, Agent, Disseminator"
+    },
+    {
+      "code": "modelo_sem_perdurante",
+      "severity": "error",
+      "element": "OntoMPO",
+      "description": "nenhuma das 38 classes tem natureza evento ou situacao: a UFO-B nao foi adotada"
+    },
+    {
+      "code": "modelo_sem_relacao_temporal",
+      "severity": "error",
+      "element": "OntoMPO",
+      "description": "nenhuma das 32 relacoes tem estereotipo da UFO-B: nao ha participacao, criacao nem terminacao no modelo"
+    }
+  ],
+  "rodada-2": []
+}
