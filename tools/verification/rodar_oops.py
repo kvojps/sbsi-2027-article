@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """Roda o OOPS! sobre uma ontologia e salva o relatorio.
 
-Uso: python tools/verification/rodar_oops.py [caminho-do-ttl] [diretorio-de-saida]
+Uso: python tools/verification/rodar_oops.py [caminho-do-ttl] [saida] [descricao]
+
+Serve as duas metades do antes/depois de *pitfalls* de OWL: o baseline do ticket
+03, que e o padrao dos argumentos, e a OWL customizada do ticket 06. E o mesmo
+caminho de codigo nas duas, que e o que torna os dois relatorios comparaveis.
 
 O OOPS! (OntOlogy Pitfall Scanner!) so aceita RDF/XML no servico REST, entao a
 Turtle produzida pela transformacao gUFO e convertida com a rdflib antes do
-envio. Sao gravados tres arquivos ao lado do modelo:
+envio. Sao gravados quatro arquivos ao lado do modelo:
 
-  - `<nome>.owl`            o baseline em RDF/XML, completo;
+  - `<nome>.owl`            a ontologia em RDF/XML, completa;
   - `<nome>.oops.owl`       a copia efetivamente submetida, sem o `owl:imports`,
                             para que a execucao possa ser repetida byte a byte;
   - `relatorio-oops.xml`    a resposta bruta do servico;
@@ -25,20 +29,29 @@ resposta do servico nao ha relatorio, e o ticket 03 pede o relatorio em arquivo.
 
 from __future__ import annotations
 
-import hashlib
 import sys
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "generation"))
+
 try:
-    import rdflib
     import requests
+
+    from rdf_deterministico import carregar, sem_importacoes
 except ImportError as erro:  # pragma: no cover - dependencia ausente
     print(f"ERRO: dependencia ausente ({erro.name}). Rode: pip install rdflib requests")
     sys.exit(1)
 
 TTL_PADRAO = Path("artifacts/ontology/baseline/ontompo-as-is.ttl")
+
+# Como o relatorio se refere ao modelo. Vale um verbete por ontologia submetida;
+# o terceiro argumento da linha de comando sobrescreve.
+DESCRICOES = {
+    "ontompo-as-is": "o modelo *as-is*",
+    "ontompo": "a OWL customizada do modelo revisado",
+}
 ENDPOINT = "https://oops.linkeddata.es/rest"
 TEMPO_LIMITE_S = 300
 
@@ -47,79 +60,6 @@ RDF = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 
 # Ordem de gravidade que o OOPS! usa nos seus proprios relatorios.
 ORDEM_IMPORTANCIA = {"Critical": 0, "Important": 1, "Minor": 2}
-
-
-def carregar(caminho_ttl: Path) -> rdflib.Graph:
-    grafo = rdflib.Graph()
-    grafo.parse(caminho_ttl.as_posix(), format="turtle")
-    return _normalizado(grafo)
-
-
-def _rotulo(grafo: rdflib.Graph, no: rdflib.term.BNode, rotulos: dict) -> str | None:
-    """Rotulo derivado do conteudo do no, ou None se algum filho ainda nao tem rotulo."""
-    partes = []
-    for predicado, objeto in grafo.predicate_objects(no):
-        if isinstance(objeto, rdflib.term.BNode):
-            if objeto not in rotulos:
-                return None
-            partes.append(f"{predicado} {rotulos[objeto]}")
-        else:
-            partes.append(f"{predicado} {objeto}")
-    assinatura = chr(10).join(sorted(partes))
-    return f"n{hashlib.sha1(assinatura.encode('utf-8')).hexdigest()[:20]}"
-
-
-def _normalizado(grafo: rdflib.Graph) -> rdflib.Graph:
-    """Copia do grafo com nos anonimos rotulados de forma deterministica.
-
-    A rdflib sorteia o rotulo dos nos anonimos a cada execucao, e a Turtle da
-    transformacao gUFO tem uma restricao anonima por mediacao. Sem isto, dois
-    `gerar-baseline` seguidos produziriam RDF/XML diferentes sem que nada no
-    modelo tivesse mudado, e o diff contra o modelo revisado do ticket 04 seria
-    ilegivel. O `to_canonical_graph` da propria rdflib nao serve: ele desempata
-    nos isomorfos por sorteio e nao e estavel entre execucoes.
-
-    O rotulo e o hash do conteudo do no, resolvido de dentro para fora — as
-    restricoes do gUFO aninham um nivel, em `owl:onProperty [ owl:inverseOf ... ]`.
-    Dois nos de conteudo identico colidiriam; a colisao e detectada e falha,
-    em vez de fundir silenciosamente dois nos distintos.
-    """
-    anonimos = {t for tripla in grafo for t in tripla if isinstance(t, rdflib.term.BNode)}
-    rotulos: dict = {}
-    while len(rotulos) < len(anonimos):
-        avancou = False
-        for no in anonimos - set(rotulos):
-            rotulo = _rotulo(grafo, no, rotulos)
-            if rotulo is not None:
-                rotulos[no] = rotulo
-                avancou = True
-        if not avancou:
-            raise RuntimeError("ciclo entre nos anonimos: rotulacao deterministica nao converge")
-
-    if len(set(rotulos.values())) != len(rotulos):
-        raise RuntimeError("colisao de rotulo entre nos anonimos")
-
-    normalizado = rdflib.Graph()
-    for prefixo, iri in grafo.namespaces():
-        normalizado.bind(prefixo, iri)
-    def substituir(termo):
-        return rdflib.term.BNode(rotulos[termo]) if isinstance(termo, rdflib.term.BNode) else termo
-
-    triplas = [tuple(substituir(termo) for termo in tripla) for tripla in grafo]
-    for tripla in sorted(triplas, key=lambda t: (str(t[0]), str(t[1]), str(t[2]))):
-        normalizado.add(tripla)
-    return normalizado
-
-
-def sem_importacoes(grafo: rdflib.Graph) -> rdflib.Graph:
-    """Copia do grafo sem `owl:imports`, que faz o servico do OOPS! falhar."""
-    recorte = rdflib.Graph()
-    for prefixo, iri in grafo.namespaces():
-        recorte.bind(prefixo, iri)
-    for tripla in grafo:
-        if tripla[1] != rdflib.OWL.imports:
-            recorte.add(tripla)
-    return recorte
 
 
 def consultar_oops(rdf_xml: str) -> str:
@@ -206,10 +146,12 @@ def _nomes_ambiguos(achados: list[dict]) -> set[str]:
     return {nome for nome, iris in por_nome.items() if len(iris) > 1}
 
 
-def relatorio_em_markdown(achados: list[dict], caminho_ttl: Path, momento: str) -> str:
+def relatorio_em_markdown(
+    achados: list[dict], caminho_ttl: Path, momento: str, descricao: str
+) -> str:
     ambiguos = _nomes_ambiguos(achados)
     linhas = [
-        "# Relatorio do OOPS! sobre o modelo *as-is*",
+        f"# Relatorio do OOPS! sobre {descricao}",
         "",
         f"Ontologia submetida: `{caminho_ttl.name}`, convertida para RDF/XML e enviada ao "
         f"servico REST do OOPS! (`{ENDPOINT}`) em {momento}. Resposta bruta em "
@@ -271,6 +213,11 @@ def relatorio_em_markdown(achados: list[dict], caminho_ttl: Path, momento: str) 
 def main() -> int:
     caminho_ttl = Path(sys.argv[1]) if len(sys.argv) > 1 else TTL_PADRAO
     diretorio_saida = Path(sys.argv[2]) if len(sys.argv) > 2 else caminho_ttl.parent
+    descricao = (
+        sys.argv[3]
+        if len(sys.argv) > 3
+        else DESCRICOES.get(caminho_ttl.stem, f"`{caminho_ttl.stem}`")
+    )
 
     if not caminho_ttl.exists():
         print(f"ERRO: {caminho_ttl} nao existe. Rode antes: node tools/generation/gerar-baseline.js")
@@ -296,7 +243,7 @@ def main() -> int:
     (diretorio_saida / "relatorio-oops.xml").write_text(resposta, encoding="utf-8")
     achados = extrair_pitfalls(resposta)
     (diretorio_saida / "relatorio-oops.md").write_text(
-        relatorio_em_markdown(achados, caminho_ttl, momento), encoding="utf-8"
+        relatorio_em_markdown(achados, caminho_ttl, momento, descricao), encoding="utf-8"
     )
 
     print(f"RDF/XML completa  -> {caminho_owl}")

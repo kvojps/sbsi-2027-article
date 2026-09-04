@@ -15,11 +15,12 @@ Todo caminho do repositório cai em um dos três. O que não cai é plano (`.scr
 ```
 sources/                     ENTRADA — somente leitura
 ├── dissertation/            fontes LaTeX, imagens e PDF da dissertação
+├── gufo/                    a gUFO 1.0.0, como distribuída, com o SHA-256 registrado
 ├── ontobras-reviews/        o artigo rejeitado e os cinco pareceres
 └── sbc-template/            o template SBC, como distribuído
 
 artifacts/                   SAÍDA — o que esta pesquisa produz
-├── ontology/                o modelo e suas verificações  → ver o README de lá
+├── ontology/                o modelo, a OWL e suas verificações  → ver o README de lá
 ├── paper/                   esqueleto.md, artigo.tex, referencias.bib
 ├── deposit/                 o pacote do Zenodo anônimo (ticket 09)
 └── submission/              o pacote de registro no JEMS3
@@ -73,12 +74,17 @@ node tools/verification/controle-verificacao.js --modelo=rodada-2
 node tools/verification/verificador-ufo-extra.js
 node tools/verification/verificador-ufo-b-c.js
 
-pip install rdflib requests
+pip install rdflib requests owlrl
+python tools/generation/customizar_owl.py                         # ticket 06
+python tools/verification/raciocinador.py
+python tools/verification/rodar_oops.py artifacts/ontology/owl/ontompo.ttl
+python tools/verification/comparar_oops.py
 python tools/verification/verificar_baseline.py                   # confere a checklist do 03
 python tools/verification/verificar_rodada1.py                    # confere a checklist do 04
 python tools/verification/verificar_rodada2.py                    # confere a checklist do 05
+python tools/verification/verificar_owl.py                        # confere a checklist do 06
 ```
 
 Os verificadores Python leem caminhos relativos ao diretório de trabalho: **execute-os da raiz**.
 Tudo é determinístico exceto a resposta do OOPS!, que traz um identificador de requisição novo a cada
-chamada. Detalhes em `artifacts/ontology/README.md`.
+chamada — e as duas chamadas ao OOPS! precisam de rede. Detalhes em `artifacts/ontology/README.md`.

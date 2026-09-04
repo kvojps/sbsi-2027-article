@@ -62,6 +62,19 @@ Os arquivos JavaScript em `tools/model/` que constroem o modelo. São a ontologi
 `.ontouml.json`, `.ttl` e `.owl` são derivados deles.
 _Avoid_: chamar o `.ontouml.json` de "o modelo" — ele é saída.
 
+**Customização (da OWL)**:
+O que foi acrescentado à OWL **por cima** do que a transformação gUFO gerou — definições, disjunções,
+inversas nomeadas, metadados. São cinco, C1 a C5, cada uma com justificativa escrita em
+`artifacts/ontology/owl/customizacoes.md`. É **aditiva por regra**: nenhuma tripla gerada é removida
+ou alterada, e é essa contenção que torna a preservação semântica verificável em vez de afirmada. Ver
+`docs/adr/0002-customizacao-aditiva-da-owl.md`.
+_Avoid_: "correção da OWL" — correção é do modelo e vai numa rodada; customização é da camada OWL.
+
+**Acréscimo**:
+O conjunto exato de triplas que a customização soma ao gerado, gravado em
+`artifacts/ontology/owl/diff-gerado-customizado.ttl`. Gerado mais acréscimo é, tripla a tripla, o
+customizado — e o verificador do ticket 06 confere isso a cada execução.
+
 ### A avaliação
 
 **QC (questão de competência)**:
