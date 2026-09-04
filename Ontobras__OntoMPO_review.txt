@@ -1,0 +1,125 @@
+Dear José Júnior,
+
+Thank you for submitting the paper “OntoMPO: From Conceptual Model to MPO Ontology” to ONTOBRAS 2026.
+
+After careful consideration of the reviewers’ reports, we regret to inform you that your paper has not been accepted for presentation and publication at ONTOBRAS 2026.
+
+The reviewers’ reports are available below and in the EasyChair system. We hope that their comments and recommendations will contribute to the further development of your work.
+
+We appreciate your interest in ONTOBRAS and encourage you to consider submitting your research to a future edition of the conference.
+
+Feel free to contact us at ontobras2026@easychair.org if you need assistance or further information.
+
+Best regards,
+Fabrício H. Rodrigues and Fernanda Farinelli
+ONTOBRAS 2026 Program Committee Chairs
+https://www.inf.ufrgs.br/ontobras
+
+SUBMISSION: 121
+TITLE: OntoMPO: From Conceptual Model to MPO Ontology
+
+----------------------- REVIEW 1 ---------------------
+
+SUBMISSION: 121
+TITLE: OntoMPO: From Conceptual Model to MPO Ontology
+
+----------- Overall evaluation -----------
+General remarks
+
+This paper discusses the OntoMPO, which was developed to formalise MPO (Model for Project Observatories) using OntoUML and finally OWL. The purpose of this formalisation effort is mainly to remove ambiguities that could arise from the MPO being defined in natural language.
+
+I find the purpose of formalising a model originally defined in natural language by using ontological resources quite valid, and I value that the authors applied a systematic approach to this task. However, I have some strong points of criticism to the work reported in this paper:
+1. The terminology used in the paper sounds confusing to me. When Googling the term ‘Project Observatories’ I get mainly entries on global / space observatory projects. The publications on MPO are the only ones that use this term, while I think this domain is more generally characterised as Project Management / Monitoring. The term ‘Project Observatory’ apparently was introduced as an analogy to global / space observation but then applied to projects, creating in this way a sort of ‘niche’. Terminology confusion is exactly what we are trying to avoid by introducing ontologies, so this terminology is quite unfortunate.
+2. The authors state clearly that they aimed at developing a conceptual domain by ‘making concepts, relations and semantic assumptions explicitly and unambiguous - rather than supporting deep automated inference or theorem proving’. Therefore I get the impression that the effort of defining an OntoUML model is wasted, since OWL alone already supports the definition of concepts, relations and axioms. Furthermore, the OntoUML model is ‘translated’ to OWL, apparently manually, so there is no guarantee whatsoever that the semantics defined in the OntoUML model is preserved in the OWL model, even because the finer UFO categorisation in roles, kinds, subkinds, etc. is lost when translated to OWL anyway.
+3. The competency questions are too high-level and only defined to reveal the modelling decisions, and as such they are not suitable for validation. Competency questions can be defined at different levels, but they are most useful when defined at the level of the concepts to be applied on instances (a knowledge base), to be able to check whether the ontology is capable of retrieving some knowledge. An example would be ‘which project is managed by a certain data manager’.
+
+Detailed remarks
+
+Section 2.4:
+- I understand that not so much related work was found when looking for ‘project observatories’. I suggest that the authors in the future try to position their work with respect to domains like ‘Project Management’ and ‘Project Monitoring’, and possibly restrict the application domains of these projects (finance, health, software development, etc.). This should allow more relevant sources of inspiration to be found.
+- The lack of interest in the MPO formalisation may have to do with the apparent unpopularity of the model.
+
+Section 3.1.5:
+- The evaluation is quite strange. The conclusion that ‘the analysis verified the correct classification of concepts’ sounds obvious to me, since the classification was actually defined by the authors themselves, and as far as I could understand not inferred by the ontology.
+- In ontology engineering, often ‘functional evaluation’ is performed by defining instances and checking whether they are contained in the so-called ‘intended models of reality’. The authors do not mention this kind of evaluation, so I am not really sure the ontology is really valid (‘it does what it is intended to do’).
+
+Section 4:
+- By only showing an excerpt of the OntoUML model I only got questions about the integrity of the ontology. For example, how can both a DataManager and a View specialise a ProjectObservatory? Why is ProjectObservatory a specialisation of Software? I understand that the ontology is relatively big to be explained in its totality, but I suggest that the authors explain and justify the key concepts of the ontology so that the reader can get some evidence of its integrity and consistency.
+
+Section 5:
+- This section summarises the results, while it should mainly discuss the main learning lessons and limitations of the work.
+
+
+----------------------- REVIEW 2 ---------------------
+
+SUBMISSION: 121
+TITLE: OntoMPO: From Conceptual Model to MPO Ontology
+
+----------- Overall evaluation -----------
+O artigo propõe a OntoMPO, uma ontologia de domínio voltada para a formalização do Model for Project Observatories (MPO). O trabalho aborda a lacuna de formalização de modelos conceituais de observatórios de projetos, que frequentemente sofrem com ambiguidades por serem descritos apenas em linguagem natural. A pesquisa utiliza um arcabouço metodológico sólido, fundamentado na Methontology e na Unified Foundational Ontology (UFO). Contudo, há questões importantes no desenvolvimento da ontologia que impactam na consistência do modelo apresentado.
+
+- Questões de Competência (QC) Inadequadas: As QCs enunciadas na Seção 3.1.1 (ex: "Como a camada X é representada?") não são questões de competência de domínio, mas perguntas sobre a arquitetura do modelo. Segundo as melhores práticas, QCs devem interrogar o conhecimento do domínio (ex: "Quais Views pertencem a um DataManager específico?") para atuar como requisitos funcionais e testes de validação;
+
+- Abdicação das Microteorias UFO-B e UFO-C: Os autores afirmam representar Processos e Agentes, mas não utilizam os estereótipos adequados. Modelar processos dinâmicos (ETL) estritamente como «relator» (UFO-A, para endurantes) omite a natureza e as transformações temporais essenciais. Da mesma forma, representar Agent como um «Kind» genérico ignora as distinções da UFO-C entre agentes físicos (humanos) e sociais/sistemas, reduzindo a precisão do modelo. Não utilizar as microteorias da UFO-B e UFO-C não torna a ontologia do tipo lightweight, mas conceitualmente incompleta ou colapsada;
+
+- Modelagem Conceitual (Seção 4, Figura 1)
+   - Erros Mereológicos e de Notação:
+            - O modelo utiliza o símbolo de composição («CompOf») para conectar `ObservatoryUser` a um «Collective» (ObservatoryGroup), quando a UFO prescreve a relação de adesão («MemberOf»). Além disso, o diamante de composição parece estar invertido na notação.
+            - Considerar que Software é uma composição de Hardware parece ontologicamente incorreto; são entidades de naturezas distintas (virtual vs. física), e a relação deveria ser de execução ou hospedagem, não constituição física. É necessária uma boa justificativa  para esta escolha de modelagem.
+           - Colapso Semântico e Complexidade N-ária: O relator `CrudOperation` colapsa operações com pós-condições distintas (Create, Update, Delete) em uma única conexão, falhando em prover a precisão semântica prometida. Relatores como `Management` e `Operation` sugerem relações ternárias ou n-árias complexas que não foram detalhadas nem justificadas, colapsando possíveis e prováveis interações binárias.
+          - Conflito Terminológico: A criação de uma classe chamada `Relator` com oestereótipo «Role» é tecnicamente confusa, pois sobrepõe um conceito do domínio a um metaconceito da própria UFO .
+
+- Validação Funcional : Devido ao problema de escopo das QCs formuladas na seção 3.1.1, a avaliação SPARQL no item 4.4.2 é apenas uma verificação de que o OWL reflete a hierarquia desenhada. Não se validou a competência da ontologia em resolver problemas do domínio MPO.
+
+- Fragilidade da Inspeção Manual: A avaliação baseou-se apenas em inspeção manual subjetiva dos autores, abrindo mão de ferramentas automáticas conhecidas na comunidade, como o OntoUML Plugin para Visual Paradigm (que verifica regras sintáticas e semânticas da UFO). Sua utilização poderia alertar problemas sintáticos observados na modelagem (Figura 1).
+
+Assim, apesar de parabenizar o esforço dos autores na criação da ontologia de dominio apoiada pela UFO, utlizando uma metodologia de construção consagrada, os problemas anteriormente identificados na modelagem conceitual me levam ao parecer de rejeição do artigo neste momento.
+
+
+----------------------- REVIEW 3 ---------------------
+
+SUBMISSION: 121
+TITLE: OntoMPO: From Conceptual Model to MPO Ontology
+
+----------- Overall evaluation -----------
+This paper proposed the domain ontology OntoMPO for semantic representation of Model for Project Observatories (MPO). The ontology has been developed following the Methontology methodology and it is grounded in the Unified Foundational Ontology (UFO) via OntoUML conceptualisation. It has been implemented in OWL DL 2.
+
+The paper is well motivated and addresses a clear gap in the literature, namely the lack of a shared formalization of MPO. The related work section, while concise, effectively highlights the paper's contribution. However, the paper contains several repetitive sections, particularly those discussing MPO and Methontology. Improving the organization and reducing redundancy would enhance the paper's readability.
+
+While the choice for Methontology is justified, a better positioning with recent methodologies as LOT could be interesting.
+
+More importantly, the ontology is presented with insufficient detail, and several modeling choices, such as the selection of relation types, are not adequately justified. Furthermore, the evaluation is rather superficial. Although a set of competency questions has been defined, the paper does not provide sufficient information about the evaluation process, such as who participated, how many experts were involved. More generally, the paper lacks a detailed description of how the conceptual model and the ontology were evaluated (not automatic metric as OOPS ou FOOPS used).
+
+Finally, the git link does not work https://github.com/kvojps/onto-mpo
+
+
+----------------------- REVIEW 4 ---------------------
+
+SUBMISSION: 121
+TITLE: OntoMPO: From Conceptual Model to MPO Ontology
+
+----------- Overall evaluation -----------
+The paper presents OntoMPO, an ontology for the semantic formalization of the Model for Project Observatories (MPO). The use of OntoUML for ontology formalization, the adoption of the Methontology methodology, and the authors' effort to evaluate the ontology through competency questions and SPARQL queries are noteworthy strengths of the work.
+
+However, the main limitation of the paper concerns the competency questions used to validate the ontology. The proposed competency questions primarily assess the structure of the ontology rather than the domain knowledge it is intended to represent, thereby limiting their role in identifying the requirements that should guide the ontology specification and validation. Consequently, the evaluation demonstrates the conceptual organization of the model but provides only limited evidence of its usefulness in answering relevant domain-specific questions about project observatories. Furthermore, although the authors state that the competency questions were verified through SPARQL queries, both the queries and their results are presented only in summarized form, making the evaluation difficult to reproduce.
+
+Some editorial issues were also identified. In the conclusion, there is an unresolved reference to UFO, displayed as "UFO [? ]". In addition, the reference list should be carefully revised, as references 1, 7, and 8 are incomplete.
+
+
+----------------------- REVIEW 5 ---------------------
+
+SUBMISSION: 121
+TITLE: OntoMPO: From Conceptual Model to MPO Ontology
+
+----------- Overall evaluation -----------
+The paper proposes a domain ontology (OntoMPO), grounded on the Unified Foundational Ontology (UFO), to formalize the Model for Projects Observatories (MPO), a structured conceptual reference about project observatory environments extracted from the literature, which organizes 61 concepts across three main dimensions: Structures, Processes, and Agents. OntoMPO was implemented in OWL and evaluated through conceptual analysis and SPARQL-based competency question verification.
+
+The idea of formalizing the concepts of the MPO in an ontology is both interesting and highly valuable. As highlighted by the authors in the motivation, such a formalization can help eliminate ambiguities and inconsistencies in the interpretation of the concepts and  in their application. Furthermore, the topic is well aligned with the scope of the conference.
+
+However, I am not convinced that solely formalizing MPO’s concepts as an ontology constitutes a sufficient contribution for a conference paper (even if it is well grounded through the use of a foundational ontology). The MPO has been formalized in OntoUML exactly as presented in the original proposal described in the literature. The paper does not include an evaluation, an ontological analysis, or any discussion of potential improvements or refinements to the original model. In the absence of a critical ontological analysis or evaluation, the vocabulary definitions seems to closely follow the existing MPO specification and do not appear to introduce new conceptual insights or refinements. Instead, they probably reproduce the concepts and textual descriptions already available in the original MPO proposal.
+
+As for the implementation in OWL, existing ontology engineering tools already enable the automatic generation of OWL ontologies from OntoUML models (at least an initial version). A potential contribution could reside in the customization of the automatically generated artifacts. However, if such customization was carried out, it is neither described nor illustrated in the paper.
+
+Another issue that prevented a more thorough evaluation of the paper was the unavailability of the github repository with the artifacts generated in the research. When I attempted to access the link provided in Section 6 (Appendices), it returned a "Page Not Found" error. Although the authors report quantitative metrics on the developed artifacts, they do not provide a sufficiently detailed description of them. The ontology is presented only at a high level, and the concepts represented by its entities are not described, neither in the section that presents the ontology nor in the background section that introduces the MPO. Therefore, without access to the repository artifacts, it is difficult to assess the quality and the results of the research work.
+
+I also missed a more detailed description of the MPO. Since the main goal of the proposed ontology is to formalize this model, it would be important to provide a more comprehensive overview for readers who are not already familiar with the original work about this model. I consider that the paper should be self-contained, providing readers with sufficient information to understand the proposed approach without consulting the cited references. The references should primarily serve readers who wish to explore the topics in greater depth.

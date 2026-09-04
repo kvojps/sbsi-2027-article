@@ -1,0 +1,101 @@
+\chapter{Conclusão}
+
+\section{Considerações finais}
+
+Este trabalho apresentou o desenvolvimento da OntoMPO, uma ontologia de domínio destinada à formalização semântica do Modelo para Observatórios de Projetos (MPO) \cite{vieira2022thesis}. O objetivo central da pesquisa foi explicitar conceitualmente o domínio dos observatórios de projetos por meio de uma representação ontológica formal, capaz de tornar explícitas as relações semânticas existentes entre os elementos que compõem o modelo.
+
+Para alcançar esse objetivo, a ontologia foi desenvolvida seguindo as diretrizes da metodologia \textit{Methontology} \cite{fernandez1997methontology}, contemplando de forma sistemática as etapas de especificação, conceitualização, formalização, integração, implementação e avaliação. Esse processo permitiu estruturar de maneira organizada o conhecimento do domínio e estabelecer uma base conceitual formal para a representação dos observatórios de projetos.
+
+Ao longo do trabalho, o MPO \cite{vieira2022thesis}, originalmente descrito de forma conceitual e textual, foi transformado em um artefato ontológico formal, estruturado em classes, propriedades, restrições e axiomas na linguagem OWL. Essa formalização tornou explícitas as relações semânticas entre os elementos centrais do modelo, promovendo maior clareza conceitual, padronização terminológica e coerência semântica do domínio.
+
+A avaliação da ontologia foi conduzida por meio de validação conceitual e verificação lógica, utilizando questões de competência e consultas em SPARQL. Os resultados indicaram que a ontologia apresenta aderência conceitual ao MPO e consistência lógica, demonstrando sua capacidade de representar adequadamente os conceitos e relações do domínio.
+
+Dessa forma, a OntoMPO estabelece uma base semântica estruturada para o domínio de observatórios de projetos, contribuindo para reduzir ambiguidades interpretativas presentes na descrição original do modelo e ampliando seu potencial de utilização em contextos analíticos, comparativos e computacionais.
+
+\section{Atendimento aos objetivos da pesquisa}
+
+A consecução do objetivo geral desta pesquisa foi viabilizada por meio do atendimento aos objetivos específicos definidos no início do trabalho. A seguir, apresenta-se a relação entre cada objetivo específico e os resultados obtidos.
+
+O primeiro objetivo consistiu em realizar uma revisão exploratória da literatura sobre ontologias, fundamentação ontológica e observatórios de projetos, com o propósito de identificar conceitos, abordagens e práticas relevantes ao domínio de estudo. Esse objetivo foi atendido por meio do levantamento e análise de trabalhos relacionados apresentados no Capítulo 2, no qual foram discutidas pesquisas que utilizam ontologias em diferentes domínios e contextos de observatórios. Essa revisão permitiu identificar lacunas na literatura, especialmente no que se refere à ausência de formalizações ontológicas voltadas especificamente ao domínio de observatórios de projetos.
+
+O segundo objetivo específico foi identificar, analisar e organizar os conceitos, relações e atributos presentes no MPO, considerando suas camadas, subcamadas e definições. Esse objetivo foi alcançado por meio da análise sistemática dos documentos que descrevem o modelo proposto por \citeauthor{vieira2022thesis}, permitindo extrair e estruturar os elementos conceituais que compõem o domínio. Esse processo foi fundamental para compreender a organização conceitual do MPO e preparar sua posterior formalização ontológica.
+
+O terceiro objetivo consistiu em estruturar o vocabulário conceitual do MPO por meio da elaboração dos artefatos previstos na metodologia \textit{Methontology}, incluindo glossário de termos, árvore de classificação de conceitos, dicionário de verbos e tabelas de regras e restrições. Esses artefatos foram elaborados durante a etapa de conceitualização da ontologia e permitiram explicitar o significado dos conceitos, bem como suas relações semânticas no domínio dos observatórios de projetos.
+
+O quarto objetivo específico foi formalizar os conceitos do MPO em um modelo ontológico, definindo classes, propriedades, axiomas, restrições e relações necessárias para representar o domínio de forma semanticamente consistente. Esse objetivo foi alcançado por meio da modelagem conceitual em OntoUML e da implementação da ontologia na linguagem OWL, resultando na OntoMPO, apresentada e discutida no capítulo de resultados.
+
+Por fim, o quinto objetivo específico consistiu em avaliar e validar a ontologia construída com base em questões de competência, assegurando sua aderência ao escopo do MPO e seu potencial como base conceitual para aplicações futuras. Esse objetivo foi atendido por meio da realização de consultas SPARQL que permitiram verificar a capacidade da ontologia de responder às questões de competência definidas, bem como por meio da verificação da consistência lógica do modelo.
+
+Assim, os resultados obtidos indicam que os objetivos estabelecidos para esta pesquisa foram atingidos, culminando no desenvolvimento de uma ontologia formal para o domínio de observatórios de projetos.
+
+\section{Contribuições}
+
+As principais contribuições desta pesquisa podem ser sintetizadas em três dimensões principais. A primeira contribuição refere-se à formalização ontológica do Modelo para Observatórios de Projetos (MPO), transformando um modelo conceitual originalmente descrito em linguagem natural em uma representação formal baseada em ontologias. Essa formalização torna explícitas as relações semânticas entre os elementos do modelo e reduz ambiguidades conceituais presentes em sua descrição original.
+
+A segunda contribuição consiste na estruturação de um vocabulário conceitual padronizado para o domínio de observatórios de projetos, incluindo a definição clara de conceitos, propriedades e relações. Essa estrutura conceitual pode servir como referência para pesquisadores e profissionais interessados no desenvolvimento e na análise de observatórios de projetos.
+
+A terceira contribuição está relacionada ao desenvolvimento da OntoMPO como uma infraestrutura semântica para o domínio, possibilitando futuras aplicações envolvendo análise semântica, integração de dados e comparação entre observatórios de projetos.
+
+\subsection{Limitações da pesquisa}
+
+Este trabalho apresenta limitações que devem ser reconhecidas. A
+avaliação da OntoMPO foi conduzida por meio de análise conceitual e
+verificação de questões de competência baseada em SPARQL, sem sessões
+estruturadas de validação com especialistas de domínio ou aplicação a
+observatórios reais, o que reforçaria a confiança na cobertura e na
+adequação prática da ontologia. Essa ausência de validação empírica
+significa que os benefícios práticos atribuídos à OntoMPO --- como o
+apoio à análise comparativa e ao desenho de novos observatórios ---
+permanecem, neste estágio, fundamentados na consistência conceitual do
+modelo formal, e não em evidências obtidas de sua aplicação a casos
+reais.
+
+Além disso, dado o caráter conceitual da OntoMPO, classificada
+deliberadamente como uma ontologia leve, capacidades de inferência
+automatizada não foram exploradas em profundidade. Sua expressividade
+atual em OWL 2 DL, embora suficiente para consultas semânticas e
+verificação de consistência, não foi estendida para suportar raciocínio
+baseado em regras complexas ou inferência por encadeamento de papéis.
+Por fim, o mapeamento detalhado entre os 61 conceitos originais do MPO e
+os elementos correspondentes da OntoMPO --- classes, propriedades ou
+axiomas --- não foi documentado de forma exaustiva neste trabalho,
+constituindo uma lacuna a ser sistematizada em iniciativas futuras.
+
+\subsection{Trabalhos futuros}
+
+Trabalhos futuros devem priorizar a validação empírica da OntoMPO em
+observatórios reais, o que demonstraria concretamente suas duas funções
+práticas pretendidas. Para a análise comparativa, observatórios que
+adotam interpretações divergentes de um mesmo conceito do MPO --- por
+exemplo, tratando \textit{Indicator} como uma métrica bruta ou como
+resultado de um processo analítico derivado --- poderiam ter seus dados
+estruturados em conformidade com as classes e restrições da OntoMPO,
+expondo tais divergências de forma explícita em vez de implícita. Para o
+apoio ao desenho de novos observatórios, a hierarquia de classes e as
+restrições de propriedades da ontologia poderiam ser utilizadas
+diretamente como esquema semântico durante a especificação de
+requisitos, garantindo alinhamento estrutural com o MPO desde o início.
+Estudos de caso conduzidos junto a observatórios reais, complementados
+por sessões estruturadas de validação com especialistas de domínio,
+constituem um passo natural para endereçar essa lacuna.
+
+Também se destaca a definição de regras adicionais e axiomas mais
+expressivos para suporte à inferência automática e à classificação
+semântica de informações relacionadas a projetos e observatórios, bem
+como a sistematização do mapeamento entre os 61 conceitos originais do
+MPO e os elementos formais da OntoMPO. Além disso, trabalhos futuros
+contemplam a construção progressiva de um ecossistema de ontologias
+para o MPO, no qual a OntoMPO atua como camada fundacional a ser
+estendida por ontologias especializadas voltadas a contextos
+organizacionais e domínios de aplicação específicos, alinhada a
+ontologias relacionadas de gerenciamento de projetos e integrada a
+bases de dados e sistemas de informação reais. Por fim, uma direção
+particularmente relevante refere-se ao papel das ontologias como
+fundamento semântico para aplicações de inteligência artificial
+generativa: o vocabulário formalmente fundamentado da OntoMPO pode
+servir como camada de conhecimento para restringir e apoiar modelos
+generativos no domínio de observatórios de projetos, ao passo que
+modelos de linguagem de grande escala podem ser explorados como
+instrumentos para população automática da ontologia, extração de
+conceitos a partir de documentos não estruturados e interfaces em
+linguagem natural para consulta da implementação em OWL.
