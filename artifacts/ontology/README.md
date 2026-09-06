@@ -15,6 +15,10 @@ Ao lado delas, **`owl/`** guarda o artefato OWL propriamente dito: a OWL da roda
 customizações aplicadas por cima, e o diff que separa o que a ferramenta gerou do que foi
 acrescentado (ticket 06). Não é uma quarta rodada — é a mesma rodada 2, na camada OWL.
 
+**`instancias/`** e **`consultas/`** guardam a avaliação funcional: os dados de instância de um
+observatório real, derivados de uma publicação, e as questões de competência executadas em SPARQL
+sobre eles. O ticket 07 abriu as duas com uma QC ponta a ponta; o ticket 08 completa as sete.
+
 As rodadas seguintes entram como diretórios irmãos. Nenhuma substitui a anterior nem o baseline: é a
 comparação entre as três que dá evidência.
 
@@ -57,24 +61,30 @@ artifacts/ontology/
 │   ├── relatorio-verificador-ufo-b-c.json o mesmo, bruto
 │   ├── controle-verificacao.md        o controle, agora sobre a rodada 2
 │   └── diff-rodada-1-rodada-2.md      o diff estrutural entre as duas rodadas
-└── owl/
-    ├── ontompo.ttl                    a OWL customizada, sobre a gerada da rodada 2
-    ├── ontompo.owl                    a mesma OWL em RDF/XML
-    ├── ontompo.oops.owl               a copia submetida ao OOPS!, sem owl:imports
-    ├── customizacoes.md               as cinco customizacoes, cada uma com sua justificativa
-    ├── diff-gerado-customizado.md     o diff entre a gerada e a customizada, legivel
-    ├── diff-gerado-customizado.ttl    o mesmo, so as triplas acrescentadas
-    ├── metricas.md                    classes, propriedades e axiomas, nos tres artefatos
-    ├── relatorio-raciocinador.md      a consistencia por raciocinador, e o controle dela
-    ├── relatorio-raciocinador.json    o mesmo, bruto
-    ├── relatorio-oops.md              o relatorio do OOPS! sobre a revisada
-    ├── relatorio-oops.xml             a resposta bruta do servico
-    └── comparacao-oops.md             o antes/depois de pitfalls, contra o baseline
+├── owl/
+│   ├── ontompo.ttl                    a OWL customizada, sobre a gerada da rodada 2
+│   ├── ontompo.owl                    a mesma OWL em RDF/XML
+│   ├── ontompo.oops.owl               a copia submetida ao OOPS!, sem owl:imports
+│   ├── customizacoes.md               as cinco customizacoes, cada uma com sua justificativa
+│   ├── diff-gerado-customizado.md     o diff entre a gerada e a customizada, legivel
+│   ├── diff-gerado-customizado.ttl    o mesmo, so as triplas acrescentadas
+│   ├── metricas.md                    classes, propriedades e axiomas, nos tres artefatos
+│   ├── relatorio-raciocinador.md      a consistencia por raciocinador, e o controle dela
+│   ├── relatorio-raciocinador.json    o mesmo, bruto
+│   ├── relatorio-oops.md              o relatorio do OOPS! sobre a revisada
+│   ├── relatorio-oops.xml             a resposta bruta do servico
+│   └── comparacao-oops.md             o antes/depois de pitfalls, contra o baseline
+├── instancias/
+│   ├── observatorio.ttl              os dados de instancia do observatorio, Turtle deterministica
+│   └── procedencia.md               o mapa trecho-da-publicacao -> instancia, conferivel por terceiro
+└── consultas/
+    ├── qc1.rq                        a QC1 em SPARQL, com a pergunta no cabecalho
+    ├── qc1-resultado.csv             o resultado completo, cru, reaproveitavel pelo apendice
+    └── qc1-resultado.md              a pergunta, a consulta verbatim e a tabela do resultado
 ```
 
-Os endereços já reservados para o que vem a seguir, cada um criado pelo ticket que o preenche:
-`instancias/` (ticket 07, os dados dos dois observatórios) e `consultas/` (tickets 07 e 08, as sete
-QCs com resultados completos). Ver `../../docs/adr/0001-layout-do-repositorio.md`.
+`consultas/` recebe as demais QCs no ticket 08, uma `qc<n>.rq` por vez, cada uma com o seu par de
+resultados. Ver `../../docs/adr/0001-layout-do-repositorio.md`.
 
 **Comece por `evidencias-A1-A9.md`, `correcoes-rodada-1.md` e `correcoes-rodada-2.md`, e depois
 por `owl/customizacoes.md`.** Eles carregam a leitura dos relatórios; os relatórios sozinhos não
@@ -137,12 +147,17 @@ python tools/verification/raciocinador.py                         # consistênci
 python tools/verification/rodar_oops.py artifacts/ontology/owl/ontompo.ttl   # OOPS! sobre a revisada (rede)
 python tools/verification/comparar_oops.py                        # o antes/depois de pitfalls
 
+# instanciacao e primeira QC (ticket 07)
+python tools/generation/gerar_instancias.py                       # os dados do observatorio, .ttl
+python tools/generation/rodar_consultas.py                        # executa consultas/*.rq
+
 # as checklists
 python tools/verification/rodar_oops.py                           # OOPS! sobre o baseline (rede)
 python tools/verification/verificar_baseline.py                   # confere a checklist do ticket 03
 python tools/verification/verificar_rodada1.py                    # confere a checklist do ticket 04
 python tools/verification/verificar_rodada2.py                    # confere a checklist do ticket 05
 python tools/verification/verificar_owl.py                        # confere a checklist do ticket 06
+python tools/verification/verificar_instancia_qc.py               # confere a checklist do ticket 07
 ```
 
 As duas execuções do OOPS! precisam de rede, e é a `owl/ontompo.ttl` que vai à segunda — a OWL

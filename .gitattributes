@@ -1,0 +1,11 @@
+# Artefatos e fontes deste repositório são determinísticos e comparados byte a
+# byte pelos verificadores (ver tools/verification/). Normalizar as quebras de
+# linha para LF em todas as plataformas é o que torna essa comparação — e a
+# regeneração por um terceiro — independente do sistema operacional.
+* text=auto eol=lf
+
+# Binários: nunca normalizar.
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary

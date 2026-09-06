@@ -1,0 +1,9 @@
+view,rotuloView,papel,rotuloPapel
+https://example.org/ontompo/instancia-observatorio#analisesDetalhadas,Análises detalhadas dos projetos,https://example.org/ontompo/rodada-2#Disseminator,Disseminação
+https://example.org/ontompo/instancia-observatorio#downloadDeDadosBrutos,Download de dados brutos dos projetos,https://example.org/ontompo/rodada-2#Disseminator,Disseminação
+https://example.org/ontompo/instancia-observatorio#forunsDeDiscussao,Fóruns de discussão,https://example.org/ontompo/rodada-2#Reporter,Relacionamento
+https://example.org/ontompo/instancia-observatorio#interacaoComProjetos,Interação dos usuários com os projetos,https://example.org/ontompo/rodada-2#Reporter,Relacionamento
+https://example.org/ontompo/instancia-observatorio#noticiasEmRedesSociais,Publicação de notícias em redes sociais,https://example.org/ontompo/rodada-2#Reporter,Relacionamento
+https://example.org/ontompo/instancia-observatorio#cadastroDeMidia,Cadastro de mídia sobre os projetos,https://example.org/ontompo/rodada-2#CrudView,Visão CRUD
+https://example.org/ontompo/instancia-observatorio#consultaDeDadosDosProjetos,Consulta de dados dos projetos,https://example.org/ontompo/rodada-2#CrudView,Visão CRUD
+https://example.org/ontompo/instancia-observatorio#manutencaoDeProjetos,Manutenção de projetos,https://example.org/ontompo/rodada-2#CrudView,Visão CRUD

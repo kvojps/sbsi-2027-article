@@ -79,10 +79,13 @@ python tools/generation/customizar_owl.py                         # ticket 06
 python tools/verification/raciocinador.py
 python tools/verification/rodar_oops.py artifacts/ontology/owl/ontompo.ttl
 python tools/verification/comparar_oops.py
+python tools/generation/gerar_instancias.py                       # ticket 07
+python tools/generation/rodar_consultas.py
 python tools/verification/verificar_baseline.py                   # confere a checklist do 03
 python tools/verification/verificar_rodada1.py                    # confere a checklist do 04
 python tools/verification/verificar_rodada2.py                    # confere a checklist do 05
 python tools/verification/verificar_owl.py                        # confere a checklist do 06
+python tools/verification/verificar_instancia_qc.py               # confere a checklist do 07
 ```
 
 Os verificadores Python leem caminhos relativos ao diretório de trabalho: **execute-os da raiz**.

@@ -1,0 +1,162 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix obs: <https://example.org/ontompo/instancia-observatorio#> .
+@prefix ontompo: <https://example.org/ontompo/rodada-2#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+obs:disponibilizacaoDe_analisesDetalhadas a ontompo:ViewProvision ;
+    rdfs:label "Disponibilização de análises detalhadas dos projetos"@pt-BR ;
+    rdfs:comment "Relator que liga o gerenciamento de conteúdo do observatório à visão que ele disponibiliza: análises detalhadas dos projetos."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    ontompo:mediation_ViewProvision_DataManager obs:gerenciadorDeConteudo ;
+    ontompo:mediation_ViewProvision_View obs:analisesDetalhadas .
+
+obs:disponibilizacaoDe_cadastroDeMidia a ontompo:ViewProvision ;
+    rdfs:label "Disponibilização de cadastro de mídia sobre os projetos"@pt-BR ;
+    rdfs:comment "Relator que liga o gerenciamento de conteúdo do observatório à visão que ele disponibiliza: cadastro de mídia sobre os projetos."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    ontompo:mediation_ViewProvision_DataManager obs:gerenciadorDeConteudo ;
+    ontompo:mediation_ViewProvision_View obs:cadastroDeMidia .
+
+obs:disponibilizacaoDe_consultaDeDadosDosProjetos a ontompo:ViewProvision ;
+    rdfs:label "Disponibilização de consulta de dados dos projetos"@pt-BR ;
+    rdfs:comment "Relator que liga o gerenciamento de conteúdo do observatório à visão que ele disponibiliza: consulta de dados dos projetos."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    ontompo:mediation_ViewProvision_DataManager obs:gerenciadorDeConteudo ;
+    ontompo:mediation_ViewProvision_View obs:consultaDeDadosDosProjetos .
+
+obs:disponibilizacaoDe_downloadDeDadosBrutos a ontompo:ViewProvision ;
+    rdfs:label "Disponibilização de download de dados brutos dos projetos"@pt-BR ;
+    rdfs:comment "Relator que liga o gerenciamento de conteúdo do observatório à visão que ele disponibiliza: download de dados brutos dos projetos."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    ontompo:mediation_ViewProvision_DataManager obs:gerenciadorDeConteudo ;
+    ontompo:mediation_ViewProvision_View obs:downloadDeDadosBrutos .
+
+obs:disponibilizacaoDe_forunsDeDiscussao a ontompo:ViewProvision ;
+    rdfs:label "Disponibilização de fóruns de discussão"@pt-BR ;
+    rdfs:comment "Relator que liga o gerenciamento de conteúdo do observatório à visão que ele disponibiliza: fóruns de discussão."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    ontompo:mediation_ViewProvision_DataManager obs:gerenciadorDeConteudo ;
+    ontompo:mediation_ViewProvision_View obs:forunsDeDiscussao .
+
+obs:disponibilizacaoDe_interacaoComProjetos a ontompo:ViewProvision ;
+    rdfs:label "Disponibilização de interação dos usuários com os projetos"@pt-BR ;
+    rdfs:comment "Relator que liga o gerenciamento de conteúdo do observatório à visão que ele disponibiliza: interação dos usuários com os projetos."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    ontompo:mediation_ViewProvision_DataManager obs:gerenciadorDeConteudo ;
+    ontompo:mediation_ViewProvision_View obs:interacaoComProjetos .
+
+obs:disponibilizacaoDe_manutencaoDeProjetos a ontompo:ViewProvision ;
+    rdfs:label "Disponibilização de manutenção de projetos"@pt-BR ;
+    rdfs:comment "Relator que liga o gerenciamento de conteúdo do observatório à visão que ele disponibiliza: manutenção de projetos."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    ontompo:mediation_ViewProvision_DataManager obs:gerenciadorDeConteudo ;
+    ontompo:mediation_ViewProvision_View obs:manutencaoDeProjetos .
+
+obs:disponibilizacaoDe_noticiasEmRedesSociais a ontompo:ViewProvision ;
+    rdfs:label "Disponibilização de publicação de notícias em redes sociais"@pt-BR ;
+    rdfs:comment "Relator que liga o gerenciamento de conteúdo do observatório à visão que ele disponibiliza: publicação de notícias em redes sociais."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    ontompo:mediation_ViewProvision_DataManager obs:gerenciadorDeConteudo ;
+    ontompo:mediation_ViewProvision_View obs:noticiasEmRedesSociais .
+
+obs:sistemaDeGestaoDeProjetos a ontompo:System ;
+    rdfs:label "Sistema de gestão de projetos de pesquisa da universidade"@pt-BR ;
+    rdfs:comment "«A universidade em questão possui um sistema para gestão de projetos de pesquisa, já o observatório é um sistema à parte que não possui integração com a ferramenta» (Anais Estendidos do XVIII SBSI, 2022, seção 5)."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    skos:prefLabel "Sistema de gestão de projetos de pesquisa da universidade"@pt-BR .
+
+obs:usuarioDaSociedade a ontompo:ObservatoryUser ;
+    rdfs:label "Usuário da sociedade"@pt-BR ;
+    rdfs:comment "Representantes da sociedade, 24% das 25 pessoas convidadas para a survey; cidadãos que podem se beneficiar dos projetos divulgados (Anais Estendidos do XVIII SBSI, 2022, seções 1 e 4.3)."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    skos:prefLabel "Usuário da sociedade"@pt-BR .
+
+obs:usuarioDocente a ontompo:ObservatoryUser ;
+    rdfs:label "Usuário docente"@pt-BR ;
+    rdfs:comment "Docentes, 12% das 25 pessoas convidadas para a survey de avaliação (Anais Estendidos do XVIII SBSI, 2022, seção 4.3)."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    skos:prefLabel "Usuário docente"@pt-BR .
+
+obs:usuarioEstudante a ontompo:ObservatoryUser ;
+    rdfs:label "Usuário estudante"@pt-BR ;
+    rdfs:comment "Estudantes, 64% das 25 pessoas convidadas para a survey de avaliação (Anais Estendidos do XVIII SBSI, 2022, seção 4.3)."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    skos:prefLabel "Usuário estudante"@pt-BR .
+
+obs:analisesDetalhadas a ontompo:Disseminator ;
+    rdfs:label "Análises detalhadas dos projetos"@pt-BR ;
+    rdfs:comment "«Acessar análise detalhadas dos projetos»; a seção 2 cita gráficos e tabelas (Anais Estendidos do XVIII SBSI, 2022, seções 2 e 4.1)."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    skos:prefLabel "Análises detalhadas dos projetos"@pt-BR ;
+    ontompo:componentOf_View_ProjectObservatory obs:observatorio .
+
+obs:cadastroDeMidia a ontompo:CrudView ;
+    rdfs:label "Cadastro de mídia sobre os projetos"@pt-BR ;
+    rdfs:comment "«Cadastrar mídia sobre os projetos» (Anais Estendidos do XVIII SBSI, 2022, seção 4.1)."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    skos:prefLabel "Cadastro de mídia sobre os projetos"@pt-BR ;
+    ontompo:componentOf_View_ProjectObservatory obs:observatorio .
+
+obs:consultaDeDadosDosProjetos a ontompo:CrudView ;
+    rdfs:label "Consulta de dados dos projetos"@pt-BR ;
+    rdfs:comment "«Consultar dados dos projetos» (Anais Estendidos do XVIII SBSI, 2022, seção 4.1)."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    skos:prefLabel "Consulta de dados dos projetos"@pt-BR ;
+    ontompo:componentOf_View_ProjectObservatory obs:observatorio .
+
+obs:downloadDeDadosBrutos a ontompo:Disseminator ;
+    rdfs:label "Download de dados brutos dos projetos"@pt-BR ;
+    rdfs:comment "«Realizar download de dados brutos dos projetos» (Anais Estendidos do XVIII SBSI, 2022, seção 4.1)."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    skos:prefLabel "Download de dados brutos dos projetos"@pt-BR ;
+    ontompo:componentOf_View_ProjectObservatory obs:observatorio .
+
+obs:forunsDeDiscussao a ontompo:Reporter ;
+    rdfs:label "Fóruns de discussão"@pt-BR ;
+    rdfs:comment "«Cadastrar e participar de fóruns de discussão» (Anais Estendidos do XVIII SBSI, 2022, seção 4.1)."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    skos:prefLabel "Fóruns de discussão"@pt-BR ;
+    ontompo:componentOf_View_ProjectObservatory obs:observatorio .
+
+obs:interacaoComProjetos a ontompo:Reporter ;
+    rdfs:label "Interação dos usuários com os projetos"@pt-BR ;
+    rdfs:comment "«Permitir que usuários interajam com os projetos a partir da inclusão de comentários, reações e relatos de erro» (Anais Estendidos do XVIII SBSI, 2022, seção 4.1)."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    skos:prefLabel "Interação dos usuários com os projetos"@pt-BR ;
+    ontompo:componentOf_View_ProjectObservatory obs:observatorio .
+
+obs:manutencaoDeProjetos a ontompo:CrudView ;
+    rdfs:label "Manutenção de projetos"@pt-BR ;
+    rdfs:comment "«Manter projetos para que possam ser acessados pela Sociedade» (Anais Estendidos do XVIII SBSI, 2022, seção 4.1)."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    skos:prefLabel "Manutenção de projetos"@pt-BR ;
+    ontompo:componentOf_View_ProjectObservatory obs:observatorio .
+
+obs:noticiasEmRedesSociais a ontompo:Reporter ;
+    rdfs:label "Publicação de notícias em redes sociais"@pt-BR ;
+    rdfs:comment "«Postar notícias em redes sociais» (Anais Estendidos do XVIII SBSI, 2022, seção 4.1)."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    skos:prefLabel "Publicação de notícias em redes sociais"@pt-BR ;
+    ontompo:componentOf_View_ProjectObservatory obs:observatorio .
+
+obs:gerenciadorDeConteudo a ontompo:DataManager ;
+    rdfs:label "Gerenciamento de conteúdo do observatório"@pt-BR ;
+    rdfs:comment "Sistema de gerenciamento de conteúdo (WordPress, sobre PHP e MySQL) por meio do qual o observatório organiza, gerencia e disponibiliza os dados dos projetos; Anais Estendidos do XVIII SBSI (2022), seção 4.2."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    skos:prefLabel "Gerenciamento de conteúdo do observatório"@pt-BR ;
+    ontompo:componentOf_DataManager_ProjectObservatory obs:observatorio .
+
+obs:observatorio a ontompo:ProjectObservatory ;
+    rdfs:label "Observatório de projetos de pesquisa e extensão (protótipo)"@pt-BR ;
+    rdfs:comment "Protótipo funcional de observatório de projetos de pesquisa e extensão de uma universidade pública brasileira, construído em WordPress (PHP e MySQL) e avaliado por uma survey; descrito nos Anais Estendidos do XVIII SBSI (2022), seções 4.1 e 4.2."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio> ;
+    skos:prefLabel "Observatório de projetos de pesquisa e extensão (protótipo)"@pt-BR .
+
+<https://example.org/ontompo/instancia-observatorio> a owl:Ontology ;
+    dct:description "Dados de instância de um observatório de projetos de pesquisa e extensão de uma universidade pública brasileira, derivados do que a publicação nos Anais Estendidos do XVIII SBSI (2022) documenta. Cenário usado para exercitar as questões de competência da OntoMPO revisada. O mapa trecho→instância está em procedencia.md."@pt-BR ;
+    dct:source <https://doi.org/10.5753/sbsi_estendido.2022.222995> ;
+    rdfs:comment "Sem dct:creator: o cenário é trabalho anterior do próprio autor e a revisão do artigo é duplamente anônima. A fonte é referida em terceira pessoa e nenhum rótulo identifica autoria, instituição ou localidade."@pt-BR ;
+    owl:imports <https://example.org/ontompo/rodada-2> .
+
