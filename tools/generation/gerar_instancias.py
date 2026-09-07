@@ -9,10 +9,10 @@ Sao dois cenarios, gravados lado a lado:
   - `observatorio.ttl`    o cenario principal — um observatorio de projetos de
     pesquisa e extensao de uma universidade publica brasileira, descrito nos
     **Anais Estendidos do XVIII SBSI (2022)**, DOI
-    10.5753/sbsi_estendido.2022.222995. E trabalho anterior do proprio autor:
-    toda mencao aqui — IRIs, rotulos, comentarios — e em **terceira pessoa** e
-    nao identifica autoria nem instituicao. O mapa trecho -> instancia esta em
-    `artifacts/ontology/instancias/procedencia.md`.
+    10.5753/sbsi_estendido.2022.222995. A publicacao-fonte e citada em
+    **terceira pessoa**, pelo seu DOI: nos IRIs, rotulos e comentarios nada
+    identifica autoria, instituicao ou localidade. O mapa trecho -> instancia
+    esta em `artifacts/ontology/instancias/procedencia.md`.
 
   - `observatorio-b.ttl`  um **segundo observatorio, sintetico** — um
     observatorio municipal de obras publicas, sem fonte na literatura,
@@ -311,9 +311,9 @@ def _metadados_ontologia(grafo: rdflib.Graph) -> None:
             OBS_IRI,
             RDFS.comment,
             Literal(
-                "Sem dct:creator: o cenário é trabalho anterior do próprio autor e a revisão do "
-                "artigo é duplamente anônima. A fonte é referida em terceira pessoa e nenhum "
-                "rótulo identifica autoria, instituição ou localidade.",
+                "Sem dct:creator: a revisão do artigo é duplamente anônima. A publicação-fonte "
+                "é citada em terceira pessoa, pelo seu DOI, e nenhum rótulo, IRI ou comentário "
+                "identifica autoria, instituição ou localidade.",
                 lang=PT,
             ),
         )

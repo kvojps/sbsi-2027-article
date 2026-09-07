@@ -87,6 +87,9 @@ python tools/verification/verificar_rodada2.py                    # confere a ch
 python tools/verification/verificar_owl.py                        # confere a checklist do 06
 python tools/verification/verificar_instancia_qc.py               # confere a checklist do 07
 python tools/verification/verificar_demais_qc.py                  # confere a checklist do 08
+
+python tools/generation/gerar_deposito.py                         # monta artifacts/deposit/ (ticket 09)
+python tools/verification/verificar_deposito.py                   # confere a checklist do 09
 ```
 
 Os verificadores Python leem caminhos relativos ao diretório de trabalho: **execute-os da raiz**.

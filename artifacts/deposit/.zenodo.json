@@ -1,0 +1,32 @@
+{
+  "title": "OntoMPO: artifacts of the ontological analysis and refinement of the Model for Project Observatories",
+  "upload_type": "dataset",
+  "description": "Open-science deposit accompanying a double-blind submission. Contains the revised OntoUML conceptual model in an open format, the OWL ontology produced by the gUFO transformation plus its additive customization and the diff between them, the OntoUML-plugin and OOPS! verification reports before and after the revision, the seven SPARQL competency questions with complete results, and the instance data of two observatories. Anonymous by requirement: no author, affiliation, e-mail or handle; example-domain IRIs; external sources cited in the third person.",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "creators": [
+    {
+      "name": "Anonymous"
+    }
+  ],
+  "keywords": [
+    "project observatory",
+    "ontological analysis",
+    "Unified Foundational Ontology",
+    "Representation Theory",
+    "conceptual modeling",
+    "OntoUML",
+    "OWL",
+    "competency questions",
+    "Design Science Research"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://doi.org/10.5753/sbsi_estendido.2022.222995",
+      "relation": "references",
+      "scheme": "doi",
+      "resource_type": "publication-conferencepaper"
+    }
+  ],
+  "notes": "The instance scenario in ontology/instancias/observatorio.ttl derives from the publication with DOI 10.5753/sbsi_estendido.2022.222995, cited in the third person. gUFO under gufo/ is redistributed as obtained."
+}

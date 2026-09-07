@@ -1,0 +1,138 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix obsb: <https://example.org/ontompo/instancia-observatorio-b#> .
+@prefix ontompo: <https://example.org/ontompo/rodada-2#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+obsb:baseDeTransparenciaMunicipal a ontompo:DataSource ;
+    rdfs:label "Base de dados de transparência municipal"@pt-BR ;
+    rdfs:comment "Origem dos dados das obras: o sistema de transparência da prefeitura."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    skos:prefLabel "Base de dados de transparência municipal"@pt-BR ;
+    ontompo:participation_DataSource_Extract obsb:extracaoMunicipal .
+
+obsb:disponibilizacaoDe_consultaPublica a ontompo:ViewProvision ;
+    rdfs:label "Disponibilização de consulta pública de obras"@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    ontompo:mediation_ViewProvision_DataManager obsb:portalDeDados ;
+    ontompo:mediation_ViewProvision_View obsb:consultaPublica .
+
+obsb:disponibilizacaoDe_painelDeIndicadores a ontompo:ViewProvision ;
+    rdfs:label "Disponibilização de painel de indicadores das obras"@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    ontompo:mediation_ViewProvision_DataManager obsb:portalDeDados ;
+    ontompo:mediation_ViewProvision_View obsb:painelDeIndicadores .
+
+obsb:disponibilizacaoDe_relatoriosMensais a ontompo:ViewProvision ;
+    rdfs:label "Disponibilização de relatórios mensais de execução"@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    ontompo:mediation_ViewProvision_DataManager obsb:portalDeDados ;
+    ontompo:mediation_ViewProvision_View obsb:relatoriosMensais .
+
+obsb:gerenciaDadosDaObra a ontompo:ProjectDataManagement ;
+    rdfs:label "Gerência de dados — obra de pavimentação"@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    ontompo:mediation_ProjectDataManagement_DataManager obsb:portalDeDados ;
+    ontompo:mediation_ProjectDataManagement_Project obsb:obraDePavimentacao .
+
+obsb:orgaoDeControleExterno a ontompo:System ;
+    rdfs:label "Sistema de órgão de controle externo"@pt-BR ;
+    rdfs:comment "Sistema externo de um órgão de controle que consome os dados publicados."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    skos:prefLabel "Sistema de órgão de controle externo"@pt-BR .
+
+obsb:prefeituraMantenedora a ontompo:Organization ;
+    rdfs:label "Prefeitura mantenedora"@pt-BR ;
+    rdfs:comment "Organização que mantém o observatório municipal e responde pelas obras divulgadas."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    skos:prefLabel "Prefeitura mantenedora"@pt-BR .
+
+obsb:usuarioCidadao a ontompo:ObservatoryUser ;
+    rdfs:label "Usuário cidadão"@pt-BR ;
+    rdfs:comment "Cidadão que consulta o andamento das obras do município."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    skos:prefLabel "Usuário cidadão"@pt-BR .
+
+obsb:usuarioServidor a ontompo:ObservatoryUser ;
+    rdfs:label "Usuário servidor público"@pt-BR ;
+    rdfs:comment "Servidor da prefeitura que acompanha a execução das obras."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    skos:prefLabel "Usuário servidor público"@pt-BR .
+
+obsb:consultaPublica a ontompo:CrudView ;
+    rdfs:label "Consulta pública de obras"@pt-BR ;
+    rdfs:comment "Visão «consulta pública de obras» do observatório municipal."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    skos:prefLabel "Consulta pública de obras"@pt-BR ;
+    ontompo:componentOf_View_ProjectObservatory obsb:observatorioMunicipal .
+
+obsb:obraDePavimentacao a ontompo:Project ;
+    rdfs:label "Obra de pavimentação (sintética)"@pt-BR ;
+    rdfs:comment "Obra pública observada pelo observatório municipal."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    skos:prefLabel "Obra de pavimentação (sintética)"@pt-BR .
+
+obsb:painelDeIndicadores a ontompo:Disseminator ;
+    rdfs:label "Painel de indicadores das obras"@pt-BR ;
+    rdfs:comment "Visão «painel de indicadores das obras» do observatório municipal."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    skos:prefLabel "Painel de indicadores das obras"@pt-BR ;
+    ontompo:componentOf_View_ProjectObservatory obsb:observatorioMunicipal .
+
+obsb:relatoriosMensais a ontompo:Disseminator ;
+    rdfs:label "Relatórios mensais de execução"@pt-BR ;
+    rdfs:comment "Visão «relatórios mensais de execução» do observatório municipal."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    skos:prefLabel "Relatórios mensais de execução"@pt-BR ;
+    ontompo:componentOf_View_ProjectObservatory obsb:observatorioMunicipal .
+
+obsb:cargaMunicipal a ontompo:Load ;
+    rdfs:label "Carga — dados de obras"@pt-BR ;
+    gufo:hasBeginPointInXSDDate "2024-02-15"^^xsd:date ;
+    gufo:hasEndPointInXSDDate "2024-02-15"^^xsd:date ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    ontompo:participational_Load_EtlProcess obsb:processoEtlMunicipal .
+
+obsb:extracaoMunicipal a ontompo:Extract ;
+    rdfs:label "Extração — dados de obras"@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    ontompo:participational_Extract_EtlProcess obsb:processoEtlMunicipal .
+
+obsb:transformacaoMunicipal a ontompo:Transform ;
+    rdfs:label "Transformação — dados de obras"@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    ontompo:participational_Transform_EtlProcess obsb:processoEtlMunicipal .
+
+obsb:processoEtlMunicipal a ontompo:EtlProcess ;
+    rdfs:label "Processo de ETL — dados de obras"@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> .
+
+obsb:observatorioMunicipal a ontompo:ProjectObservatory ;
+    rdfs:label "Observatório municipal de obras públicas (sintético)"@pt-BR ;
+    rdfs:comment "Observatório fictício que divulga o andamento de obras públicas de um município."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    skos:prefLabel "Observatório municipal de obras públicas (sintético)"@pt-BR .
+
+obsb:portalDeDados a ontompo:Collector,
+        ontompo:DataManager,
+        ontompo:Processor,
+        ontompo:Storer ;
+    rdfs:label "Portal de dados do observatório municipal"@pt-BR ;
+    rdfs:comment "Ferramenta de software que organiza, gerencia e disponibiliza os dados das obras."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/instancia-observatorio-b> ;
+    skos:prefLabel "Portal de dados do observatório municipal"@pt-BR ;
+    ontompo:componentOf_DataManager_ProjectObservatory obsb:observatorioMunicipal ;
+    ontompo:participation_Collector_Extract obsb:extracaoMunicipal ;
+    ontompo:participation_Collector_Transform obsb:transformacaoMunicipal ;
+    ontompo:participation_Processor_Load obsb:cargaMunicipal ;
+    ontompo:participation_Processor_Transform obsb:transformacaoMunicipal ;
+    ontompo:participation_Storer_Load obsb:cargaMunicipal .
+
+<https://example.org/ontompo/instancia-observatorio-b> a owl:Ontology ;
+    dct:description "Segundo observatório, sintético: um observatório municipal de obras públicas. Sem fonte na literatura e sem dct:creator — construído para a QC7 comparar a cobertura conceitual de duas iniciativas aderentes ao MPO. A premissa está registrada no ticket 08 e em procedencia.md."@pt-BR ;
+    rdfs:comment "Cenário sintético. Nenhum rótulo identifica pessoa, instituição ou município reais; a iniciativa e os seus elementos são fictícios."@pt-BR ;
+    owl:imports <https://example.org/ontompo/rodada-2> .
+

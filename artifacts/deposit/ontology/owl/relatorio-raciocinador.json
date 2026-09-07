@@ -1,0 +1,71 @@
+{
+  "artefatos": {
+    "gerada": {
+      "triplas": 1401,
+      "inconsistencias": []
+    },
+    "customizada": {
+      "triplas": 1992,
+      "inconsistencias": []
+    }
+  },
+  "controles": [
+    {
+      "mutacao": "um indivíduo que é `PhysicalAgent` e `SocialAgent`",
+      "sustenta": "a partição `agentNature`, que a adoção de UFO-C (A6) introduziu e a transformação carrega para o OWL",
+      "esperado_na_gerada": true,
+      "gerada": true,
+      "customizada": true
+    },
+    {
+      "mutacao": "um indivíduo que é `CreateOperation` e `DeleteOperation`",
+      "sustenta": "a partição `crudOperationType`, que a decomposição de A1 introduziu",
+      "esperado_na_gerada": true,
+      "gerada": true,
+      "customizada": true
+    },
+    {
+      "mutacao": "um indivíduo que é `Person` e `Observation`",
+      "sustenta": "`gufo:Endurant` disjunto de `gufo:Event`, na ontologia de fundamentação — é o que dá dentes à adoção de UFO-B (A5, B8): antes da rodada 2, `Observation` era um relator endurante e a mutação passaria",
+      "esperado_na_gerada": true,
+      "gerada": true,
+      "customizada": true
+    },
+    {
+      "mutacao": "uma `Observation` da qual um `Load` participa como agente",
+      "sustenta": "o domínio de `participation_Agent_Observation` é `Agent`, endurante, e `Load` é evento — mostra que domínio e alcance gerados têm consequência, e não são decoração",
+      "esperado_na_gerada": true,
+      "gerada": true,
+      "customizada": true
+    },
+    {
+      "mutacao": "um indivíduo que é `Project` e `DataSource`",
+      "sustenta": "a disjunção entre «kind» acrescentada pela **C3** — dois princípios de identidade distintos não valem para o mesmo indivíduo. `Person` e `Organization` não serviriam de controle aqui: a partição `agentNature` já os separava",
+      "esperado_na_gerada": false,
+      "gerada": false,
+      "customizada": true
+    },
+    {
+      "mutacao": "um indivíduo que é `Hardware` e `Network`",
+      "sustenta": "a mesma disjunção entre «kind» da **C3**, agora na camada de infraestrutura",
+      "esperado_na_gerada": false,
+      "gerada": false,
+      "customizada": true
+    },
+    {
+      "mutacao": "um `DataManager` que é o próprio `ProjectObservatory`",
+      "sustenta": "a disjunção entre os subtipos de `Software` acrescentada pela **C3**, que fecha o que sobrou de A9",
+      "esperado_na_gerada": false,
+      "gerada": false,
+      "customizada": true
+    },
+    {
+      "mutacao": "uma `Observation` que tem um `Load` por participante",
+      "sustenta": "a inversa nomeada acrescentada pela **C4**: no artefato gerado a propriedade não existe, e a mutação não diz nada",
+      "esperado_na_gerada": false,
+      "gerada": false,
+      "customizada": true
+    }
+  ],
+  "falhas": []
+}

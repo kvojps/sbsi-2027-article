@@ -1,0 +1,752 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix ontompo: <https://example.org/ontompo/rodada-2#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+gufo:Category a owl:Class ;
+    rdfs:label "Category"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> .
+
+gufo:EventType a owl:Class ;
+    rdfs:label "EventType"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> .
+
+gufo:Kind a owl:Class ;
+    rdfs:label "Kind"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> .
+
+gufo:MaterialRelationshipType a owl:Class ;
+    rdfs:label "MaterialRelationshipType"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> .
+
+gufo:Role a owl:Class ;
+    rdfs:label "Role"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> .
+
+gufo:RoleMixin a owl:Class ;
+    rdfs:label "RoleMixin"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> .
+
+gufo:SubKind a owl:Class ;
+    rdfs:label "SubKind"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> .
+
+gufo:VariableCollection a owl:Class ;
+    rdfs:label "VariableCollection"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> .
+
+gufo:isCollectionMemberOf a owl:ObjectProperty ;
+    rdfs:label "isCollectionMemberOf"@en ;
+    rdfs:domain gufo:Object ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> ;
+    rdfs:range gufo:Collection .
+
+gufo:isComponentOf a owl:ObjectProperty ;
+    rdfs:label "isComponentOf"@en ;
+    rdfs:domain gufo:Object ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> ;
+    rdfs:range gufo:FunctionalComplex .
+
+gufo:isDerivedFrom a owl:ObjectProperty ;
+    rdfs:label "isDerivedFrom"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> ;
+    rdfs:range gufo:EndurantType .
+
+gufo:isEventProperPartOf a owl:ObjectProperty ;
+    rdfs:label "isEventProperPartOf"@en ;
+    rdfs:domain gufo:Event ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> ;
+    rdfs:range gufo:Event .
+
+gufo:mediates a owl:ObjectProperty ;
+    rdfs:label "mediates"@en ;
+    rdfs:domain gufo:Relator ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> ;
+    rdfs:range gufo:Endurant .
+
+gufo:participatedIn a owl:ObjectProperty ;
+    rdfs:label "participatedIn"@en ;
+    rdfs:domain gufo:Object ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> ;
+    rdfs:range gufo:Event .
+
+gufo:wasCreatedIn a owl:ObjectProperty ;
+    rdfs:label "wasCreatedIn"@en ;
+    rdfs:domain gufo:Endurant ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> ;
+    rdfs:range gufo:Event .
+
+ontompo:CreateOperation rdfs:comment "Operação CRUD que faz passar a existir um registro que não existia."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "CRUD Create Operation"@en,
+        "Operação de criação"@pt-BR .
+
+ontompo:CrudRepository rdfs:comment "Papel do gerenciamento de dados quando ele expõe um repositório sobre o qual operações CRUD são executadas."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "CRUD Repository"@en,
+        "Repositório CRUD"@pt-BR .
+
+ontompo:DeleteOperation rdfs:comment "Operação CRUD que faz deixar de existir um registro."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "CRUD Delete Operation"@en,
+        "Operação de exclusão"@pt-BR .
+
+ontompo:PhysicalAgent rdfs:comment "Agente cuja existência é a de um objeto físico concreto — no domínio do observatório, o indivíduo humano."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Physical Agent"@en,
+        "Agente físico"@pt-BR .
+
+ontompo:ReadOperation rdfs:comment "Operação CRUD que consulta um registro sem alterá-lo."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "CRUD Read Operation"@en,
+        "Operação de leitura"@pt-BR .
+
+ontompo:SocialAgent rdfs:comment "Agente cuja existência depende de uma construção social: organizações e grupos que agem como um só."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Social Agent"@en,
+        "Agente social"@pt-BR .
+
+ontompo:UpdateOperation rdfs:comment "Operação CRUD que altera o conteúdo de um registro que já existia."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "CRUD Update Operation"@en,
+        "Operação de atualização"@pt-BR .
+
+gufo:Collection a owl:Class ;
+    rdfs:label "Collection"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> .
+
+gufo:EndurantType a owl:Class ;
+    rdfs:label "EndurantType"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> .
+
+gufo:FunctionalComplex a owl:Class ;
+    rdfs:label "FunctionalComplex"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> .
+
+gufo:Relator a owl:Class ;
+    rdfs:label "Relator"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> .
+
+ontompo:ComputationalSystem rdfs:comment "Sistema computacional, tomado como o tipo que fornece princípio de identidade aos sistemas que interagem com o observatório."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Computational System"@en,
+        "Sistema computacional"@pt-BR .
+
+ontompo:CrudView rdfs:comment "Papel da visão quando é por ela que uma operação CRUD sobre o repositório é disparada."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "CRUD View"@en,
+        "Visão CRUD"@pt-BR .
+
+ontompo:Disseminator rdfs:comment "Papel do software quando divulga análises e reflexões sobre os dados dos projetos observados, segundo as diretrizes de acesso e segurança do observatório."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Disseminator"@en,
+        "Disseminação"@pt-BR .
+
+ontompo:ObservatoryUser rdfs:comment "Ator humano que desfruta das utilidades que um observatório de projetos proporciona."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Observatory User"@en,
+        "Usuário do observatório"@pt-BR .
+
+ontompo:Organization rdfs:comment "Instituição à qual uma parte interessada pertence, e que pode ela própria afetar ou ser afetada pelos projetos observados."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Organization"@en,
+        "Organização"@pt-BR .
+
+ontompo:Person rdfs:comment "Ser humano que participa de um observatório de projetos, em qualquer papel."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Person"@en,
+        "Pessoa"@pt-BR .
+
+ontompo:StakeHolder rdfs:comment "Indivíduo, grupo ou organização que pode afetar ou ser afetado por uma decisão, atividade ou resultado de um projeto observado."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Stakeholder"@en,
+        "Parte interessada"@pt-BR .
+
+ontompo:Storer rdfs:comment "Papel do gerenciamento de dados quando armazena os dados coletados sobre os projetos, mantendo a referência aos dados brutos de origem."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Storer"@en,
+        "Armazenamento"@pt-BR .
+
+ontompo:System rdfs:comment "Ator não-humano: sistema computacional externo ao ambiente do observatório que executa alguma ação ou fornece algum serviço a ele."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "System"@en,
+        "Sistema"@pt-BR .
+
+ontompo:componentOf_DataManager_ProjectObservatory rdfs:comment "Declara DataManager como componente do complexo funcional ProjectObservatory."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasComponent_ProjectObservatory_DataManager .
+
+ontompo:componentOf_View_ProjectObservatory rdfs:comment "Declara View como componente do complexo funcional ProjectObservatory."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasComponent_ProjectObservatory_View .
+
+ontompo:created_Observation_Knowledge a owl:ObjectProperty ;
+    rdfs:label "created_Observation_Knowledge"@en ;
+    rdfs:comment "Devolve o que passou a existir no evento Observation, e é Knowledge."@pt-BR ;
+    rdfs:domain ontompo:Observation ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Knowledge ;
+    owl:inverseOf ontompo:creation_Knowledge_Observation .
+
+ontompo:creation_Knowledge_Observation rdfs:comment "Declara que Knowledge passa a existir no evento Observation."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:created_Observation_Knowledge .
+
+ontompo:hasComponent_ProjectObservatory_DataManager a owl:ObjectProperty ;
+    rdfs:label "hasComponent_ProjectObservatory_DataManager"@en ;
+    rdfs:comment "Devolve os componentes de ProjectObservatory que são DataManager."@pt-BR ;
+    rdfs:domain ontompo:ProjectObservatory ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:DataManager ;
+    owl:inverseOf ontompo:componentOf_DataManager_ProjectObservatory .
+
+ontompo:hasComponent_ProjectObservatory_View a owl:ObjectProperty ;
+    rdfs:label "hasComponent_ProjectObservatory_View"@en ;
+    rdfs:comment "Devolve os componentes de ProjectObservatory que são View."@pt-BR ;
+    rdfs:domain ontompo:ProjectObservatory ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:View ;
+    owl:inverseOf ontompo:componentOf_View_ProjectObservatory .
+
+ontompo:hasEventPart_EtlProcess_Extract a owl:ObjectProperty ;
+    rdfs:label "hasEventPart_EtlProcess_Extract"@en ;
+    rdfs:comment "Devolve as partes próprias do evento EtlProcess que são Extract."@pt-BR ;
+    rdfs:domain ontompo:EtlProcess ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Extract ;
+    owl:inverseOf ontompo:participational_Extract_EtlProcess .
+
+ontompo:hasEventPart_EtlProcess_Load a owl:ObjectProperty ;
+    rdfs:label "hasEventPart_EtlProcess_Load"@en ;
+    rdfs:comment "Devolve as partes próprias do evento EtlProcess que são Load."@pt-BR ;
+    rdfs:domain ontompo:EtlProcess ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Load ;
+    owl:inverseOf ontompo:participational_Load_EtlProcess .
+
+ontompo:hasEventPart_EtlProcess_Transform a owl:ObjectProperty ;
+    rdfs:label "hasEventPart_EtlProcess_Transform"@en ;
+    rdfs:comment "Devolve as partes próprias do evento EtlProcess que são Transform."@pt-BR ;
+    rdfs:domain ontompo:EtlProcess ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Transform ;
+    owl:inverseOf ontompo:participational_Transform_EtlProcess .
+
+ontompo:hasMember_ObservatoryGroup_ObservatoryUser a owl:ObjectProperty ;
+    rdfs:label "hasMember_ObservatoryGroup_ObservatoryUser"@en ;
+    rdfs:comment "Devolve os membros do coletivo ObservatoryGroup que são ObservatoryUser."@pt-BR ;
+    rdfs:domain ontompo:ObservatoryGroup ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:ObservatoryUser ;
+    owl:inverseOf ontompo:memberOf_ObservatoryUser_ObservatoryGroup .
+
+ontompo:hasMember_ObservatoryGroup_StakeHolder a owl:ObjectProperty ;
+    rdfs:label "hasMember_ObservatoryGroup_StakeHolder"@en ;
+    rdfs:comment "Devolve os membros do coletivo ObservatoryGroup que são StakeHolder."@pt-BR ;
+    rdfs:domain ontompo:ObservatoryGroup ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:StakeHolder ;
+    owl:inverseOf ontompo:memberOf_StakeHolder_ObservatoryGroup .
+
+ontompo:hasMember_ObservatoryGroup_System a owl:ObjectProperty ;
+    rdfs:label "hasMember_ObservatoryGroup_System"@en ;
+    rdfs:comment "Devolve os membros do coletivo ObservatoryGroup que são System."@pt-BR ;
+    rdfs:domain ontompo:ObservatoryGroup ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:System ;
+    owl:inverseOf ontompo:memberOf_System_ObservatoryGroup .
+
+ontompo:hasParticipant_CrudOperation_Agent a owl:ObjectProperty ;
+    rdfs:label "hasParticipant_CrudOperation_Agent"@en ;
+    rdfs:comment "Devolve os participantes do evento CrudOperation que são Agent."@pt-BR ;
+    rdfs:domain ontompo:CrudOperation ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Agent ;
+    owl:inverseOf ontompo:participation_Agent_CrudOperation .
+
+ontompo:hasParticipant_CrudOperation_CrudView a owl:ObjectProperty ;
+    rdfs:label "hasParticipant_CrudOperation_CrudView"@en ;
+    rdfs:comment "Devolve os participantes do evento CrudOperation que são CrudView."@pt-BR ;
+    rdfs:domain ontompo:CrudOperation ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:CrudView ;
+    owl:inverseOf ontompo:participation_CrudView_CrudOperation .
+
+ontompo:hasParticipant_Extract_Collector a owl:ObjectProperty ;
+    rdfs:label "hasParticipant_Extract_Collector"@en ;
+    rdfs:comment "Devolve os participantes do evento Extract que são Collector."@pt-BR ;
+    rdfs:domain ontompo:Extract ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Collector ;
+    owl:inverseOf ontompo:participation_Collector_Extract .
+
+ontompo:hasParticipant_Extract_DataSource a owl:ObjectProperty ;
+    rdfs:label "hasParticipant_Extract_DataSource"@en ;
+    rdfs:comment "Devolve os participantes do evento Extract que são DataSource."@pt-BR ;
+    rdfs:domain ontompo:Extract ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:DataSource ;
+    owl:inverseOf ontompo:participation_DataSource_Extract .
+
+ontompo:hasParticipant_Load_Processor a owl:ObjectProperty ;
+    rdfs:label "hasParticipant_Load_Processor"@en ;
+    rdfs:comment "Devolve os participantes do evento Load que são Processor."@pt-BR ;
+    rdfs:domain ontompo:Load ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Processor ;
+    owl:inverseOf ontompo:participation_Processor_Load .
+
+ontompo:hasParticipant_Load_Storer a owl:ObjectProperty ;
+    rdfs:label "hasParticipant_Load_Storer"@en ;
+    rdfs:comment "Devolve os participantes do evento Load que são Storer."@pt-BR ;
+    rdfs:domain ontompo:Load ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Storer ;
+    owl:inverseOf ontompo:participation_Storer_Load .
+
+ontompo:hasParticipant_Observation_Agent a owl:ObjectProperty ;
+    rdfs:label "hasParticipant_Observation_Agent"@en ;
+    rdfs:comment "Devolve os participantes do evento Observation que são Agent."@pt-BR ;
+    rdfs:domain ontompo:Observation ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Agent ;
+    owl:inverseOf ontompo:participation_Agent_Observation .
+
+ontompo:hasParticipant_Observation_Disseminator a owl:ObjectProperty ;
+    rdfs:label "hasParticipant_Observation_Disseminator"@en ;
+    rdfs:comment "Devolve os participantes do evento Observation que são Disseminator."@pt-BR ;
+    rdfs:domain ontompo:Observation ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Disseminator ;
+    owl:inverseOf ontompo:participation_Disseminator_Observation .
+
+ontompo:hasParticipant_Transform_Collector a owl:ObjectProperty ;
+    rdfs:label "hasParticipant_Transform_Collector"@en ;
+    rdfs:comment "Devolve os participantes do evento Transform que são Collector."@pt-BR ;
+    rdfs:domain ontompo:Transform ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Collector ;
+    owl:inverseOf ontompo:participation_Collector_Transform .
+
+ontompo:hasParticipant_Transform_Processor a owl:ObjectProperty ;
+    rdfs:label "hasParticipant_Transform_Processor"@en ;
+    rdfs:comment "Devolve os participantes do evento Transform que são Processor."@pt-BR ;
+    rdfs:domain ontompo:Transform ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Processor ;
+    owl:inverseOf ontompo:participation_Processor_Transform .
+
+ontompo:inverseMaterial_Hardware_Software a owl:ObjectProperty ;
+    rdfs:label "inverseMaterial_Hardware_Software"@en ;
+    rdfs:comment "Relação material entre Hardware e Software, no sentido inverso ao gerado."@pt-BR ;
+    rdfs:domain ontompo:Hardware ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Software ;
+    owl:inverseOf ontompo:material_Software_Hardware .
+
+ontompo:material_Software_Hardware rdfs:comment "Relação material entre Software e Hardware, derivada do relator que a fundamenta."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:inverseMaterial_Hardware_Software .
+
+ontompo:mediatedBy_Agent_Log a owl:ObjectProperty ;
+    rdfs:label "mediatedBy_Agent_Log"@en ;
+    rdfs:comment "Liga o Agent ao relator Log que o medeia."@pt-BR ;
+    rdfs:domain ontompo:Agent ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Log ;
+    owl:inverseOf ontompo:mediation_Log_Agent .
+
+ontompo:mediatedBy_Agent_SocialInteraction a owl:ObjectProperty ;
+    rdfs:label "mediatedBy_Agent_SocialInteraction"@en ;
+    rdfs:comment "Liga o Agent ao relator SocialInteraction que o medeia."@pt-BR ;
+    rdfs:domain ontompo:Agent ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:SocialInteraction ;
+    owl:inverseOf ontompo:mediation_SocialInteraction_Agent .
+
+ontompo:mediatedBy_DataManager_ProjectDataManagement a owl:ObjectProperty ;
+    rdfs:label "mediatedBy_DataManager_ProjectDataManagement"@en ;
+    rdfs:comment "Liga o DataManager ao relator ProjectDataManagement que o medeia."@pt-BR ;
+    rdfs:domain ontompo:DataManager ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:ProjectDataManagement ;
+    owl:inverseOf ontompo:mediation_ProjectDataManagement_DataManager .
+
+ontompo:mediatedBy_DataManager_ViewProvision a owl:ObjectProperty ;
+    rdfs:label "mediatedBy_DataManager_ViewProvision"@en ;
+    rdfs:comment "Liga o DataManager ao relator ViewProvision que o medeia."@pt-BR ;
+    rdfs:domain ontompo:DataManager ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:ViewProvision ;
+    owl:inverseOf ontompo:mediation_ViewProvision_DataManager .
+
+ontompo:mediatedBy_Hardware_Connection a owl:ObjectProperty ;
+    rdfs:label "mediatedBy_Hardware_Connection"@en ;
+    rdfs:comment "Liga o Hardware ao relator Connection que o medeia."@pt-BR ;
+    rdfs:domain ontompo:Hardware ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Connection ;
+    owl:inverseOf ontompo:mediation_Connection_Hardware .
+
+ontompo:mediatedBy_Hardware_SoftwareExecution a owl:ObjectProperty ;
+    rdfs:label "mediatedBy_Hardware_SoftwareExecution"@en ;
+    rdfs:comment "Liga o Hardware ao relator SoftwareExecution que o medeia."@pt-BR ;
+    rdfs:domain ontompo:Hardware ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:SoftwareExecution ;
+    owl:inverseOf ontompo:mediation_SoftwareExecution_Hardware .
+
+ontompo:mediatedBy_Network_Connection a owl:ObjectProperty ;
+    rdfs:label "mediatedBy_Network_Connection"@en ;
+    rdfs:comment "Liga o Network ao relator Connection que o medeia."@pt-BR ;
+    rdfs:domain ontompo:Network ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Connection ;
+    owl:inverseOf ontompo:mediation_Connection_Network .
+
+ontompo:mediatedBy_Project_ProjectDataManagement a owl:ObjectProperty ;
+    rdfs:label "mediatedBy_Project_ProjectDataManagement"@en ;
+    rdfs:comment "Liga o Project ao relator ProjectDataManagement que o medeia."@pt-BR ;
+    rdfs:domain ontompo:Project ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:ProjectDataManagement ;
+    owl:inverseOf ontompo:mediation_ProjectDataManagement_Project .
+
+ontompo:mediatedBy_Reporter_Log a owl:ObjectProperty ;
+    rdfs:label "mediatedBy_Reporter_Log"@en ;
+    rdfs:comment "Liga o Reporter ao relator Log que o medeia."@pt-BR ;
+    rdfs:domain ontompo:Reporter ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:Log ;
+    owl:inverseOf ontompo:mediation_Log_Reporter .
+
+ontompo:mediatedBy_Reporter_SocialInteraction a owl:ObjectProperty ;
+    rdfs:label "mediatedBy_Reporter_SocialInteraction"@en ;
+    rdfs:comment "Liga o Reporter ao relator SocialInteraction que o medeia."@pt-BR ;
+    rdfs:domain ontompo:Reporter ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:SocialInteraction ;
+    owl:inverseOf ontompo:mediation_SocialInteraction_Reporter .
+
+ontompo:mediatedBy_Service_ServiceProvision a owl:ObjectProperty ;
+    rdfs:label "mediatedBy_Service_ServiceProvision"@en ;
+    rdfs:comment "Liga o Service ao relator ServiceProvision que o medeia."@pt-BR ;
+    rdfs:domain ontompo:Service ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:ServiceProvision ;
+    owl:inverseOf ontompo:mediation_ServiceProvision_Service .
+
+ontompo:mediatedBy_Software_ServiceProvision a owl:ObjectProperty ;
+    rdfs:label "mediatedBy_Software_ServiceProvision"@en ;
+    rdfs:comment "Liga o Software ao relator ServiceProvision que o medeia."@pt-BR ;
+    rdfs:domain ontompo:Software ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:ServiceProvision ;
+    owl:inverseOf ontompo:mediation_ServiceProvision_Software .
+
+ontompo:mediatedBy_Software_SoftwareExecution a owl:ObjectProperty ;
+    rdfs:label "mediatedBy_Software_SoftwareExecution"@en ;
+    rdfs:comment "Liga o Software ao relator SoftwareExecution que o medeia."@pt-BR ;
+    rdfs:domain ontompo:Software ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:SoftwareExecution ;
+    owl:inverseOf ontompo:mediation_SoftwareExecution_Software .
+
+ontompo:mediatedBy_View_ViewProvision a owl:ObjectProperty ;
+    rdfs:label "mediatedBy_View_ViewProvision"@en ;
+    rdfs:comment "Liga o View ao relator ViewProvision que o medeia."@pt-BR ;
+    rdfs:domain ontompo:View ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    rdfs:range ontompo:ViewProvision ;
+    owl:inverseOf ontompo:mediation_ViewProvision_View .
+
+ontompo:mediation_Connection_Hardware rdfs:comment "Liga o relator Connection ao Hardware que ele medeia. Uma mediação da UFO é dependência existencial: não há Connection sem o Hardware."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:mediatedBy_Hardware_Connection .
+
+ontompo:mediation_Connection_Network rdfs:comment "Liga o relator Connection ao Network que ele medeia. Uma mediação da UFO é dependência existencial: não há Connection sem o Network."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:mediatedBy_Network_Connection .
+
+ontompo:mediation_Log_Agent rdfs:comment "Liga o relator Log ao Agent que ele medeia. Uma mediação da UFO é dependência existencial: não há Log sem o Agent."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:mediatedBy_Agent_Log .
+
+ontompo:mediation_Log_Reporter rdfs:comment "Liga o relator Log ao Reporter que ele medeia. Uma mediação da UFO é dependência existencial: não há Log sem o Reporter."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:mediatedBy_Reporter_Log .
+
+ontompo:mediation_ProjectDataManagement_DataManager rdfs:comment "Liga o relator ProjectDataManagement ao DataManager que ele medeia. Uma mediação da UFO é dependência existencial: não há ProjectDataManagement sem o DataManager."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:mediatedBy_DataManager_ProjectDataManagement .
+
+ontompo:mediation_ProjectDataManagement_Project rdfs:comment "Liga o relator ProjectDataManagement ao Project que ele medeia. Uma mediação da UFO é dependência existencial: não há ProjectDataManagement sem o Project."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:mediatedBy_Project_ProjectDataManagement .
+
+ontompo:mediation_ServiceProvision_Service rdfs:comment "Liga o relator ServiceProvision ao Service que ele medeia. Uma mediação da UFO é dependência existencial: não há ServiceProvision sem o Service."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:mediatedBy_Service_ServiceProvision .
+
+ontompo:mediation_ServiceProvision_Software rdfs:comment "Liga o relator ServiceProvision ao Software que ele medeia. Uma mediação da UFO é dependência existencial: não há ServiceProvision sem o Software."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:mediatedBy_Software_ServiceProvision .
+
+ontompo:mediation_SocialInteraction_Agent rdfs:comment "Liga o relator SocialInteraction ao Agent que ele medeia. Uma mediação da UFO é dependência existencial: não há SocialInteraction sem o Agent."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:mediatedBy_Agent_SocialInteraction .
+
+ontompo:mediation_SocialInteraction_Reporter rdfs:comment "Liga o relator SocialInteraction ao Reporter que ele medeia. Uma mediação da UFO é dependência existencial: não há SocialInteraction sem o Reporter."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:mediatedBy_Reporter_SocialInteraction .
+
+ontompo:mediation_SoftwareExecution_Hardware rdfs:comment "Liga o relator SoftwareExecution ao Hardware que ele medeia. Uma mediação da UFO é dependência existencial: não há SoftwareExecution sem o Hardware."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:mediatedBy_Hardware_SoftwareExecution .
+
+ontompo:mediation_SoftwareExecution_Software rdfs:comment "Liga o relator SoftwareExecution ao Software que ele medeia. Uma mediação da UFO é dependência existencial: não há SoftwareExecution sem o Software."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:mediatedBy_Software_SoftwareExecution .
+
+ontompo:mediation_ViewProvision_DataManager rdfs:comment "Liga o relator ViewProvision ao DataManager que ele medeia. Uma mediação da UFO é dependência existencial: não há ViewProvision sem o DataManager."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:mediatedBy_DataManager_ViewProvision .
+
+ontompo:mediation_ViewProvision_View rdfs:comment "Liga o relator ViewProvision ao View que ele medeia. Uma mediação da UFO é dependência existencial: não há ViewProvision sem o View."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:mediatedBy_View_ViewProvision .
+
+ontompo:memberOf_ObservatoryUser_ObservatoryGroup rdfs:comment "Declara ObservatoryUser como membro do coletivo ObservatoryGroup."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasMember_ObservatoryGroup_ObservatoryUser .
+
+ontompo:memberOf_StakeHolder_ObservatoryGroup rdfs:comment "Declara StakeHolder como membro do coletivo ObservatoryGroup."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasMember_ObservatoryGroup_StakeHolder .
+
+ontompo:memberOf_System_ObservatoryGroup rdfs:comment "Declara System como membro do coletivo ObservatoryGroup."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasMember_ObservatoryGroup_System .
+
+ontompo:participation_Agent_CrudOperation rdfs:comment "Registra a participação de Agent no evento CrudOperation."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasParticipant_CrudOperation_Agent .
+
+ontompo:participation_Agent_Observation rdfs:comment "Registra a participação de Agent no evento Observation."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasParticipant_Observation_Agent .
+
+ontompo:participation_Collector_Extract rdfs:comment "Registra a participação de Collector no evento Extract."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasParticipant_Extract_Collector .
+
+ontompo:participation_Collector_Transform rdfs:comment "Registra a participação de Collector no evento Transform."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasParticipant_Transform_Collector .
+
+ontompo:participation_CrudView_CrudOperation rdfs:comment "Registra a participação de CrudView no evento CrudOperation."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasParticipant_CrudOperation_CrudView .
+
+ontompo:participation_DataSource_Extract rdfs:comment "Registra a participação de DataSource no evento Extract."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasParticipant_Extract_DataSource .
+
+ontompo:participation_Disseminator_Observation rdfs:comment "Registra a participação de Disseminator no evento Observation."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasParticipant_Observation_Disseminator .
+
+ontompo:participation_Processor_Load rdfs:comment "Registra a participação de Processor no evento Load."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasParticipant_Load_Processor .
+
+ontompo:participation_Processor_Transform rdfs:comment "Registra a participação de Processor no evento Transform."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasParticipant_Transform_Processor .
+
+ontompo:participation_Storer_Load rdfs:comment "Registra a participação de Storer no evento Load."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasParticipant_Load_Storer .
+
+ontompo:participational_Extract_EtlProcess rdfs:comment "Declara o evento Extract como parte própria do evento EtlProcess."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasEventPart_EtlProcess_Extract .
+
+ontompo:participational_Load_EtlProcess rdfs:comment "Declara o evento Load como parte própria do evento EtlProcess."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasEventPart_EtlProcess_Load .
+
+ontompo:participational_Transform_EtlProcess rdfs:comment "Declara o evento Transform como parte própria do evento EtlProcess."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    owl:inverseOf ontompo:hasEventPart_EtlProcess_Transform .
+
+gufo:Endurant a owl:Class ;
+    rdfs:label "Endurant"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> .
+
+ontompo:Collector rdfs:comment "Papel do gerenciamento de dados quando captura, de forma interna ou externa, os dados dos projetos observados."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Collector"@en,
+        "Coleta"@pt-BR .
+
+ontompo:CrudOperation rdfs:comment "Evento de operação sobre um repositório de dados do observatório."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "CRUD Operation"@en,
+        "Operação CRUD"@pt-BR .
+
+ontompo:DataSource rdfs:comment "Origem principal dos dados coletados: sistemas internos, partes interessadas externas, bases de dados abertas ou sensores."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Data Source"@en,
+        "Fonte de dados"@pt-BR .
+
+ontompo:Knowledge rdfs:comment "Conhecimento sobre os projetos observados, adquirido e construído a partir do conteúdo que o observatório disponibiliza."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Knowledge"@en,
+        "Conhecimento"@pt-BR .
+
+ontompo:Network rdfs:comment "Componentes que possibilitam a comunicação, o gerenciamento e as operações de rede entre um observatório de projetos e os sistemas internos e externos das organizações."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Network"@en,
+        "Rede"@pt-BR .
+
+ontompo:Processor rdfs:comment "Papel do gerenciamento de dados quando trata e converte os dados brutos dos projetos em uma forma mais significativa."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Processor"@en,
+        "Processamento"@pt-BR .
+
+ontompo:Project rdfs:comment "Projeto observado: aquele sobre o qual o observatório reúne e divulga dados, informação e conhecimento, e que ele não gerencia."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Project"@en,
+        "Projeto"@pt-BR .
+
+ontompo:Reporter rdfs:comment "Papel do software quando coordena os relacionamentos entre os usuários, a interação deles com os projetos e com o observatório, e o relacionamento do observatório com outros sistemas."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Reporter"@en,
+        "Relacionamento"@pt-BR .
+
+ontompo:Service rdfs:comment "Serviços executados por terceiros para estruturar, operar e manter a infraestrutura de TI de um observatório de projetos."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Service"@en,
+        "Serviço"@pt-BR .
+
+gufo:Object a owl:Class ;
+    rdfs:label "Object"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> .
+
+ontompo:Connection rdfs:comment "Vínculo pelo qual um hardware do observatório se liga a uma rede."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Connection"@en,
+        "Conexão"@pt-BR .
+
+ontompo:EtlProcess rdfs:comment "Evento complexo que leva os dados da fonte até o repositório do observatório, e do qual a extração, a transformação e a carga são partes próprias."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "ETL Process"@en,
+        "Processo de ETL"@pt-BR .
+
+ontompo:Extract rdfs:comment "Evento de identificação e coleta dos dados e informações relevantes sobre os projetos observados e suas temáticas."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Extract"@en,
+        "Extração"@pt-BR .
+
+ontompo:Load rdfs:comment "Evento de armazenamento, em um repositório, dos dados coletados e transformados sobre os projetos observados."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Load"@en,
+        "Carga"@pt-BR .
+
+ontompo:Log rdfs:comment "Registro que responsabiliza um agente por suas ações no contexto do observatório, e que sustenta a auditoria dessas ações."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Log"@en,
+        "Registro de auditoria"@pt-BR .
+
+ontompo:Observation rdfs:comment "Evento em que um agente observa o conteúdo divulgado pelo observatório e no qual passa a existir conhecimento sobre os projetos observados."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Observation"@en,
+        "Observação"@pt-BR .
+
+ontompo:ProjectDataManagement rdfs:comment "Vínculo pelo qual um gerenciamento de dados responde pelos dados de um projeto observado."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Project Data Management"@en,
+        "Gerência de dados de projeto"@pt-BR .
+
+ontompo:ProjectObservatory rdfs:comment "Observatório de projetos: o software que coleta, integra e divulga informação sobre um conjunto de projetos observados, para dar transparência e prestação de contas a partes interessadas externas."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Project Observatory"@en,
+        "Observatório de projetos"@pt-BR .
+
+ontompo:ServiceProvision rdfs:comment "Vínculo pelo qual um serviço é prestado a um software do observatório de projetos."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Service Provision"@en,
+        "Prestação de serviço"@pt-BR .
+
+ontompo:SocialInteraction rdfs:comment "Vínculo de interação entre os agentes de um observatório de projetos e entre eles e o conteúdo dele."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Social Interaction"@en,
+        "Interação social"@pt-BR .
+
+ontompo:SoftwareExecution rdfs:comment "Vínculo pelo qual um software é executado sobre um hardware. Substitui a composição inválida entre os dois, corrigida em A2."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Software Execution"@en,
+        "Execução de software"@pt-BR .
+
+ontompo:Transform rdfs:comment "Evento de transformação e modelagem dos dados coletados pelo observatório de projetos."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Transform"@en,
+        "Transformação"@pt-BR .
+
+ontompo:View rdfs:comment "Papel do software quando apresenta ao usuário o conteúdo do observatório de projetos."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "View"@en,
+        "Visão"@pt-BR .
+
+ontompo:ViewProvision rdfs:comment "Vínculo pelo qual um gerenciamento de dados disponibiliza uma visão."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "View Provision"@en,
+        "Disponibilização de visão"@pt-BR .
+
+gufo:Event a owl:Class ;
+    rdfs:label "Event"@en ;
+    rdfs:isDefinedBy <http://purl.org/nemo/gufo> .
+
+ontompo:Agent rdfs:comment "Categoria não-sortal que reúne tudo o que porta intenções e age no contexto de um observatório de projetos, seja um agente físico ou um agente social."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Agent"@en,
+        "Agente"@pt-BR .
+
+ontompo:DataManager rdfs:comment "Ferramentas de software necessárias para que o observatório organize, gerencie e processe os dados relacionados aos projetos observados."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Data Manager"@en,
+        "Gerenciamento de dados"@pt-BR .
+
+ontompo:Hardware rdfs:comment "Equipamento físico de tecnologia da informação utilizado nos processos executados pelos observatórios de projetos."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Hardware"@en,
+        "Hardware"@pt-BR .
+
+ontompo:ObservatoryGroup rdfs:comment "Coletivo de agentes reunidos em torno de um observatório de projetos: a equipe responsável pelo gerenciamento, manutenção e operação do observatório, seus usuários e os sistemas que com ele trocam."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Observatory Group"@en,
+        "Grupo do observatório"@pt-BR .
+
+ontompo:Software rdfs:comment "Aplicações que possibilitam a execução dos processos executados pelos observatórios de projetos."@pt-BR ;
+    rdfs:isDefinedBy <https://example.org/ontompo/rodada-2> ;
+    skos:prefLabel "Software"@en,
+        "Software"@pt-BR .
+
+<https://example.org/ontompo/rodada-2> dcterms:description "Formalização do MPO revisada por análise ontológica fundamentada na UFO. Gerada a partir do modelo OntoUML pela transformação gUFO oficial e customizada por acréscimo; o acréscimo está no arquivo diff-gerado-customizado.ttl."@pt-BR ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:title "OntoMPO — ontologia do Modelo para Observatórios de Projetos"@pt-BR ;
+    vann:preferredNamespacePrefix "ontompo" ;
+    vann:preferredNamespaceUri "https://example.org/ontompo/rodada-2#" ;
+    rdfs:comment "Sem dct:creator: enquanto a revisão do artigo for duplamente anônima, declarar autoria aqui a quebraria. O IRI de exemplo é provisório e é fixado no depósito."@pt-BR ;
+    owl:versionInfo "rodada-2, customizada" .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ontompo:ComputationalSystem ontompo:Connection ontompo:DataSource ontompo:Hardware ontompo:Knowledge ontompo:Log ontompo:Network ontompo:ObservatoryGroup ontompo:Organization ontompo:Person ontompo:Project ontompo:ProjectDataManagement ontompo:Service ontompo:ServiceProvision ontompo:SocialInteraction ontompo:Software ontompo:SoftwareExecution ontompo:ViewProvision ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( ontompo:DataManager ontompo:View ontompo:ProjectObservatory ) .
+
