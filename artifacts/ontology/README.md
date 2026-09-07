@@ -16,8 +16,10 @@ customizações aplicadas por cima, e o diff que separa o que a ferramenta gerou
 acrescentado (ticket 06). Não é uma quarta rodada — é a mesma rodada 2, na camada OWL.
 
 **`instancias/`** e **`consultas/`** guardam a avaliação funcional: os dados de instância de um
-observatório real, derivados de uma publicação, e as questões de competência executadas em SPARQL
-sobre eles. O ticket 07 abriu as duas com uma QC ponta a ponta; o ticket 08 completa as sete.
+observatório real, derivados de uma publicação, um segundo observatório sintético para a
+comparação, e as sete questões de competência executadas em SPARQL sobre eles. O ticket 07 abriu as
+duas com uma QC ponta a ponta; o ticket 08 completa as sete e registra em `consultas/divergencias.md`
+onde o resultado obtido divergiu do esperado.
 
 As rodadas seguintes entram como diretórios irmãos. Nenhuma substitui a anterior nem o baseline: é a
 comparação entre as três que dá evidência.
@@ -75,16 +77,19 @@ artifacts/ontology/
 │   ├── relatorio-oops.xml             a resposta bruta do servico
 │   └── comparacao-oops.md             o antes/depois de pitfalls, contra o baseline
 ├── instancias/
-│   ├── observatorio.ttl              os dados de instancia do observatorio, Turtle deterministica
-│   └── procedencia.md               o mapa trecho-da-publicacao -> instancia, conferivel por terceiro
+│   ├── observatorio.ttl              os dados de instancia do observatorio principal, Turtle deterministica
+│   ├── observatorio-b.ttl            o segundo observatorio, sintetico, so para a QC7 (ticket 08)
+│   └── procedencia.md               o mapa trecho-da-publicacao -> instancia e as premissas do ticket 08
 └── consultas/
-    ├── qc1.rq                        a QC1 em SPARQL, com a pergunta no cabecalho
-    ├── qc1-resultado.csv             o resultado completo, cru, reaproveitavel pelo apendice
-    └── qc1-resultado.md              a pergunta, a consulta verbatim e a tabela do resultado
+    ├── qc1.rq .. qc7.rq              as sete QCs em SPARQL, cada uma com a pergunta no cabecalho
+    ├── qc<n>-resultado.csv           o resultado completo, cru, reaproveitavel pelo apendice
+    ├── qc<n>-resultado.md            a pergunta, a consulta verbatim e a tabela do resultado
+    └── divergencias.md               esperado x obtido por QC, inclusive onde a divergencia favorece o modelo
 ```
 
-`consultas/` recebe as demais QCs no ticket 08, uma `qc<n>.rq` por vez, cada uma com o seu par de
-resultados. Ver `../../docs/adr/0001-layout-do-repositorio.md`.
+O ticket 07 abriu `consultas/` com a QC1 ponta a ponta; o ticket 08 completa as sete — QC2 a QC7
+sobre o cenario instanciado, com o segundo observatorio para a QC7 exercitar a comparacao de
+cobertura. Ver `../../docs/adr/0001-layout-do-repositorio.md`.
 
 **Comece por `evidencias-A1-A9.md`, `correcoes-rodada-1.md` e `correcoes-rodada-2.md`, e depois
 por `owl/customizacoes.md`.** Eles carregam a leitura dos relatórios; os relatórios sozinhos não
@@ -147,9 +152,9 @@ python tools/verification/raciocinador.py                         # consistênci
 python tools/verification/rodar_oops.py artifacts/ontology/owl/ontompo.ttl   # OOPS! sobre a revisada (rede)
 python tools/verification/comparar_oops.py                        # o antes/depois de pitfalls
 
-# instanciacao e primeira QC (ticket 07)
-python tools/generation/gerar_instancias.py                       # os dados do observatorio, .ttl
-python tools/generation/rodar_consultas.py                        # executa consultas/*.rq
+# instanciacao e as sete QCs (tickets 07 e 08)
+python tools/generation/gerar_instancias.py                       # observatorio.ttl e observatorio-b.ttl
+python tools/generation/rodar_consultas.py                        # executa consultas/*.rq (QC1 a QC7)
 
 # as checklists
 python tools/verification/rodar_oops.py                           # OOPS! sobre o baseline (rede)
@@ -158,6 +163,7 @@ python tools/verification/verificar_rodada1.py                    # confere a ch
 python tools/verification/verificar_rodada2.py                    # confere a checklist do ticket 05
 python tools/verification/verificar_owl.py                        # confere a checklist do ticket 06
 python tools/verification/verificar_instancia_qc.py               # confere a checklist do ticket 07
+python tools/verification/verificar_demais_qc.py                  # confere a checklist do ticket 08
 ```
 
 As duas execuções do OOPS! precisam de rede, e é a `owl/ontompo.ttl` que vai à segunda — a OWL

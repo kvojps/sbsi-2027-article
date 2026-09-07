@@ -1,0 +1,8 @@
+tipoAtor,rotuloTipo,ator,rotuloAtor,motivacao
+https://example.org/ontompo/rodada-2#StakeHolder,Parte interessada,https://example.org/ontompo/instancia-observatorio#parteInteressadaAgenciaDeFomento,Agência de fomento,Acompanhar a divulgação pública dos projetos apoiados.
+https://example.org/ontompo/rodada-2#StakeHolder,Parte interessada,https://example.org/ontompo/instancia-observatorio#parteInteressadaComunidadeAtendida,Comunidade atendida,Relatar necessidades e dar retorno sobre os projetos de extensão.
+https://example.org/ontompo/rodada-2#StakeHolder,Parte interessada,https://example.org/ontompo/instancia-observatorio#parteInteressadaCoordenacaoDeProjeto,Coordenação de projeto observado,"Acompanhar comentários, reações e relatos de erro sobre o projeto coordenado."
+https://example.org/ontompo/rodada-2#StakeHolder,Parte interessada,https://example.org/ontompo/instancia-observatorio#parteInteressadaCoordenacaoDeProjeto,Coordenação de projeto observado,Discutir a temática do projeto coordenado em fóruns.
+https://example.org/ontompo/rodada-2#ObservatoryUser,Usuário do observatório,https://example.org/ontompo/instancia-observatorio#usuarioDaSociedade,Usuário da sociedade,Acompanhar projetos de extensão que beneficiam a comunidade.
+https://example.org/ontompo/rodada-2#ObservatoryUser,Usuário do observatório,https://example.org/ontompo/instancia-observatorio#usuarioDocente,Usuário docente,Divulgar os projetos de pesquisa sob coordenação docente.
+https://example.org/ontompo/rodada-2#ObservatoryUser,Usuário do observatório,https://example.org/ontompo/instancia-observatorio#usuarioEstudante,Usuário estudante,Trocar informação sobre projetos de interesse acadêmico.

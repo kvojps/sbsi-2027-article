@@ -2,7 +2,7 @@
 
 Cenário: observatório de projetos de pesquisa e extensão de uma universidade pública brasileira, descrito nos Anais Estendidos do XVIII SBSI (2022), DOI 10.5753/sbsi_estendido.2022.222995. Trabalho anterior do próprio autor, referido em terceira pessoa. Alvo: o gerenciamento de conteúdo do observatório (obs:gerenciadorDeConteudo). A pergunta é de domínio: percorre o relator ViewProvision, que a análise ontológica introduziu na correção de A9 (composição no lugar de especialização), e devolve as visões do observatório agrupadas pelo papel que cada uma exerce. Uma ontologia sem ViewProvision/DataManager/View, ou sem os dados do observatório, não devolve linha nenhuma.
 
-Executada por `tools/generation/rodar_consultas.py` sobre a ontologia revisada (`artifacts/ontology/owl/ontompo.ttl`), a gUFO (`sources/gufo/gufo.ttl`) e os dados de instância do observatório (`artifacts/ontology/instancias/observatorio.ttl`).
+Executada por `tools/generation/rodar_consultas.py` sobre a ontologia revisada (`artifacts/ontology/owl/ontompo.ttl`), a gUFO (`sources/gufo/gufo.ttl`) e os dados de instância dos observatórios (`artifacts/ontology/instancias/observatorio.ttl` e `observatorio-b.ttl`). As QC1–QC6 se prendem ao namespace do observatório principal; só a QC7 atravessa os dois.
 
 ## Consulta SPARQL
 

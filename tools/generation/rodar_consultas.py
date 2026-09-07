@@ -8,7 +8,10 @@ Carrega, num unico grafo:
 
   - a ontologia revisada e customizada (`owl/ontompo.ttl`);
   - a gUFO local (`sources/gufo/gufo.ttl`), que ela importa;
-  - os dados de instancia do observatorio (`instancias/observatorio.ttl`).
+  - os dados de instancia do observatorio principal (`instancias/observatorio.ttl`);
+  - os do segundo observatorio sintetico (`instancias/observatorio-b.ttl`), que
+    so a QC7 atravessa — as demais QCs se prendem ao namespace do principal por
+    um FILTER, entao carregar o segundo nao muda o resultado delas.
 
 Roda cada `consultas/*.rq`, em ordem de nome, e grava ao lado de cada uma:
 
@@ -43,11 +46,13 @@ GUFO_LOCAL = Path("sources/gufo/gufo.ttl")
 
 def carregar_grafo(diretorio: Path) -> rdflib.Graph:
     grafo = rdflib.Graph()
-    for caminho in (
+    obrigatorios = (
         diretorio / "owl" / "ontompo.ttl",
         GUFO_LOCAL,
         diretorio / "instancias" / "observatorio.ttl",
-    ):
+        diretorio / "instancias" / "observatorio-b.ttl",
+    )
+    for caminho in obrigatorios:
         if not caminho.exists():
             raise FileNotFoundError(caminho)
         grafo.parse(caminho.as_posix(), format="turtle")
@@ -122,7 +127,9 @@ def escrever_md(
     partes += [
         "Executada por `tools/generation/rodar_consultas.py` sobre a ontologia revisada "
         "(`artifacts/ontology/owl/ontompo.ttl`), a gUFO (`sources/gufo/gufo.ttl`) e os dados "
-        "de instância do observatório (`artifacts/ontology/instancias/observatorio.ttl`).",
+        "de instância dos observatórios (`artifacts/ontology/instancias/observatorio.ttl` e "
+        "`observatorio-b.ttl`). As QC1–QC6 se prendem ao namespace do observatório principal; "
+        "só a QC7 atravessa os dois.",
         "",
         "## Consulta SPARQL",
         "",

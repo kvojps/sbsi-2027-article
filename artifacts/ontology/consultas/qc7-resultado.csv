@@ -1,0 +1,32 @@
+conceito,rotuloConceito,instanciasA,instanciasB
+https://example.org/ontompo/rodada-2#Agent,Agente,6,3
+https://example.org/ontompo/rodada-2#PhysicalAgent,Agente físico,3,2
+https://example.org/ontompo/rodada-2#SocialAgent,Agente social,0,1
+https://example.org/ontompo/rodada-2#Storer,Armazenamento,1,1
+https://example.org/ontompo/rodada-2#Load,Carga,2,1
+https://example.org/ontompo/rodada-2#Collector,Coleta,1,1
+https://example.org/ontompo/rodada-2#Knowledge,Conhecimento,2,0
+https://example.org/ontompo/rodada-2#ViewProvision,Disponibilização de visão,8,3
+https://example.org/ontompo/rodada-2#Disseminator,Disseminação,2,2
+https://example.org/ontompo/rodada-2#Extract,Extração,2,1
+https://example.org/ontompo/rodada-2#DataSource,Fonte de dados,2,1
+https://example.org/ontompo/rodada-2#DataManager,Gerenciamento de dados,2,1
+https://example.org/ontompo/rodada-2#ProjectDataManagement,Gerência de dados de projeto,2,1
+https://example.org/ontompo/rodada-2#ObservatoryGroup,Grupo do observatório,1,0
+https://example.org/ontompo/rodada-2#SocialInteraction,Interação social,7,0
+https://example.org/ontompo/rodada-2#ProjectObservatory,Observatório de projetos,1,1
+https://example.org/ontompo/rodada-2#Observation,Observação,2,0
+https://example.org/ontompo/rodada-2#Organization,Organização,0,1
+https://example.org/ontompo/rodada-2#StakeHolder,Parte interessada,3,0
+https://example.org/ontompo/rodada-2#Person,Pessoa,3,2
+https://example.org/ontompo/rodada-2#Processor,Processamento,1,1
+https://example.org/ontompo/rodada-2#EtlProcess,Processo de ETL,2,1
+https://example.org/ontompo/rodada-2#Project,Projeto,2,1
+https://example.org/ontompo/rodada-2#Reporter,Relacionamento,3,0
+https://example.org/ontompo/rodada-2#System,Sistema,1,1
+https://example.org/ontompo/rodada-2#ComputationalSystem,Sistema computacional,1,1
+https://example.org/ontompo/rodada-2#Software,Software,11,5
+https://example.org/ontompo/rodada-2#Transform,Transformação,2,1
+https://example.org/ontompo/rodada-2#ObservatoryUser,Usuário do observatório,3,2
+https://example.org/ontompo/rodada-2#View,Visão,8,3
+https://example.org/ontompo/rodada-2#CrudView,Visão CRUD,3,1
