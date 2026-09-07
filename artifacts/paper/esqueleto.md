@@ -30,11 +30,24 @@ template volta, quando os nomes de seção divergem entre este arquivo e o `.tex
 sai do intervalo de 15 a 20 páginas, quando uma entrada da bibliografia perde um campo obrigatório
 do seu tipo, quando um placeholder sobrevive ou quando uma citação fica sem entrada no `.bib`.
 
+## Onde mora o texto
+
+O esqueleto é o plano; o texto de cada seção mora em `secoes/`, um arquivo por seção, e é de lá que o
+ticket 13 porta para o `.tex`. A seção 5 já existe: `secoes/05-analise-ontologica.md`. As seções sem
+arquivo ainda não foram escritas, e o `<!-- conteúdo: ticket NN -->` de cada uma diz de quem é a vez.
+
 ## Orçamento de páginas
 
-A chamada rejeita sumariamente abaixo de 15 e acima de 20 páginas. O orçamento abaixo soma **18,0
-páginas**, deixando 2,0 de folga sob o teto e 3,0 acima do piso. A folga é deliberada: o custo de
+A chamada rejeita sumariamente abaixo de 15 e acima de 20 páginas. O orçamento abaixo soma **18,5
+páginas**, deixando 1,5 de folga sob o teto e 3,5 acima do piso. A folga é deliberada: o custo de
 estourar é a rejeição sem revisão.
+
+**A seção 5 subiu de 3,25 para 3,75 no ticket 10**, e a diferença saiu da folga, que era de 2,0. O
+texto escrito mede **3,51 páginas** num porte provisório para o template SBC — compilado pelo
+verificador daquele ticket, não estimado —, e as nove deficiências, seus traços, a evidência das
+ferramentas e os achados fora da lista são todos critério de aceite dele. Cortar as 0,26 página que
+faltavam custaria um item da checklist; a folga existe para isto, e o que resta dela (1,5) ainda
+cobre o corte previsto para o ticket 13. O número definitivo é daquele porte.
 
 | # | Seção | Label do resumo estruturado | Páginas |
 |---|-------|-----------------------------|---------|
@@ -43,7 +56,7 @@ estourar é a rejeição sem revisão.
 | 2 | Referencial Teórico | Research Context; Related IS Theory | 2,50 |
 | 3 | Trabalhos Relacionados | Research Context | 0,75 |
 | 4 | Método de Pesquisa | Research Method | 1,25 |
-| 5 | Análise Ontológica do MPO | Proposed Solution and/or Analysis | 3,25 |
+| 5 | Análise Ontológica do MPO | Proposed Solution and/or Analysis | 3,75 |
 | 6 | A OntoMPO Revisada | Proposed Solution and/or Analysis | 1,75 |
 | 7 | Avaliação | Research Method; Summary of Results | 1,75 |
 | 8 | Discussão e Limitações | Summary of Results; Contributions and Impact to IS area | 1,00 |
@@ -51,7 +64,7 @@ estourar é a rejeição sem revisão.
 | — | Declaração de uso de IA generativa | — | 0,25 |
 | — | Referências | — | 1,50 |
 | — | Apêndice A — Consultas SPARQL e resultados completos | — | 1,00 |
-| | **Total** | | **18,00** |
+| | **Total** | | **18,50** |
 
 Se apertar, o corte previsto pela spec é mover os diagramas por camada para o depósito e manter no
 artigo apenas o diagrama integrado. A seção 5 não é candidata a corte: é onde a contribuição mora.
@@ -158,7 +171,10 @@ Deve entregar:
 
 ## 5. Análise Ontológica do MPO
 
-*Label: Proposed Solution and/or Analysis. Orçamento: 3,25 páginas. Ticket 10.*
+*Label: Proposed Solution and/or Analysis. Orçamento: 3,75 páginas. Ticket 10.*
+
+**Texto escrito:** `secoes/05-analise-ontologica.md`. Conferência:
+`python tools/verification/verificar_analise_ontologica.py`.
 
 **A seção que separa o artigo aceito do artigo rejeitado.** É a maior do artigo e não é candidata a
 corte de páginas.
@@ -170,7 +186,7 @@ como foi corrigida, com justificativa ontológica da UFO — não preferência d
 |---|-------------|-------------------|----------|
 | A1 | `CrudOperation` colapsa Create/Update/Delete, de pós-condições distintas | *construct overload* | Decompor |
 | A2 | `Software` como composição de `Hardware` | *construct excess* / mereologia inválida | Execução/hospedagem |
-| A3 | `«CompOf»` ligando `ObservatoryUser` a `ObservatoryGroup` («Collective») | violação de restrição UFO | `«MemberOf»` |
+| A3 | `«MemberOf»` com o coletivo `ObservatoryGroup` declarado na ponta da parte | violação de restrição UFO | Inverter as pontas |
 | A4 | Classe de domínio nomeada `Relator`, colidindo com o metaconceito da UFO | *construct redundancy* terminológica | Renomear |
 | A5 | ETL como «relator» endurante em vez de evento | *construct deficit* (UFO-B) | Eventos UFO-B |
 | A6 | `Agent` como «Kind» genérico, sem distinção físico/social | *construct deficit* (UFO-C) | Taxonomia UFO-C |
@@ -194,7 +210,7 @@ resultado é evolução do MPO, não desqualificação dele.
 Rastreabilidade: cada linha de A1–A9 precisa aparecer em três lugares — no modelo revisado, no
 relatório do plugin e no texto desta seção. Achado órfão é defeito.
 
-<!-- conteúdo: ticket 10 -->
+<!-- conteúdo: secoes/05-analise-ontologica.md (ticket 10) -->
 
 ---
 

@@ -21,7 +21,7 @@ sources/                     ENTRADA — somente leitura
 
 artifacts/                   SAÍDA — o que esta pesquisa produz
 ├── ontology/                o modelo, a OWL e suas verificações  → ver o README de lá
-├── paper/                   esqueleto.md, artigo.tex, referencias.bib
+├── paper/                   esqueleto.md, secoes/, artigo.tex, referencias.bib
 ├── deposit/                 o pacote do Zenodo anônimo (ticket 09)
 └── submission/              o pacote de registro no JEMS3
 
@@ -90,6 +90,7 @@ python tools/verification/verificar_demais_qc.py                  # confere a ch
 
 python tools/generation/gerar_deposito.py                         # monta artifacts/deposit/ (ticket 09)
 python tools/verification/verificar_deposito.py                   # confere a checklist do 09
+python tools/verification/verificar_analise_ontologica.py         # confere a checklist do 10
 ```
 
 Os verificadores Python leem caminhos relativos ao diretório de trabalho: **execute-os da raiz**.
