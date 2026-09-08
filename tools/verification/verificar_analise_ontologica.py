@@ -365,7 +365,7 @@ def _medir_no_porte(diretorio: Path) -> dict[str, float] | None:
     `None` — e o chamador cai na estimativa — quando nao ha `pdflatex`, quando o
     porte ainda nao foi gerado ou quando a compilacao nao fecha.
     """
-    if shutil.which("pdflatex") is None:
+    if shutil.which("pdflatex") is None or shutil.which("bibtex") is None:
         return None
     artigo = diretorio / "artigo.tex"
     if not artigo.exists() or not (diretorio / "secoes-tex").is_dir():
@@ -397,7 +397,10 @@ def _medir_no_porte(diretorio: Path) -> dict[str, float] | None:
                 else [passo, "-interaction=nonstopmode", "medida.tex"]
             )
             subprocess.run(argumentos, cwd=destino, capture_output=True, env=ambiente)
-        log = (destino / "medida.log").read_text(encoding="utf-8", errors="ignore")
+        registro = destino / "medida.log"
+        if not registro.exists():
+            return None
+        log = registro.read_text(encoding="utf-8", errors="ignore")
 
     marcas = re.findall(r"MARCA-(\d+)-([\d.]+)pt-([\d.]+)pt", log)
     if len(marcas) != len(BLOCOS_DO_PORTE) + 1:

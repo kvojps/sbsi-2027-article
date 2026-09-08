@@ -166,6 +166,16 @@ def verificar_estrutura(dep: Path, res: Resultado) -> None:
     for rel in ESTRUTURA:
         res.exigir((dep / rel).is_file(), f"falta {rel}")
     res.exigir((dep / "ontology").is_dir(), "falta a arvore ontology/")
+    # Os diagramas por camada sao do deposito pelo corte de paginacao do ticket
+    # 13: o artigo fica com o integrado. Se sumirem daqui, o corte perdeu o
+    # destino e ninguem mais os publica.
+    res.exigir((dep / "figuras").is_dir(), "falta a arvore figuras/")
+    for camada in ("agentes", "estruturas", "processos"):
+        alvo = dep / "figuras" / f"camada-{camada}.tex"
+        res.exigir(
+            alvo.is_file() and alvo.stat().st_size > 0,
+            f"diagramas por camada: falta ou esta vazio figuras/camada-{camada}.tex",
+        )
 
 
 def verificar_conteudo(dep: Path, res: Resultado) -> None:

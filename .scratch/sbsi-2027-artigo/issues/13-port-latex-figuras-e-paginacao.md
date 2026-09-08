@@ -121,6 +121,28 @@ verificador só olhava o efeito — e o `pdflatex` moderno recusa a segunda opç
 erro, mas ainda compõe os acentos certos. Ele passou a **nomear** a regressão no preâmbulo, em vez
 de deixá-la aparecer como "erro de LaTeX" genérico.
 
+**O `/code-review` achou oito coisas, todas corrigidas.** A que importava era de
+reprodutibilidade: `gerar_deposito.py` pulava as figuras em silêncio quando `artifacts/paper/figuras/`
+ainda não existia — que é o estado de um checkout limpo seguindo a ordem que o README documentava,
+com o depósito (09) antes das figuras (13). O depósito publicado sairia sem os diagramas por camada,
+justamente o que o corte de paginação mandou para lá, e `verificar_deposito.py` aprovava assim mesmo.
+Agora o gerador aborta com a instrução do que rodar — e aborta **antes** do `rmtree`, para não deixar
+o depósito destruído —, o verificador exige `figuras/` e os três arquivos, e o README põe
+`gerar_figuras.py` antes de `gerar_deposito.py`.
+
+As outras sete: `pdfinfo` e `bibtex` usados sem entrar na guarda de disponibilidade (o verificador
+morria com *traceback* em vez da mensagem); `_medir_no_porte` lendo `medida.log` sem conferir se
+existe, contra o que o próprio docstring promete; as três faixas de camada da figura **sobrepostas em
+0,14 cm**, o que fazia as três lerem como uma tira contínua — era o `GAP_ENTRE_CAMADAS` menor que a
+soma das bordas, e a figura existe para separá-las; o contador de tabelas avançando em tabela sem
+legenda, o que faria a próxima legendada abortar com o número errado; o verificador contando linhas
+de resultado por linha física enquanto o gerador conta por registro de CSV; os comentários de
+orçamento do `artigo.tex` ainda com os números pré-corte, que é o que um contribuidor lê antes de
+acrescentar parágrafo; e a anotação de retorno de `porta`.
+
+Corrigir o sexto introduziu um erro que a suíte pegou na hora: o `import csv` novo colidia com uma
+variável local chamada `csv` na mesma função.
+
 **Duas pendências, ambas do ticket 14.** O depósito ainda não tem DOI, então §6, §7 e o Apêndice A
 remetem a ele por nome e não por link — o endereço entra quando o ticket 09 sair da pendência humana.
 E a declaração de uso de IA continua precisando da conferência de quem assina.

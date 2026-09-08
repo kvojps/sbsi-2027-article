@@ -257,7 +257,7 @@ def tabela(
 
 def porta(
     caminho: Path, numero: str | None, titulo: str, chaves: set[str], tabelas_antes: int
-) -> str:
+) -> tuple[str, int]:
     origem = caminho.name
     bruto = caminho.read_text(encoding="utf-8")
     bruto = re.sub(r"<!--.*?-->", "", bruto, flags=re.DOTALL)
@@ -341,7 +341,11 @@ def porta(
             while j < len(linhas) and linhas[j].strip().startswith("|"):
                 bloco.append(linhas[j])
                 j += 1
-            tabelas += 1
+            # O contador espelha o `table` do LaTeX, que so' avanca no
+            # `\caption`: tabela sem legenda nao numera, e conta-la aqui faria
+            # a proxima legendada abortar com o numero errado.
+            if legenda_pendente:
+                tabelas += 1
             saida.append(tabela(bloco, legenda_pendente, tabelas, chaves, origem))
             legenda_pendente = None
             i = j

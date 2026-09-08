@@ -52,7 +52,14 @@ DESTINO = Path("artifacts/paper/figuras")
 # figura compilada para conferir.
 COLUNAS = 6
 PASSO_X = 2.45
-PASSO_Y = 0.80
+PASSO_Y = 0.76
+
+# Distancia entre a ultima linha de uma camada e a primeira da seguinte. Tem de
+# ser maior que a soma das duas bordas de fundo que se encontram ali — 0,38 em
+# baixo e 0,56 em cima, contando o rotulo da camada —, senao as faixas se
+# sobrepoem e as tres camadas leem como uma tira continua, que e' justamente o
+# que a figura existe para separar.
+GAP_ENTRE_CAMADAS = 1.10
 LARGURA_CAIXA = 2.28
 ALTURA_CAIXA = 0.52
 
@@ -216,7 +223,7 @@ def coordenadas(camadas_alturas: dict[str, int]) -> dict[str, tuple[float, float
         if chave not in camadas_alturas:
             continue
         inicio[chave] = y
-        y -= (camadas_alturas[chave] + 1) * PASSO_Y
+        y -= camadas_alturas[chave] * PASSO_Y + GAP_ENTRE_CAMADAS
     saida = {}
     for nome, (camada, col, linha) in POSICOES.items():
         if camada not in inicio:

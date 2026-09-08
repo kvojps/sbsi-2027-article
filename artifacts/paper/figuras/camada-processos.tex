@@ -10,18 +10,18 @@
   part/.style={draw, dotted, thin},
   outra/.style={draw, gray, thin},
 ]
-\fill[black!4, rounded corners=2pt] (-1.26,-1.98) rectangle (13.51,0.56);
+\fill[black!4, rounded corners=2pt] (-1.26,-1.90) rectangle (13.51,0.56);
 \node[anchor=north west, font=\fontsize{5}{6}\selectfont\itshape, text=black!55] at (-1.20,0.54) {Processos (UFO-B)};
-\node[classe] (nCreateOperation) at (7.35,-0.80) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{CreateOperation}};
+\node[classe] (nCreateOperation) at (7.35,-0.76) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{CreateOperation}};
 \node[classe] (nCrudOperation) at (7.35,0.00) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{CrudOperation}};
-\node[classe] (nDeleteOperation) at (7.35,-1.60) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{DeleteOperation}};
+\node[classe] (nDeleteOperation) at (7.35,-1.52) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{DeleteOperation}};
 \node[classe] (nEtlProcess) at (0.00,0.00) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{EtlProcess}};
-\node[classe] (nExtract) at (0.00,-0.80) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{Extract}};
-\node[classe] (nLoad) at (4.90,-0.80) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{Load}};
+\node[classe] (nExtract) at (0.00,-0.76) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{Extract}};
+\node[classe] (nLoad) at (4.90,-0.76) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{Load}};
 \node[classe] (nObservation) at (12.25,0.00) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{Observation}};
-\node[classe] (nReadOperation) at (9.80,-0.80) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{ReadOperation}};
-\node[classe] (nTransform) at (2.45,-0.80) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{Transform}};
-\node[classe] (nUpdateOperation) at (12.25,-0.80) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{UpdateOperation}};
+\node[classe] (nReadOperation) at (9.80,-0.76) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{ReadOperation}};
+\node[classe] (nTransform) at (2.45,-0.76) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{Transform}};
+\node[classe] (nUpdateOperation) at (12.25,-0.76) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{UpdateOperation}};
 \draw[gen] (nCreateOperation) -- (nCrudOperation);
 \draw[gen] (nReadOperation) -- (nCrudOperation);
 \draw[gen] (nUpdateOperation) -- (nCrudOperation);
@@ -29,14 +29,14 @@
 \draw[parte] (nExtract) -- (nEtlProcess);
 \draw[parte] (nTransform) -- (nEtlProcess);
 \draw[parte] (nLoad) -- (nEtlProcess);
-\draw[gen] (-1.14,-2.36) -- (-0.74,-2.36);
-\node[anchor=west, font=\fontsize{5}{6}\selectfont] at (-0.69,-2.36) {generalização};
-\draw[parte] (3.70,-2.36) -- (4.10,-2.36);
-\node[anchor=west, font=\fontsize{5}{6}\selectfont] at (4.15,-2.36) {«componentOf», «memberOf», «participational»};
-\draw[med] (8.55,-2.36) -- (8.95,-2.36);
-\node[anchor=west, font=\fontsize{5}{6}\selectfont] at (9.00,-2.36) {«mediation»};
-\draw[part] (-1.14,-2.68) -- (-0.74,-2.68);
-\node[anchor=west, font=\fontsize{5}{6}\selectfont] at (-0.69,-2.68) {«participation»};
-\draw[outra] (3.70,-2.68) -- (4.10,-2.68);
-\node[anchor=west, font=\fontsize{5}{6}\selectfont] at (4.15,-2.68) {«material», «creation», «derivation»};
+\draw[gen] (-1.14,-2.28) -- (-0.74,-2.28);
+\node[anchor=west, font=\fontsize{5}{6}\selectfont] at (-0.69,-2.28) {generalização};
+\draw[parte] (3.70,-2.28) -- (4.10,-2.28);
+\node[anchor=west, font=\fontsize{5}{6}\selectfont] at (4.15,-2.28) {«componentOf», «memberOf», «participational»};
+\draw[med] (8.55,-2.28) -- (8.95,-2.28);
+\node[anchor=west, font=\fontsize{5}{6}\selectfont] at (9.00,-2.28) {«mediation»};
+\draw[part] (-1.14,-2.60) -- (-0.74,-2.60);
+\node[anchor=west, font=\fontsize{5}{6}\selectfont] at (-0.69,-2.60) {«participation»};
+\draw[outra] (3.70,-2.60) -- (4.10,-2.60);
+\node[anchor=west, font=\fontsize{5}{6}\selectfont] at (4.15,-2.60) {«material», «creation», «derivation»};
 \end{tikzpicture}

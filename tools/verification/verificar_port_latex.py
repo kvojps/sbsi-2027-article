@@ -52,6 +52,7 @@ Sai com codigo 1 se qualquer verificacao falhar.
 
 from __future__ import annotations
 
+import csv
 import hashlib
 import json
 import os
@@ -178,7 +179,7 @@ def _compacta(texto: str) -> str:
 
 def compilar(diretorio: Path) -> dict | None:
     """Compila o artigo numa copia e devolve log, texto extraido e paginas."""
-    if shutil.which("pdflatex") is None or shutil.which("pdftotext") is None:
+    if any(shutil.which(x) is None for x in ("pdflatex", "bibtex", "pdftotext", "pdfinfo")):
         return None
     with tempfile.TemporaryDirectory() as tmp:
         destino = Path(tmp)
@@ -206,12 +207,13 @@ def compilar(diretorio: Path) -> dict | None:
         paginas = subprocess.run(
             ["pdfinfo", str(pdf)], capture_output=True, text=True
         ).stdout
+        contagem = re.search(r"Pages:\s+(\d+)", paginas)
         return {
             "log": _ler(destino / "artigo.log"),
             "blg": _ler(destino / "artigo.blg"),
             "bbl": _ler(destino / "artigo.bbl"),
             "texto": extraido,
-            "paginas": int(re.search(r"Pages:\s+(\d+)", paginas).group(1)),
+            "paginas": int(contagem.group(1)) if contagem else None,
             "pdf": True,
         }
 
@@ -692,15 +694,18 @@ def verificar_apendice(diretorio: Path, texto_pdf: str, res: Resultado) -> None:
 
     if remissao:
         for qc in QCS:
-            csv = CONSULTAS / f"{qc}-resultado.csv"
+            resultado = CONSULTAS / f"{qc}-resultado.csv"
             res.exigir(
-                csv.exists(),
-                f"o Apendice A remete ao deposito, mas {csv} nao existe",
+                resultado.exists(),
+                f"o Apendice A remete ao deposito, mas {resultado} nao existe",
             )
+        # Contar registros de CSV, e nao linhas fisicas: um campo entre aspas
+        # pode conter quebra de linha, e as duas contagens divergiriam para um
+        # resultado perfeitamente valido.
         linhas = []
         for qc in QCS:
-            conteudo = _ler(CONSULTAS / f"{qc}-resultado.csv").strip().splitlines()
-            linhas.append(max(len(conteudo) - 1, 0))
+            with (CONSULTAS / f"{qc}-resultado.csv").open(encoding="utf-8", newline="") as f:
+                linhas.append(max(sum(1 for _ in csv.reader(f)) - 1, 0))
         for qc, n in zip(QCS, linhas):
             res.exigir(
                 f"{qc.upper()} ({n})" in apendice,
@@ -740,7 +745,10 @@ def main() -> int:
 
     saida = compilar(diretorio)
     if saida is None:
-        print("FALHOU: pdflatex ou pdftotext ausentes; o ticket 13 nao pode ser conferido")
+        print(
+            "FALHOU: falta pdflatex, bibtex, pdftotext ou pdfinfo; o ticket 13 nao pode "
+            "ser conferido"
+        )
         return 1
 
     verificar_preambulo(diretorio, res)

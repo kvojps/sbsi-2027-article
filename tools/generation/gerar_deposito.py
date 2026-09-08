@@ -26,7 +26,7 @@ O que entra:
   - `figuras/`    os diagramas por camada do modelo revisado, em TikZ gerado de
     `ontompo-rodada-2.ontouml.json`. E' o corte que a spec previu para a
     paginacao: o artigo fica com o diagrama integrado e os por camada vem para
-    ca'. Sao fragmentos, para dar `\input` num documento com `tikz` carregado;
+    ca'. Sao fragmentos, para dar `\\input` num documento com `tikz` carregado;
   - `README.md`   orientacao para quem chega do artigo, sem contexto do
     repositorio, e o passo a passo da reexecucao;
   - `reexecutar-consultas.py`  reexecuta as sete QCs sobre os arquivos deste
@@ -186,6 +186,16 @@ def main() -> int:
             print(f"FALTA: {exigido} — gere os artefatos antes (ver artifacts/ontology/README.md)")
             return 1
 
+    # Antes de apagar a saida: abortar depois do rmtree deixaria o deposito
+    # destruido em vez de intacto.
+    camadas = sorted(FIGURAS.glob("camada-*.tex"))
+    if not camadas:
+        print(
+            f"FALTA: {FIGURAS}/camada-*.tex — os diagramas por camada sao do deposito, pelo "
+            "corte de paginacao da spec. Rode antes `python tools/generation/gerar_figuras.py`."
+        )
+        return 1
+
     if saida.exists():
         shutil.rmtree(saida)
     saida.mkdir(parents=True)
@@ -197,11 +207,10 @@ def main() -> int:
 
     # Os diagramas por camada: o corte de paginacao previsto pela spec os manda
     # para ca'. O integrado fica no artigo.
-    camadas = sorted(FIGURAS.glob("camada-*.tex"))
-    if camadas:
-        (saida / "figuras").mkdir(parents=True, exist_ok=True)
-        for figura in camadas:
-            shutil.copy2(figura, saida / "figuras" / figura.name)
+    # A ausencia delas ja' abortou la' em cima, antes do rmtree.
+    (saida / "figuras").mkdir(parents=True, exist_ok=True)
+    for figura in camadas:
+        shutil.copy2(figura, saida / "figuras" / figura.name)
 
     escrever(
         saida / "reexecutar-consultas.py",

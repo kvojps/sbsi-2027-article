@@ -98,6 +98,7 @@ python tools/verification/verificar_owl.py                        # confere a ch
 python tools/verification/verificar_instancia_qc.py               # confere a checklist do 07
 python tools/verification/verificar_demais_qc.py                  # confere a checklist do 08
 
+python tools/generation/gerar_figuras.py                          # os diagramas, do modelo revisado (13)
 python tools/generation/gerar_deposito.py                         # monta artifacts/deposit/ (ticket 09)
 python tools/verification/verificar_deposito.py                   # confere a checklist do 09
 python tools/verification/verificar_analise_ontologica.py         # confere a checklist do 10
@@ -105,7 +106,6 @@ python tools/verification/verificar_seccoes_introducao_metodo.py  # confere a ch
 python tools/verification/verificar_seccoes_ontologia_avaliacao_conclusao.py  # a checklist do 12
 
 python tools/generation/gerar_secoes_latex.py                     # porta secoes/*.md -> secoes-tex/ (13)
-python tools/generation/gerar_figuras.py                          # os diagramas, do modelo revisado (13)
 python tools/generation/gerar_apendice_sparql.py                  # o Apendice A, das consultas (13)
 cd artifacts/paper && pdflatex artigo && bibtex artigo && pdflatex artigo && pdflatex artigo && cd ../..
 python tools/verification/verificar_port_latex.py                 # confere a checklist do 13
