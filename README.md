@@ -92,6 +92,7 @@ python tools/generation/gerar_deposito.py                         # monta artifa
 python tools/verification/verificar_deposito.py                   # confere a checklist do 09
 python tools/verification/verificar_analise_ontologica.py         # confere a checklist do 10
 python tools/verification/verificar_seccoes_introducao_metodo.py  # confere a checklist do 11
+python tools/verification/verificar_seccoes_ontologia_avaliacao_conclusao.py  # a checklist do 12
 ```
 
 Os verificadores Python leem caminhos relativos ao diretório de trabalho: **execute-os da raiz**.

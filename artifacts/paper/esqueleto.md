@@ -33,10 +33,11 @@ do seu tipo, quando um placeholder sobrevive ou quando uma citação fica sem en
 ## Onde mora o texto
 
 O esqueleto é o plano; o texto de cada seção mora em `secoes/`, um arquivo por seção, e é de lá que o
-ticket 13 porta para o `.tex`. As seções 1 a 5 já existem: `secoes/01-introducao.md`,
-`02-referencial.md`, `03-trabalhos-relacionados.md`, `04-metodo.md` e `05-analise-ontologica.md`. As
-seções sem arquivo ainda não foram escritas, e o `<!-- conteúdo: ticket NN -->` de cada uma diz de
-quem é a vez.
+ticket 13 porta para o `.tex`. O corpo do artigo está inteiro escrito: `secoes/01-introducao.md`,
+`02-referencial.md`, `03-trabalhos-relacionados.md`, `04-metodo.md`, `05-analise-ontologica.md`,
+`06-ontompo-revisada.md`, `07-avaliacao.md`, `08-discussao-limitacoes.md`, `09-conclusao.md` e
+`declaracao-ia.md`. O que falta é do ticket 13 — o frontmatter e o Apêndice A —, e o
+`<!-- conteúdo: ticket NN -->` de cada um diz de quem é a vez.
 
 ## Orçamento de páginas
 
@@ -237,7 +238,10 @@ Deve entregar:
   sobre o gerado e a publicação do diff.
 - Métricas do artefato.
 
-<!-- conteúdo: ticket 12 -->
+**Texto escrito:** `secoes/06-ontompo-revisada.md`. Conferência (as quatro seções e a declaração de
+uma vez): `python tools/verification/verificar_seccoes_ontologia_avaliacao_conclusao.py`.
+
+<!-- conteúdo: secoes/06-ontompo-revisada.md (ticket 12) -->
 
 ---
 
@@ -255,7 +259,9 @@ Deve entregar as três frentes, nesta ordem de importância:
 Consultas e resultados **completos** referenciados no Apêndice A ou no depósito, nunca só
 sumarizados: a avaliação sumarizada foi crítica explícita de um parecer.
 
-<!-- conteúdo: ticket 12 -->
+**Texto escrito:** `secoes/07-avaliacao.md`.
+
+<!-- conteúdo: secoes/07-avaliacao.md (ticket 12) -->
 
 ---
 
@@ -273,7 +279,9 @@ Deve entregar:
   - uso de um observatório sintético na comparação da QC7;
   - ausência de implantação operacional e de axiomatização pesada.
 
-<!-- conteúdo: ticket 12 -->
+**Texto escrito:** `secoes/08-discussao-limitacoes.md`.
+
+<!-- conteúdo: secoes/08-discussao-limitacoes.md (ticket 12) -->
 
 ---
 
@@ -289,7 +297,9 @@ Deve entregar:
 - Trabalhos futuros: estudo comparativo entre observatórios reais, alinhamento com ontologias de
   gerenciamento de projetos, e integração com LLMs como direção — não como resultado.
 
-<!-- conteúdo: ticket 12 -->
+**Texto escrito:** `secoes/09-conclusao.md`.
+
+<!-- conteúdo: secoes/09-conclusao.md (ticket 12) -->
 
 ---
 
@@ -298,9 +308,11 @@ Deve entregar:
 *Orçamento: 0,25 página. Ticket 12.*
 
 Exigida pelo Código de Conduta da SBC. Nomear as ferramentas e onde foram empregadas. Sem
-identificar autoria.
+identificar autoria. Não é seção numerada: entra no `.tex` como `\section*`, depois da conclusão.
 
-<!-- conteúdo: ticket 12 -->
+**Texto escrito:** `secoes/declaracao-ia.md`.
+
+<!-- conteúdo: secoes/declaracao-ia.md (ticket 12) -->
 
 ---
 
