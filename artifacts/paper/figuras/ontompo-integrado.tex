@@ -1,0 +1,128 @@
+% GERADO por tools/generation/gerar_figuras.py a partir de
+% artifacts/ontology/rodada-2/ontompo-rodada-2.ontouml.json.
+% Nao editar a mao: a proxima geracao desfaz.
+\begin{tikzpicture}[
+  every node/.style={font=\fontsize{6}{7}\selectfont},
+  classe/.style={draw, rectangle, rounded corners=1pt, inner sep=1pt, minimum width=2.28cm, minimum height=0.52cm, align=center},
+  gen/.style={draw, -{Triangle[open, length=3pt, width=3pt]}, thin},
+  parte/.style={draw, -{Diamond[length=3pt, width=2.5pt]}, thin},
+  med/.style={draw, dashed, dash pattern=on 2pt off 1.5pt, thin},
+  part/.style={draw, dotted, thin},
+  outra/.style={draw, gray, thin},
+]
+\fill[black!4, rounded corners=2pt] (-1.26,-2.78) rectangle (13.51,0.56);
+\node[anchor=north west, font=\fontsize{5}{6}\selectfont\itshape, text=black!55] at (-1.20,0.54) {Agentes (UFO-C)};
+\fill[black!4, rounded corners=2pt] (-1.26,-6.78) rectangle (13.51,-2.64);
+\node[anchor=north west, font=\fontsize{5}{6}\selectfont\itshape, text=black!55] at (-1.20,-2.66) {Estruturas (UFO-A)};
+\fill[black!4, rounded corners=2pt] (-1.26,-9.18) rectangle (13.51,-6.64);
+\node[anchor=north west, font=\fontsize{5}{6}\selectfont\itshape, text=black!55] at (-1.20,-6.66) {Processos (UFO-B)};
+\node[classe] (nAgent) at (4.90,0.00) {\fontsize{5}{6}\selectfont«category»\\\fontsize{6}{7}\selectfont\textbf{Agent}};
+\node[classe] (nCollector) at (0.00,-4.80) {\fontsize{5}{6}\selectfont«role»\\\fontsize{6}{7}\selectfont\textbf{Collector}};
+\node[classe] (nComputationalSystem) at (7.35,-1.60) {\fontsize{5}{6}\selectfont«kind»\\\fontsize{6}{7}\selectfont\textbf{ComputationalSystem}};
+\node[classe] (nConnection) at (9.80,-4.00) {\fontsize{5}{6}\selectfont«relator»\\\fontsize{6}{7}\selectfont\textbf{Connection}};
+\node[classe] (nCreateOperation) at (7.35,-8.00) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{CreateOperation}};
+\node[classe] (nCrudOperation) at (7.35,-7.20) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{CrudOperation}};
+\node[classe] (nCrudRepository) at (0.00,-5.60) {\fontsize{5}{6}\selectfont«role»\\\fontsize{6}{7}\selectfont\textbf{CrudRepository}};
+\node[classe] (nCrudView) at (12.25,-4.80) {\fontsize{5}{6}\selectfont«role»\\\fontsize{6}{7}\selectfont\textbf{CrudView}};
+\node[classe] (nDataManager) at (2.45,-4.00) {\fontsize{5}{6}\selectfont«role»\\\fontsize{6}{7}\selectfont\textbf{DataManager}};
+\node[classe] (nDataSource) at (12.25,-3.20) {\fontsize{5}{6}\selectfont«kind»\\\fontsize{6}{7}\selectfont\textbf{DataSource}};
+\node[classe] (nDeleteOperation) at (7.35,-8.80) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{DeleteOperation}};
+\node[classe] (nDisseminator) at (7.35,-4.80) {\fontsize{5}{6}\selectfont«role»\\\fontsize{6}{7}\selectfont\textbf{Disseminator}};
+\node[classe] (nEtlProcess) at (0.00,-7.20) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{EtlProcess}};
+\node[classe] (nExtract) at (0.00,-8.00) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{Extract}};
+\node[classe] (nHardware) at (4.90,-3.20) {\fontsize{5}{6}\selectfont«kind»\\\fontsize{6}{7}\selectfont\textbf{Hardware}};
+\node[classe] (nKnowledge) at (12.25,-6.40) {\fontsize{5}{6}\selectfont«kind»\\\fontsize{6}{7}\selectfont\textbf{Knowledge}};
+\node[classe] (nLoad) at (4.90,-8.00) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{Load}};
+\node[classe] (nLog) at (9.80,-5.60) {\fontsize{5}{6}\selectfont«relator»\\\fontsize{6}{7}\selectfont\textbf{Log}};
+\node[classe] (nNetwork) at (7.35,-3.20) {\fontsize{5}{6}\selectfont«kind»\\\fontsize{6}{7}\selectfont\textbf{Network}};
+\node[classe] (nObservation) at (12.25,-7.20) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{Observation}};
+\node[classe] (nObservatoryGroup) at (12.25,-1.60) {\fontsize{5}{6}\selectfont«collective»\\\fontsize{6}{7}\selectfont\textbf{ObservatoryGroup}};
+\node[classe] (nObservatoryUser) at (0.00,-2.40) {\fontsize{5}{6}\selectfont«role»\\\fontsize{6}{7}\selectfont\textbf{ObservatoryUser}};
+\node[classe] (nOrganization) at (4.90,-1.60) {\fontsize{5}{6}\selectfont«kind»\\\fontsize{6}{7}\selectfont\textbf{Organization}};
+\node[classe] (nPerson) at (0.00,-1.60) {\fontsize{5}{6}\selectfont«kind»\\\fontsize{6}{7}\selectfont\textbf{Person}};
+\node[classe] (nPhysicalAgent) at (0.00,-0.80) {\fontsize{5}{6}\selectfont«category»\\\fontsize{6}{7}\selectfont\textbf{PhysicalAgent}};
+\node[classe] (nProcessor) at (2.45,-4.80) {\fontsize{5}{6}\selectfont«role»\\\fontsize{6}{7}\selectfont\textbf{Processor}};
+\node[classe] (nProject) at (12.25,-5.60) {\fontsize{5}{6}\selectfont«kind»\\\fontsize{6}{7}\selectfont\textbf{Project}};
+\node[classe] (nProjectDataManagement) at (2.45,-5.60) {\fontsize{5}{6}\selectfont«relator»\\\fontsize{6}{7}\selectfont\textbf{ProjectDataManagement}};
+\node[classe] (nProjectObservatory) at (0.00,-4.00) {\fontsize{5}{6}\selectfont«subkind»\\\fontsize{6}{7}\selectfont\textbf{ProjectObservatory}};
+\node[classe] (nReadOperation) at (9.80,-8.00) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{ReadOperation}};
+\node[classe] (nReporter) at (9.80,-4.80) {\fontsize{5}{6}\selectfont«role»\\\fontsize{6}{7}\selectfont\textbf{Reporter}};
+\node[classe] (nService) at (9.80,-3.20) {\fontsize{5}{6}\selectfont«kind»\\\fontsize{6}{7}\selectfont\textbf{Service}};
+\node[classe] (nServiceProvision) at (12.25,-4.00) {\fontsize{5}{6}\selectfont«relator»\\\fontsize{6}{7}\selectfont\textbf{ServiceProvision}};
+\node[classe] (nSocialAgent) at (4.90,-0.80) {\fontsize{5}{6}\selectfont«category»\\\fontsize{6}{7}\selectfont\textbf{SocialAgent}};
+\node[classe] (nSocialInteraction) at (7.35,-5.60) {\fontsize{5}{6}\selectfont«relator»\\\fontsize{6}{7}\selectfont\textbf{SocialInteraction}};
+\node[classe] (nSoftware) at (0.00,-3.20) {\fontsize{5}{6}\selectfont«kind»\\\fontsize{6}{7}\selectfont\textbf{Software}};
+\node[classe] (nSoftwareExecution) at (7.35,-4.00) {\fontsize{5}{6}\selectfont«relator»\\\fontsize{6}{7}\selectfont\textbf{SoftwareExecution}};
+\node[classe] (nStakeHolder) at (9.80,-0.80) {\fontsize{5}{6}\selectfont«roleMixin»\\\fontsize{6}{7}\selectfont\textbf{StakeHolder}};
+\node[classe] (nStorer) at (4.90,-4.80) {\fontsize{5}{6}\selectfont«role»\\\fontsize{6}{7}\selectfont\textbf{Storer}};
+\node[classe] (nSystem) at (7.35,-2.40) {\fontsize{5}{6}\selectfont«role»\\\fontsize{6}{7}\selectfont\textbf{System}};
+\node[classe] (nTransform) at (2.45,-8.00) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{Transform}};
+\node[classe] (nUpdateOperation) at (12.25,-8.00) {\fontsize{5}{6}\selectfont«event»\\\fontsize{6}{7}\selectfont\textbf{UpdateOperation}};
+\node[classe] (nView) at (4.90,-4.00) {\fontsize{5}{6}\selectfont«role»\\\fontsize{6}{7}\selectfont\textbf{View}};
+\node[classe] (nViewProvision) at (4.90,-5.60) {\fontsize{5}{6}\selectfont«relator»\\\fontsize{6}{7}\selectfont\textbf{ViewProvision}};
+\draw[gen] (nPhysicalAgent) -- (nAgent);
+\draw[gen] (nSocialAgent) -- (nAgent);
+\draw[gen] (nStakeHolder) -- (nAgent);
+\draw[gen] (nPerson) -- (nPhysicalAgent);
+\draw[gen] (nOrganization) -- (nSocialAgent);
+\draw[gen] (nObservatoryUser) -- (nPerson);
+\draw[gen] (nSystem) -- (nComputationalSystem);
+\draw[gen] (nCreateOperation) -- (nCrudOperation);
+\draw[gen] (nReadOperation) -- (nCrudOperation);
+\draw[gen] (nUpdateOperation) -- (nCrudOperation);
+\draw[gen] (nDeleteOperation) -- (nCrudOperation);
+\draw[gen] (nCrudRepository) -- (nDataManager);
+\draw[gen] (nCollector) -- (nDataManager);
+\draw[gen] (nProcessor) -- (nDataManager);
+\draw[gen] (nStorer) -- (nDataManager);
+\draw[gen] (nDisseminator) -- (nView);
+\draw[gen] (nReporter) -- (nView);
+\draw[gen] (nCrudView) -- (nView);
+\draw[gen] (nDataManager) -- (nSoftware);
+\draw[gen] (nView) -- (nSoftware);
+\draw[gen] (nProjectObservatory) -- (nSoftware);
+\draw[parte] (nObservatoryUser) -- (nObservatoryGroup);
+\draw[parte] (nStakeHolder) -- (nObservatoryGroup);
+\draw[parte] (nSystem) -- (nObservatoryGroup);
+\draw[parte] (nDataManager) -- (nProjectObservatory);
+\draw[parte] (nView) -- (nProjectObservatory);
+\draw[med] (nSocialInteraction) -- (nAgent);
+\draw[med] (nSocialInteraction) -- (nReporter);
+\draw[med] (nLog) -- (nAgent);
+\draw[med] (nLog) -- (nReporter);
+\draw[med] (nProjectDataManagement) -- (nDataManager);
+\draw[med] (nProjectDataManagement) -- (nProject);
+\draw[med] (nViewProvision) -- (nDataManager);
+\draw[med] (nViewProvision) -- (nView);
+\draw[med] (nSoftwareExecution) -- (nSoftware);
+\draw[med] (nSoftwareExecution) -- (nHardware);
+\draw[med] (nServiceProvision) -- (nService);
+\draw[med] (nServiceProvision) -- (nSoftware);
+\draw[med] (nConnection) -- (nHardware);
+\draw[med] (nConnection) -- (nNetwork);
+\draw[part] (nAgent) -- (nObservation);
+\draw[part] (nDisseminator) -- (nObservation);
+\draw[part] (nAgent) -- (nCrudOperation);
+\draw[part] (nCrudView) -- (nCrudOperation);
+\draw[part] (nCollector) -- (nExtract);
+\draw[part] (nDataSource) -- (nExtract);
+\draw[part] (nCollector) -- (nTransform);
+\draw[part] (nProcessor) -- (nTransform);
+\draw[part] (nProcessor) -- (nLoad);
+\draw[part] (nStorer) -- (nLoad);
+\draw[parte] (nExtract) -- (nEtlProcess);
+\draw[parte] (nTransform) -- (nEtlProcess);
+\draw[parte] (nLoad) -- (nEtlProcess);
+\draw[outra] (nKnowledge) -- (nObservation);
+\draw[outra] (nSoftware) -- (nHardware);
+\draw[gen] (-1.14,-9.56) -- (-0.74,-9.56);
+\node[anchor=west, font=\fontsize{5}{6}\selectfont] at (-0.69,-9.56) {generalização};
+\draw[parte] (3.70,-9.56) -- (4.10,-9.56);
+\node[anchor=west, font=\fontsize{5}{6}\selectfont] at (4.15,-9.56) {«componentOf», «memberOf», «participational»};
+\draw[med] (8.55,-9.56) -- (8.95,-9.56);
+\node[anchor=west, font=\fontsize{5}{6}\selectfont] at (9.00,-9.56) {«mediation»};
+\draw[part] (-1.14,-9.88) -- (-0.74,-9.88);
+\node[anchor=west, font=\fontsize{5}{6}\selectfont] at (-0.69,-9.88) {«participation»};
+\draw[outra] (3.70,-9.88) -- (4.10,-9.88);
+\node[anchor=west, font=\fontsize{5}{6}\selectfont] at (4.15,-9.88) {«material», «creation», «derivation»};
+\end{tikzpicture}

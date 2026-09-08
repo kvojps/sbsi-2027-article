@@ -1,0 +1,77 @@
+% GERADO por tools/generation/gerar_secoes_latex.py a partir de
+% artifacts/paper/secoes/05-analise-ontologica.md. Nao editar a mao: a proxima geracao
+% desfaz. Corrija o Markdown e regere.
+As nove deficiências desta seção são falhas de uma formalização publicada do MPO --- trabalho de terceiros, cuja referência é omitida nesta versão para preservar o anonimato da revisão ---, e não do MPO. O MPO é prosa: três dimensões, suas subdimensões e os elementos de cada uma \cite{vieira2021model,vieira2022thesis}. Ele não contém \texttt{CrudOperation}, não declara software composto de hardware e não hierarquiza \texttt{DataManager} sob observatório: estereótipos e relações são escolhas da formalização. Onde é preciso distinguir, o texto separa o MPO da conceituação da formalização --- glossário de 53 termos cuja coluna de relações é redigida em prosa ---, e a linha de base é a reconstrução desse modelo publicado em OntoUML.
+
+\textbf{O resultado não é a lista.} Cada uma das nove cai num ponto em que o MPO não fixa a interpretação, e é isso que a última coluna da Tabela 1 registra: o achado é que \textbf{o MPO subdetermina sua própria formalização}. Uma tentativa sistemática de formalizá-lo, sob Methontology \cite{fernandez1997methontology}, produziu nove desvios sem contrariar o modelo em ponto algum; deficiência sem esse traço seria conserto de erro próprio. Seis são classificadas pela tipologia de Representation Theory \cite{wand1993ontological,recker2011ontological}; A3, A8 e A9 ficam fora dela porque a tipologia classifica o \textit{mapeamento} entre gramática e ontologia, e as três violam restrição interna de uma gramática já ontologicamente fundamentada.
+
+\begin{table}[H]
+\centering
+\caption{As nove deficiências da formalização publicada do MPO.}
+\label{tab:1}
+\scriptsize
+\begin{tabular}{>{\centering\arraybackslash}p{\dimexpr0.0556\linewidth-2\tabcolsep\relax}p{\dimexpr0.3704\linewidth-2\tabcolsep\relax}p{\dimexpr0.2037\linewidth-2\tabcolsep\relax}p{\dimexpr0.3704\linewidth-2\tabcolsep\relax}}
+\hline
+\textbf{\#} & \textbf{Deficiência na formalização} & \textbf{Classificação} & \textbf{Ponto do MPO que a permitiu} \\
+\hline
+A1 & \texttt{CrudOperation} colapsa criar, ler, atualizar e excluir & \textit{overload} & Exige responsabilizar ações que não individua \\
+A2 & \texttt{Software} composto de \texttt{Hardware} por «componentOf» & \textit{excess} & Liga elementos de infraestrutura por verbo não ontológico \\
+A3 & «memberOf» com o coletivo \texttt{ObservatoryGroup} na ponta da parte & fora: restrição da UFO & Lista indivíduo, grupo e sistema sem dizer o que os liga \\
+A4 & Classe de domínio \texttt{Relator}, homônima do metaconceito & \textit{redundancy} & Não fixa léxico na língua da formalização \\
+A5 & \texttt{Extract}, \texttt{Transform} e \texttt{Load} como «relator» endurante & \textit{deficit} (UFO-B) & Nomeia o processo como componente e como verbo \\
+A6 & \texttt{Agent} «kind» único sobre pessoas, grupos e organizações & \textit{deficit} (UFO-C) & Enumera três identidades como o mesmo ator \\
+A7 & \texttt{System} «role» pendurado em \texttt{Agent} & \textit{deficit} (UFO-C) & Define ator por participação, não por intencionalidade \\
+A8 & \texttt{Management} e \texttt{Operation} como relatores n-ários & fora: aridade & Enuncia relações que ligam três ou quatro elementos \\
+A9 & \texttt{ProjectObservatory} especializa \texttt{Software}, e \texttt{DataManager} e \texttt{View} o especializam & fora: identidade & Agrupa elementos sem dizer o que agrupar significa \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{O agrupamento lido como taxonomia (A9, A2)}
+
+Componentes, subdimensão irmã de Conteúdos e Características, ``compreendem os elementos associados à coleta, ao tratamento, ao processamento e à disponibilização dos dados'': o MPO agrupa, e não diz o que agrupar significa ontologicamente. A formalização leu o agrupamento como especialização, e disso resulta que cada visão e cada disseminador \textbf{é um observatório inteiro} --- enquanto a QC1 pressupõe muitas visões por observatório:
+
+\begin{center}
+\scriptsize
+\begin{BVerbatim}
+antes                                     depois
+Software «kind»                           Software «kind»
+  +- ProjectObservatory «subkind»           +- ProjectObservatory «subkind»
+       +- DataManager «role»                +- DataManager «role» -+ «componentOf»
+       +- View «role»                       +- View «role» -------+--> ProjectObservatory
+\end{BVerbatim}
+\end{center}
+
+A correção troca especialização por composição: os dois viram papéis de \texttt{Software}, que lhes dá o princípio de identidade, e partes do observatório por «componentOf» \cite{guizzardi2005ontological}. O mesmo silêncio produziu A2: a conceituação liga os elementos de infraestrutura por ``Suporta Serviços, Gerenciamento de dados e Software'', verbo que admite leitura como parthood, dependência ou execução, e a formalização escolheu «componentOf». Mas trocar o hardware sob uma aplicação não a torna outra aplicação: o vínculo é de manifestação, reificado no relator \texttt{SoftwareExecution}.
+
+\subsection{A relação enunciada em prosa lida como fato único (A8, A3)}
+
+O MPO liga três ou quatro elementos por frase --- o gerenciamento de dados ``Viabiliza a Coleta, Processamento e Armazenamento dos dados'' --- e nunca os nomeia como fatos de aridade fixa. A formalização reificou cada frase num relator: \texttt{Management} medeia projeto, gerenciador e visão; \texttt{Operation}, software, serviço, hardware e rede. A aridade deveria decorrer do fato reificado \cite{guizzardi2005ontological}, e nenhum sobrevive ao teste: três das quatro mediações de \texttt{Operation} admitem zero na ponta mediada, o que contradiz a dependência existencial da mediação. A correção os decompõe em relatores binários nomeados, e revela que a quarta ponta de \texttt{Operation} era redundante com \texttt{Connection}.
+
+A3 vem do mesmo silêncio na dimensão Agentes, cujos atores ``incluem os agentes que participam do observatório, sejam eles indivíduos, grupos organizacionais ou sistemas computacionais'', sem dizer o que liga o indivíduo ao grupo. As três «memberOf» puseram o losango do lado do papel, e a OWL gerada afirma que o grupo é membro do usuário, tornando a mesma classe coleção e complexo funcional. «memberOf» exige o coletivo no todo: a correção inverte as três e eleva de 0 para 1 o mínimo do lado do membro.
+
+\subsection{A perspectiva dinâmica lida como vínculo endurante (A5, A1)}
+
+O MPO descreve Processos como o que fornece ``uma perspectiva dinâmica de seu funcionamento'', e é aqui que a subdeterminação fica mais nítida: a formalização produziu o oposto do que a fonte declara sem contrariar nenhuma frase dela. O modelo nomeia o mesmo fenômeno duas vezes --- como componente (Coleta, Processamento, Armazenamento) e como verbo (Coletar, Tratar, Armazenar), cada verbo realizado ``por meio do componente de Coleta'' --- e não diz qual dos dois vira elemento formal. A formalização levou os verbos ao diagrama estrutural como relatores; mas relatores são endurantes, sem partes temporais, enquanto extrair, transformar e carregar têm início, fim e participantes \cite{guizzardi2008grounding}, e sem evento não há \textit{quando}: a QC3 era irrespondível por construção. A correção torna os três eventos, converte as seis mediações em participações e as reúne por parthood no evento complexo \texttt{EtlProcess}, que dá à QC6 uma cadeia de proveniência a percorrer.
+
+A1 é o mesmo desvio na escala da ação. O MPO exige ``Responsabilizar os atores do observatório de projetos por suas ações no contexto do observatório'', mas não individua a ação sobre o dado --- e o acrônimo CRUD não ocorre em ponto algum do modelo nem da conceituação. Precisando de ações auditáveis, a formalização importou o vocabulário da prática de implementação e o colapsou num relator único; mas criar, atualizar e excluir têm pós-condições incompatíveis, e ler não tem pós-condição alguma: um construto gramatical para quatro construtos ontológicos é sobrecarga no sentido estrito \cite{wand1993ontological}. A correção os separa em quatro tipos disjuntos e exaustivos e, com UFO-B, os trata como eventos.
+
+\subsection{A enumeração lida como tipo único (A6, A7), e o termo sem léxico (A4)}
+
+O MPO define a parte interessada como ``um indivíduo, grupo ou organização que pode afetar ou ser afetada por uma decisão, atividade ou resultado de um projeto'': três coisas com princípios de identidade distintos, pois uma organização sobrevive à troca de todos os seus membros e uma pessoa não é agregado de ninguém. A formalização as reuniu sob um \texttt{Agent} «kind», que fornece exatamente \textbf{um} princípio de identidade. A correção usa a camada de não-sortais: \texttt{Agent} passa a «category» particionada em físico e social, \texttt{Person} e \texttt{Organization} entram como os sortais que faltavam, e \texttt{StakeHolder} passa a «roleMixin» \cite{guizzardi2008grounding}. Com isso, \textit{tipo de ator} --- pressuposto da QC5 --- vira pergunta com resposta.
+
+Em A7 a própria fonte declara a omissão: o kind subjacente a \texttt{System} ``não foi explicitado no diagrama, constituindo uma simplificação do modelo'' --- mas a simplificação não era neutra. O MPO define ator por participação --- sistemas são ``os atores não-humanos, aqui chamados de sistemas'' ---, não por intencionalidade; pendurar \texttt{System} sob \texttt{Agent} afirma que todo sistema externo é agente, quando em UFO-C agente é o que porta momentos intencionais. O papel é legítimo; faltava o sortal que o fundamenta, hoje \texttt{ComputationalSystem}.
+
+Uma última abertura é lexical, e produziu A4. O MPO nomeia o componente encarregado de ``Coordenar os relacionamentos entre os Usuários e a interação desses com os projetos e o Observatório'', e não fixa identificador para ele na língua da formalização. A classe foi batizada \texttt{Relator} --- em português, quem relata; em OntoUML, uma categoria de fundamentação da UFO ---, e desambiguar passou a exigir o contexto tipográfico do diagrama. A correção a renomeia para \texttt{Reporter}.
+
+\subsection{As ferramentas, e os achados além das nove}
+
+Nenhuma das nove veio de ferramenta, e dizê-lo delimita o que cada instrumento afirma. O verificador de conformidade à UFO devolve zero problema sobre a linha de base --- suas regras tratam de estereótipo, identidade, natureza e generalização, e nenhuma alcança restrição meronímica, aridade de relator ou distinção endurante/perdurante ---, e esse zero foi submetido a controle positivo. Quem mede a distância entre os modelos são nove regras estruturais escritas para esta análise, reportadas com os números antes e depois, junto à queda dos \textit{pitfalls} de OWL \cite{poveda2014oops}, na avaliação (\S{}7). A1, A2 e A9 não viraram regra: são defeitos de significado, e codificá-los seria escrever a resposta no gabarito.
+
+Dez achados apareceram fora da lista, todos incorporados ou descartados com razão registrada. Quatro foram absorvidos pelas correções --- mediação com mínimo zero na ponta mediada (por A8), parthood sem todo nem parte declarados (por A3), ausência de disjunção (pelas partições) e a colisão de nomes na saída do OOPS! (por A4). Um veio do instrumento e não da inspeção: \texttt{Observation} era um relator ternário que as duas leituras manuais não viram, resolvido como \textit{construct deficit} de UFO-B --- que a ferramenta ache o que a análise não achou sustenta a tese de que tais deficiências permanecem latentes. Três são lacunas declaradas, e constam como limitação (\S{}8). Duas são artefato do pipeline, não do modelo, e foram descartadas.
+
+\subsection{O que decorre disso para o domínio}
+
+Um modelo de referência que não fixa a interpretação em nove pontos permite que duas iniciativas se declarem aderentes a ele com interpretações semanticamente incompatíveis, sem que a incompatibilidade apareça no discurso de aderência: cada uma pode ler \textit{agrupamento} como taxonomia ou composição, \textit{processo} como vínculo ou evento, \textit{ator} como tipo único ou como categoria sobre identidades distintas, e nenhuma contraria o MPO. A análise converte essa afirmação em demonstração de dois modos: a formalização publicada é uma tentativa real e documentada, e divergiu em nove pontos; e a QC7, sobre dois observatórios instanciados na ontologia revisada, devolve oito conceitos cobertos por apenas um deles contra vinte e três comuns (\S{}7).
+
+\textbf{O limite a declarar é n=1.} Há um formalizador, e o que se demonstra é que o MPO \textbf{permite} os nove desvios --- não que outro os cometeria; generalizar exigiria formalizações independentes do mesmo modelo (\S{}9). O que não depende de n é o traço: cada desvio foi localizado num ponto de abertura do modelo, e esses pontos seguem abertos para o próximo que o formalizar. É o que sustenta a leitura construtiva do resultado --- as nove correções são evolução do MPO.

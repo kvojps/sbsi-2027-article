@@ -23,6 +23,10 @@ O que entra:
     `owl/`), e os dados de instancia dos dois observatorios (`instancias/`);
   - `gufo/`       a gUFO 1.0.0 como distribuida, que a OWL importa, para que a
     reexecucao nao dependa de rede;
+  - `figuras/`    os diagramas por camada do modelo revisado, em TikZ gerado de
+    `ontompo-rodada-2.ontouml.json`. E' o corte que a spec previu para a
+    paginacao: o artigo fica com o diagrama integrado e os por camada vem para
+    ca'. Sao fragmentos, para dar `\input` num documento com `tikz` carregado;
   - `README.md`   orientacao para quem chega do artigo, sem contexto do
     repositorio, e o passo a passo da reexecucao;
   - `reexecutar-consultas.py`  reexecuta as sete QCs sobre os arquivos deste
@@ -47,6 +51,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[2]
 ONTOLOGIA = RAIZ / "artifacts" / "ontology"
+FIGURAS = RAIZ / "artifacts" / "paper" / "figuras"
 GUFO = RAIZ / "sources" / "gufo"
 SAIDA_PADRAO = RAIZ / "artifacts" / "deposit"
 
@@ -190,6 +195,14 @@ def main() -> int:
     shutil.copy2(GUFO / "gufo.ttl", saida / "gufo" / "gufo.ttl")
     shutil.copy2(GUFO / "README.md", saida / "gufo" / "README.md")
 
+    # Os diagramas por camada: o corte de paginacao previsto pela spec os manda
+    # para ca'. O integrado fica no artigo.
+    camadas = sorted(FIGURAS.glob("camada-*.tex"))
+    if camadas:
+        (saida / "figuras").mkdir(parents=True, exist_ok=True)
+        for figura in camadas:
+            shutil.copy2(figura, saida / "figuras" / figura.name)
+
     escrever(
         saida / "reexecutar-consultas.py",
         TEMPLATE_REEXECUTAR.read_text(encoding="utf-8"),
@@ -260,6 +273,7 @@ def main() -> int:
 GLOSSA_TOPO = {
     "ontology": "a arvore de artefatos da pesquisa",
     "gufo": "gUFO 1.0.0 como distribuida (gufo.ttl, README.md)",
+    "figuras": "diagramas por camada do modelo revisado, em TikZ",
     "reexecutar-consultas.py": "reexecuta as sete QCs e confere contra o .csv gravado",
     "README.md": "este arquivo",
     ".zenodo.json": "metadados do deposito, sem autoria",

@@ -21,7 +21,7 @@ sources/                     ENTRADA — somente leitura
 
 artifacts/                   SAÍDA — o que esta pesquisa produz
 ├── ontology/                o modelo, a OWL e suas verificações  → ver o README de lá
-├── paper/                   esqueleto.md, secoes/, artigo.tex, referencias.bib
+├── paper/                   esqueleto.md, secoes/, secoes-tex/, figuras/, artigo.tex
 ├── deposit/                 o pacote do Zenodo anônimo (ticket 09)
 └── submission/              o pacote de registro no JEMS3
 
@@ -42,6 +42,16 @@ CONTEXT.md                   o glossário do domínio
 3. **`.scratch/sbsi-2027-artigo/issues/`** — os 14 tickets, na ordem. O `Status:` de cada um diz onde
    o trabalho está.
 4. **`artifacts/ontology/README.md`** — os artefatos, o que mede o antes/depois, e como reproduzir.
+
+## O texto do artigo também é gerado
+
+O texto mora em `artifacts/paper/secoes/*.md`, um arquivo por seção, e **só lá**. O
+`artifacts/paper/secoes-tex/*.tex` é gerado dele por `tools/generation/gerar_secoes_latex.py`, e o
+`artigo.tex` apenas dá `\input` nesses arquivos — editar um `.tex` de seção à mão desaparece na
+próxima geração, e `verificar_port_latex.py` reprova a divergência conferindo, trecho a trecho, se o
+PDF diz o que o Markdown diz. O mesmo vale para `figuras/` e para `apendice-sparql.tex`.
+
+O que o `artigo.tex` mantém à mão é o preâmbulo, o frontmatter e os cabeçalhos de seção.
 
 ## O modelo editável é código
 
@@ -93,7 +103,19 @@ python tools/verification/verificar_deposito.py                   # confere a ch
 python tools/verification/verificar_analise_ontologica.py         # confere a checklist do 10
 python tools/verification/verificar_seccoes_introducao_metodo.py  # confere a checklist do 11
 python tools/verification/verificar_seccoes_ontologia_avaliacao_conclusao.py  # a checklist do 12
+
+python tools/generation/gerar_secoes_latex.py                     # porta secoes/*.md -> secoes-tex/ (13)
+python tools/generation/gerar_figuras.py                          # os diagramas, do modelo revisado (13)
+python tools/generation/gerar_apendice_sparql.py                  # o Apendice A, das consultas (13)
+cd artifacts/paper && pdflatex artigo && bibtex artigo && pdflatex artigo && pdflatex artigo && cd ../..
+python tools/verification/verificar_port_latex.py                 # confere a checklist do 13
+python tools/verification/controle-port-latex.py                  # controle positivo do verificador do 13
 ```
+
+O PDF do artigo depende de uma distribuição LaTeX com o básico mais `geometry`, `caption`,
+`titlesec`, `etoolbox`, `psnfss` com as fontes URW, `babel-portuges`, `array`, `fancyvrb`, `float` e
+`pgf`; e `verificar_port_latex.py` precisa também de `pdftotext` e `pdfinfo` (poppler) para ler o PDF
+compilado.
 
 Os verificadores Python leem caminhos relativos ao diretório de trabalho: **execute-os da raiz**.
 Tudo é determinístico exceto a resposta do OOPS!, que traz um identificador de requisição novo a cada

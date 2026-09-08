@@ -1,0 +1,57 @@
+% GERADO por tools/generation/gerar_secoes_latex.py a partir de
+% artifacts/paper/secoes/06-ontompo-revisada.md. Nao editar a mao: a proxima geracao
+% desfaz. Corrija o Markdown e regere.
+O artefato revisado reúne 44 classes, 35 relações e 21 generalizações, com duas partições disjuntas e completas, e acompanha as três dimensões do modelo de referência (Figura 1). Todas as classes chegam definidas, o que o artefato analisado não fazia: 24 definições vêm do glossário do apêndice da conceituação, cinco foram redigidas a partir do papel que o conceito exerce nos diagramas, e quinze nasceram com os conceitos que as rodadas introduziram.
+
+\subsection{As três camadas}
+
+Na camada de \textbf{agentes}, \texttt{Agent} deixou de fornecer princípio de identidade e passou a «category» não-sortal, partida em \texttt{PhysicalAgent} e \texttt{SocialAgent}. Sob a primeira está \texttt{Person}, e sob ela o «role» \texttt{ObservatoryUser}, de quem consulta ou alimenta o observatório; sob a segunda, \texttt{Organization}. \texttt{StakeHolder} é «roleMixin», porque a definição de parte interessada abrange indivíduo, grupo e organização --- três princípios de identidade --- e nenhum sortal único a comporta. \texttt{System}, o ator não-humano que troca dados com o observatório, é papel de \texttt{ComputationalSystem}, o tipo que lhe dá identidade e que a formalização deixara implícito; \texttt{ObservatoryGroup} é «collective».
+
+Na camada de \textbf{estruturas}, \texttt{Software} é «kind» e se especializa em três subtipos mutuamente disjuntos: \texttt{ProjectObservatory}, o observatório propriamente dito, é «subkind»; \texttt{DataManager} responde pela coleta, pelo tratamento, pelo armazenamento e pela disponibilização dos dados; e \texttt{View} é a interface pela qual o observatório se apresenta. Os dois últimos são partes do observatório por «componentOf» e se especializam nos papéis que o modelo distingue: o gerenciamento em \texttt{Collector}, \texttt{Processor}, \texttt{Storer} e \texttt{CrudRepository}; a interface em \texttt{Disseminator}, que divulga dados e análises, \texttt{Reporter}, que coordena a interação entre usuários, projetos e sistemas, e \texttt{CrudView}, que dispara operações sobre o repositório. Os conteúdos são \texttt{Project}, \texttt{Knowledge} --- o que a observação produz --- e \texttt{DataSource}; a infraestrutura reúne \texttt{Hardware}, \texttt{Network} e \texttt{Service}. Sete relatores reificam os vínculos que a prosa enuncia por verbo: \texttt{ProjectDataManagement} liga um gerenciamento ao projeto por cujos dados ele responde e \texttt{ViewProvision}, à interface que ele disponibiliza; \texttt{SocialInteraction} e \texttt{Log} ligam um agente à interface com que ele interage e à que registra sua ação; e \texttt{SoftwareExecution}, \texttt{ServiceProvision} e \texttt{Connection} cobrem execução, serviço e rede.
+
+A camada de \textbf{processos} é a que não existia. \texttt{EtlProcess} é «event» complexo com \texttt{Extract}, \texttt{Transform} e \texttt{Load} como partes, cada uma com participantes declarados: a fonte e o papel de coleta na extração, os de coleta e processamento na transformação, os de processamento e armazenamento na carga. \texttt{CrudOperation} é evento partido em \texttt{CreateOperation}, \texttt{ReadOperation}, \texttt{UpdateOperation} e \texttt{DeleteOperation}, e \texttt{Observation} é o evento pelo qual um agente observa um conteúdo divulgado, do qual nasce o \texttt{Knowledge} correspondente. É essa camada que dá ao artefato um \textit{quando} e um \textit{quem}, e dela dependem quatro das sete questões de competência (\S{}7).
+
+\begin{figure}[H]
+\centering
+\input{figuras/ontompo-integrado}
+\caption{A OntoMPO revisada: as três camadas do modelo, com as classes que cada
+uma reúne, suas generalizações e as relações entre elas. Gerada a partir de
+\texttt{ontompo-rodada-2.ontouml.json}.}
+\label{fig:integrado}
+\end{figure}
+
+\subsection{Do modelo em OntoUML à ontologia em OWL}
+
+A implementação não foi traduzida à mão: o modelo revisado passa pela transformação gUFO oficial \cite{almeida2019gufo}, executada pela \texttt{ontouml-js}, e cada elemento da OWL corresponde ao elemento do modelo que o gerou --- é essa correspondência a garantia de preservação semântica que uma tradução manual não oferece.
+
+Sobre o gerado incidem cinco customizações, todas \textbf{aditivas por regra}: nenhuma tripla produzida pela transformação é removida ou alterada, e a contenção do gerado dentro do customizado é conferida a cada execução. A \textbf{C1} declara localmente os termos da gUFO que o artefato referencia --- tipo, rótulo, domínio e alcance ---, para que o arquivo se sustente quando a importação não é resolvida; a \textbf{C2} devolve a cada classe sua definição e seus rótulos preferidos; a \textbf{C3} declara disjuntos os «kind» do modelo, consequência da semântica do estereótipo que a transformação não carrega, e os três subtipos de \texttt{Software}; a \textbf{C4} dá nome à inversa de cada propriedade de objeto, sem o que a proveniência teria de ser percorrida por caminho invertido a cada passo; e a \textbf{C5} acrescenta título, licença e versão. Somam 648 triplas, publicadas à parte como o acréscimo exato.
+
+Três decisões foram deliberadamente \textbf{não} tomadas: os identificadores não foram renomeados, porque isso quebraria a correspondência com o modelo; os papéis irmãos não foram declarados disjuntos, porque nada na fonte impede que um componente colete e armazene; e nenhuma axiomatização pesada foi acrescentada, por decisão de escopo (\S{}8).
+
+\subsection{Métricas do artefato}
+
+A Tabela 2 conta o que está nos arquivos, sem a gUFO importada.
+
+\begin{table}[H]
+\centering
+\caption{Métricas dos artefatos OWL.}
+\label{tab:2}
+\scriptsize
+\begin{tabular}{p{\dimexpr0.3421\linewidth-2\tabcolsep\relax}>{\centering\arraybackslash}p{\dimexpr0.1711\linewidth-2\tabcolsep\relax}>{\centering\arraybackslash}p{\dimexpr0.2105\linewidth-2\tabcolsep\relax}>{\centering\arraybackslash}p{\dimexpr0.2763\linewidth-2\tabcolsep\relax}}
+\hline
+ & \textbf{linha de base} & \textbf{revisada, gerada} & \textbf{revisada, customizada} \\
+\hline
+classes nomeadas & 32 & 44 & 44 \\
+propriedades de objeto & 28 & 34 & 68 \\
+propriedades de dados & 0 & 0 & 0 \\
+subsunções & 60 & 86 & 86 \\
+conjuntos de disjunção & 0 & 2 & 4 \\
+pares de inversas nomeadas & 0 & 0 & 34 \\
+axiomas & 381 & 558 & 809 \\
+anotações & 60 & 78 & 475 \\
+triplas & 441 & 636 & 1284 \\
+\hline
+\end{tabular}
+\end{table}
+
+Duas linhas pedem leitura. As \textbf{propriedades de dados são zero} nas três colunas, e é número para declarar, não para esconder: a conceituação especifica atributos para cada conceito, e nenhum chegou ao diagrama (\S{}8). O salto nas \textbf{anotações} é a C2 medida.

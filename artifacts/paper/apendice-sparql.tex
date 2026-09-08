@@ -1,0 +1,36 @@
+% GERADO por tools/generation/gerar_apendice_sparql.py a partir de
+% artifacts/ontology/consultas/. Nao editar a mao: a proxima geracao desfaz.
+\section*{Apêndice A -- Consultas SPARQL e Resultados}
+\label{sec:apendice-sparql}
+
+As sete consultas e seus resultados completos acompanham o depósito aberto citado na Seção~\ref{sec:avaliacao}, em \texttt{ontology/consultas/}: \texttt{qcN.rq} traz a consulta como foi executada, com o comentário que declara o cenário e o construto que ela percorre, e \texttt{qcN-resultado.csv}, o resultado íntegro, sem recorte nem agregação. O script \texttt{reexecutar-consultas.py}, na raiz do depósito, reexecuta as sete e confere cada uma contra o \texttt{.csv} gravado. As linhas devolvidas por questão são QC1 (8), QC2 (4), QC3 (4), QC4 (1), QC5 (7), QC6 (4), QC7 (31), 59 ao todo, e \texttt{ontology/consultas/divergencias.md} registra, questão a questão, a expectativa escrita antes da execução e em que o resultado divergiu dela.
+
+Vai abaixo, na íntegra, a QC7 --- \textit{dois observatórios distintos que se dizem aderentes ao MPO cobrem os mesmos conceitos?} ---, de que a contribuição depende: para cada conceito da ontologia revisada ela conta os indivíduos de cada observatório que o instanciam, direta ou por subclasse, e as linhas em que uma contagem é zero e a outra não são os conceitos em que as duas iniciativas divergem.
+
+\begin{Verbatim}[fontsize=\tiny, xleftmargin=1.2cm]
+PREFIX ontompo: <https://example.org/ontompo/rodada-2#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?conceito ?rotuloConceito (COUNT(DISTINCT ?iA) AS ?instanciasA) (COUNT(DISTINCT ?iB) AS ?instanciasB)
+WHERE {
+  ?conceito a owl:Class ;
+            skos:prefLabel ?rotuloConceito .
+  FILTER (STRSTARTS(STR(?conceito), "https://example.org/ontompo/rodada-2#"))
+  FILTER (langMatches(lang(?rotuloConceito), "pt"))
+  OPTIONAL {
+    ?iA a ?tipoA .
+    ?tipoA rdfs:subClassOf* ?conceito .
+    FILTER (STRSTARTS(STR(?iA), "https://example.org/ontompo/instancia-observatorio#"))
+  }
+  OPTIONAL {
+    ?iB a ?tipoB .
+    ?tipoB rdfs:subClassOf* ?conceito .
+    FILTER (STRSTARTS(STR(?iB), "https://example.org/ontompo/instancia-observatorio-b#"))
+  }
+}
+GROUP BY ?conceito ?rotuloConceito
+HAVING (COUNT(DISTINCT ?iA) + COUNT(DISTINCT ?iB) > 0)
+ORDER BY ?rotuloConceito ?conceito
+\end{Verbatim}

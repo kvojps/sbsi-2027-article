@@ -51,6 +51,7 @@ Sai com codigo 1 se qualquer verificacao falhar.
 from __future__ import annotations
 
 import math
+import os
 import re
 import shutil
 import subprocess
@@ -335,6 +336,74 @@ def _medir_paginas(diretorio: Path, markdown: str) -> float | None:
     return (int(paginas[-1]) - 1) + float(fim.group(1)) / float(fim.group(2))
 
 
+
+# --------------------------------------------------------------------------
+# medida de paginas: o porte do ticket 13
+# --------------------------------------------------------------------------
+
+# Blocos do `artigo.tex`, na ordem em que aparecem. O porte do ticket 13 e' a
+# medida definitiva de paginacao — o `_para_latex` acima e' um porte grosseiro,
+# feito quando o `.tex` real ainda nao existia, e erra por nao flutuar tabelas
+# nem quebrar celulas. Quando o porte existe e compila, e' ele que vale; o
+# grosseiro so' sobrevive como reserva para quem rodar isto sem o ticket 13
+# pronto.
+BLOCOS_DO_PORTE = (
+    "01", "02", "03", "04", "05", "06", "07", "08", "09",
+    "ia", "referencias", "apendice",
+)
+
+
+def _medir_no_porte(diretorio: Path) -> dict[str, float] | None:
+    """Compila `artigo.tex` com marcas e devolve as paginas de cada bloco.
+
+    Le o artigo portado como terceiro: injeta um `\\typeout` antes de cada
+    cabecalho de secao numa **copia** e conta a distancia entre marcas. Devolve
+    `None` — e o chamador cai na estimativa — quando nao ha `pdflatex`, quando o
+    porte ainda nao foi gerado ou quando a compilacao nao fecha.
+    """
+    if shutil.which("pdflatex") is None:
+        return None
+    artigo = diretorio / "artigo.tex"
+    if not artigo.exists() or not (diretorio / "secoes-tex").is_dir():
+        return None
+
+    marca = r"\typeout{MARCA-\thepage-\the\pagetotal-\the\textheight}"
+    fonte = artigo.read_text(encoding="utf-8")
+    fonte = re.sub(r"(?m)^(\\section\*?\{)", lambda m: marca + "\n" + m.group(1), fonte)
+    for ancora in (r"\bibliographystyle{sbc}", r"\input{apendice-sparql}", r"\end{document}"):
+        if ancora not in fonte:
+            return None
+        fonte = fonte.replace(ancora, marca + "\n" + ancora, 1)
+
+    with tempfile.TemporaryDirectory() as tmp:
+        destino = Path(tmp)
+        for item in diretorio.iterdir():
+            if item.name in {"artigo.tex", "medida.tex"}:
+                continue
+            if item.is_dir():
+                shutil.copytree(item, destino / item.name)
+            else:
+                shutil.copy(item, destino / item.name)
+        (destino / "medida.tex").write_text(fonte, encoding="utf-8")
+        ambiente = {**os.environ, "max_print_line": "1000"}
+        for passo in ("pdflatex", "bibtex", "pdflatex", "pdflatex"):
+            argumentos = (
+                [passo, "medida"]
+                if passo == "bibtex"
+                else [passo, "-interaction=nonstopmode", "medida.tex"]
+            )
+            subprocess.run(argumentos, cwd=destino, capture_output=True, env=ambiente)
+        log = (destino / "medida.log").read_text(encoding="utf-8", errors="ignore")
+
+    marcas = re.findall(r"MARCA-(\d+)-([\d.]+)pt-([\d.]+)pt", log)
+    if len(marcas) != len(BLOCOS_DO_PORTE) + 1:
+        return None
+    posicoes = [(int(p) - 1) + float(t) / float(h) for p, t, h in marcas]
+    medidas = {"frontmatter": posicoes[0], "total": posicoes[-1]}
+    for i, bloco in enumerate(BLOCOS_DO_PORTE):
+        medidas[bloco] = posicoes[i + 1] - posicoes[i]
+    return medidas
+
 def verificar_plano(diretorio: Path, textos: dict[str, str], res: Resultado) -> None:
     esqueleto = _ler(diretorio / "esqueleto.md")
     for numero, nome in SECOES.items():
@@ -349,10 +418,17 @@ def verificar_plano(diretorio: Path, textos: dict[str, str], res: Resultado) -> 
     ):
         return
 
-    compiladas = {n: _medir_paginas(diretorio, t) for n, t in textos.items()}
-    if all(v is not None for v in compiladas.values()):
+    porte = _medir_no_porte(diretorio)
+    compiladas = (
+        {} if porte is not None
+        else {n: _medir_paginas(diretorio, t) for n, t in textos.items()}
+    )
+    if porte is not None:
+        medidas = {n: porte[n] for n in textos}
+        origem = "porte do ticket 13"
+    elif all(v is not None for v in compiladas.values()):
         medidas = compiladas
-        origem = "compilada"
+        origem = "porte provisorio"
     else:
         # Sem pdflatex: estimativa por linhas, calibrada pela medida compilada da
         # secao 5 que o esqueleto registra. Sem essa regua nao ha o que estimar.

@@ -27,6 +27,7 @@ deposit/
   .zenodo.json             metadados do deposito, sem autoria
   MANIFEST.sha256          SHA-256 de cada arquivo do deposito
   README.md                este arquivo
+  figuras/                 diagramas por camada do modelo revisado, em TikZ (3 arquivos)
   gufo/                    gUFO 1.0.0 como distribuida (gufo.ttl, README.md) (2 arquivos)
   ontology/                a arvore de artefatos da pesquisa (66 arquivos)
   reexecutar-consultas.py  reexecuta as sete QCs e confere contra o .csv gravado

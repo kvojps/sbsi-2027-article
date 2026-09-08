@@ -11,8 +11,8 @@ as lições, que são da §8.
 Submeter um modelo conceitual de referência do domínio de observatórios de projetos a uma análise
 fundamentada na UFO expôs nove deficiências representacionais na formalização publicada desse
 modelo, classificadas pela tipologia da Representation Theory e rastreadas até o ponto do texto que
-as permitiu. O artefato revisado foi transformado em OWL, instanciado sobre um cenário documentado e
-interrogado por questões de competência do domínio.
+as permitiu, e o artefato revisado foi transformado em OWL, instanciado e interrogado por questões
+de competência do domínio.
 
 Para Sistemas de Informação, três coisas ficam. A primeira é uma **base semântica verificável para
 auditar aderência**: uma organização que declara seguir o modelo de referência passa a poder mostrar
@@ -26,8 +26,7 @@ respondeu por cada etapa, que é o que a legislação de acesso à informação 
 [L12527]. A terceira é o **procedimento**, reusável fora deste caso: reconstruir a formalização como
 linha de base, confrontar cada compromisso formal com o trecho que o originou, exigir de todo achado
 o duplo teste — a violação ontológica e a abertura no texto —, classificá-lo por uma tipologia
-estabelecida e publicar o antes e o depois como artefatos reexecutáveis. É o que faz da revisão de
-um artefato um resultado sobre o modelo que o originou.
+estabelecida e publicar o antes e o depois como artefatos reexecutáveis.
 
 É o Desafio 3 do II GranDSI-Br, *Eco(Sistemas²) de Informação* [araujo2025grandsi], atendido no
 ponto em que ele é mais duro: a integração entre iniciativas depende de um acordo conceitual que,
@@ -41,5 +40,4 @@ formalizador: **formalizações independentes** do mesmo modelo, por equipes que
 mostrariam se os pontos de abertura identificados aqui produzem divergência de fato, e não apenas se
 a permitem. A quarta é a integração com **modelos de linguagem** como direção, e não como resultado:
 uma ontologia com definições e compromissos explícitos é insumo para extração assistida sobre
-documentação de observatórios, e o que se oferece a essa agenda é o artefato, não a evidência de que
-ela funciona.
+documentação de observatórios, e o que se oferece a essa agenda é o artefato.
