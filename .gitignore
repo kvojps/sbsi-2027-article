@@ -9,6 +9,9 @@ artifacts/paper/*.log
 artifacts/paper/*.out
 artifacts/paper/*.toc
 artifacts/paper/*.pdf
+# medida.* e' o artigo com marcas de \typeout, escrito por quem mede a
+# paginacao por secao; e' descartavel e nunca entra no repositorio.
+artifacts/paper/medida.*
 
 # Dependencias do ferramental OntoUML
 tools/node_modules/
