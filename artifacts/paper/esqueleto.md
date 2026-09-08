@@ -33,8 +33,10 @@ do seu tipo, quando um placeholder sobrevive ou quando uma citação fica sem en
 ## Onde mora o texto
 
 O esqueleto é o plano; o texto de cada seção mora em `secoes/`, um arquivo por seção, e é de lá que o
-ticket 13 porta para o `.tex`. A seção 5 já existe: `secoes/05-analise-ontologica.md`. As seções sem
-arquivo ainda não foram escritas, e o `<!-- conteúdo: ticket NN -->` de cada uma diz de quem é a vez.
+ticket 13 porta para o `.tex`. As seções 1 a 5 já existem: `secoes/01-introducao.md`,
+`02-referencial.md`, `03-trabalhos-relacionados.md`, `04-metodo.md` e `05-analise-ontologica.md`. As
+seções sem arquivo ainda não foram escritas, e o `<!-- conteúdo: ticket NN -->` de cada uma diz de
+quem é a vez.
 
 ## Orçamento de páginas
 
@@ -94,6 +96,9 @@ O abstract em inglês do PDF tem de ser **idêntico** ao registrado no JEMS3 —
 
 *Labels: Research Context; Scientific and/or Practical Problem. Orçamento: 1,25 página. Ticket 11.*
 
+**Texto escrito:** `secoes/01-introducao.md`. Conferência (as quatro seções de uma vez):
+`python tools/verification/verificar_seccoes_introducao_metodo.py`.
+
 Deve entregar:
 
 - Situar o trabalho no tripé Pessoas, Processos e Tecnologias.
@@ -108,13 +113,15 @@ Deve entregar:
   formalização do MPO.
 - Mapa do artigo.
 
-<!-- conteúdo: ticket 11 -->
+<!-- conteúdo: secoes/01-introducao.md (ticket 11) -->
 
 ---
 
 ## 2. Referencial Teórico
 
 *Labels: Research Context; Related IS Theory. Orçamento: 2,50 páginas. Ticket 11.*
+
+**Texto escrito:** `secoes/02-referencial.md`.
 
 Deve entregar:
 
@@ -132,13 +139,15 @@ Sem nenhum resquício da defesa de "lightweight ontology" — foi abandonada pel
 seção 4 o que for dito aqui sobre Methontology: a redundância entre seções foi crítica explícita de
 um parecer.
 
-<!-- conteúdo: ticket 11 -->
+<!-- conteúdo: secoes/02-referencial.md (ticket 11) -->
 
 ---
 
 ## 3. Trabalhos Relacionados
 
 *Label: Research Context. Orçamento: 0,75 página. Ticket 11.*
+
+**Texto escrito:** `secoes/03-trabalhos-relacionados.md`.
 
 Deve entregar:
 
@@ -147,13 +156,15 @@ Deve entregar:
 - O que este trabalho faz que nenhum deles faz — a lacuna precisa ficar nomeada, não implícita, para
   o revisor que avalia **Novidade**.
 
-<!-- conteúdo: ticket 11 -->
+<!-- conteúdo: secoes/03-trabalhos-relacionados.md (ticket 11) -->
 
 ---
 
 ## 4. Método de Pesquisa
 
 *Label: Research Method. Orçamento: 1,25 página. Ticket 11.*
+
+**Texto escrito:** `secoes/04-metodo.md`.
 
 Deve entregar:
 
@@ -165,7 +176,7 @@ Deve entregar:
   cada achado foi classificado na tipologia de Representation Theory.
 - O desenho da avaliação, nas três frentes, com a razão de cada uma.
 
-<!-- conteúdo: ticket 11 -->
+<!-- conteúdo: secoes/04-metodo.md (ticket 11) -->
 
 ---
 

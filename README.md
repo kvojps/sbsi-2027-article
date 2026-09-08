@@ -91,6 +91,7 @@ python tools/verification/verificar_demais_qc.py                  # confere a ch
 python tools/generation/gerar_deposito.py                         # monta artifacts/deposit/ (ticket 09)
 python tools/verification/verificar_deposito.py                   # confere a checklist do 09
 python tools/verification/verificar_analise_ontologica.py         # confere a checklist do 10
+python tools/verification/verificar_seccoes_introducao_metodo.py  # confere a checklist do 11
 ```
 
 Os verificadores Python leem caminhos relativos ao diretório de trabalho: **execute-os da raiz**.

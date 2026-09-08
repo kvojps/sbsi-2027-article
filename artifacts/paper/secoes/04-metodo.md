@@ -1,0 +1,69 @@
+# 4. Método de Pesquisa
+
+<!--
+Superfície de escrita da seção 4. Convenções em `01-introducao.md`; conferência em
+`tools/verification/verificar_seccoes_introducao_metodo.py`.
+
+Esta é a única seção que descreve a Methontology, e ela descreve o **desenho** da avaliação — os
+resultados são da seção 7. -->
+
+O envelope metodológico é o Design Science Research, que trata a pesquisa como construção e
+avaliação de artefatos para resolver problemas de classe identificada [hevner2004design,
+peffers2007design]. A escolha não abre um ciclo novo: o próprio MPO é artefato de um ciclo de DSR
+em curso, construído a partir de estudos exploratórios [vieira2020universal], publicado em versão
+preliminar [vieira2021model] e evoluído por avaliações com especialistas e estudos de caso
+publicados nos Anais do SBSI [vieira2022evaluating] e por survey [vieira2023survey], até sua
+versão consolidada [vieira2022thesis]. Este trabalho é nova iteração desse ciclo, na fase de
+avaliação: submete o modelo a um critério que as avaliações anteriores não aplicaram — a
+consistência de seus compromissos ontológicos — e devolve ao ciclo um modelo revisado com a
+evidência que justifica cada revisão.
+
+O método de construção do artefato ontológico é a Methontology [fernandez1997methontology], que
+organiza o desenvolvimento em especificação, conceitualização, formalização, integração,
+implementação e avaliação, com artefatos intermediários prescritos para cada etapa. Duas
+alternativas foram consideradas. A NeOn [suarez2012neon] organiza o desenvolvimento em cenários
+centrados no reuso de recursos ontológicos e em redes de ontologias; sua força não é exercida
+aqui, onde a fonte é um único documento em prosa e não há rede a compor. A LOT [poveda2022lot] é
+orientada à indústria e elicita requisitos junto a interlocutores em ciclos iterativos; pressupõe
+disponibilidade de especialistas para elicitação, que está fora do escopo deste trabalho (§8). A
+Methontology foi mantida por duas razões. A primeira é a rastreabilidade: seus artefatos
+intermediários — glossário de termos, árvore de classificação de conceitos, dicionário de verbos e
+tabelas de fórmulas e regras — ligam cada termo do documento em prosa ao elemento formal que dele
+derivou, e é essa cadeia que torna auditável o traço de cada deficiência até o ponto do modelo que
+a permitiu. A segunda é a comparabilidade: a formalização analisada foi construída sob a mesma
+metodologia, e assim o antes e o depois se comparam etapa a etapa.
+
+O procedimento da análise teve quatro passos. **Reconstrução:** a formalização publicada foi
+remontada em OntoUML como linha de base, a partir dos diagramas em resolução de origem e dos
+artefatos de conceitualização, sem nenhuma correção — corrigi-la destruiria seu valor como termo
+de comparação. **Leitura:** cada classe, estereótipo e relação da linha de base foi confrontado
+com o trecho do modelo de referência que o originou. **Qualificação:** contou como deficiência
+todo ponto que satisfez dois testes simultâneos — o modelo formal se compromete com algo que a UFO
+proíbe ou deixa de distinguir, *e* esse compromisso não é imposto pelo texto do modelo de
+referência, isto é, outra leitura do mesmo texto produziria modelo distinto. Sem o primeiro teste
+o achado seria preferência de modelagem; sem o segundo, conserto de erro próprio.
+**Classificação:** cada achado recebeu uma das quatro categorias da Representation Theory
+[wand1993ontological] quando é deficiência de mapeamento, ou foi explicitamente marcado como fora
+da tipologia, com a razão registrada. As correções foram aplicadas em duas rodadas — a primeira
+estrutural, a segunda de adoção das microteorias de eventos e de agentes —, preservadas em
+separado, de modo que linha de base e rodadas coexistam e sejam comparáveis entre si. O modelo
+revisado foi transformado em OWL pela transformação gUFO oficial [almeida2019gufo], com
+customização aditiva sobre o gerado e publicação do *diff* (§6).
+
+A avaliação foi desenhada em três frentes, com pesos distintos. A primeira, e única que valida as
+afirmações substantivas do artigo, é a **instanciação seguida de consulta**: a ontologia revisada
+foi povoada com os dados de um observatório de projetos de pesquisa e extensão de uma universidade
+pública brasileira, documentado nos Anais Estendidos do SBSI [sbsi_estendido], e interrogada por
+sete questões de competência em SPARQL. As sete são questões de domínio — quem executou uma carga
+e quando, qual a cadeia de proveniência de um conteúdo divulgado, se dois observatórios que se
+dizem aderentes ao modelo cobrem os mesmos conceitos —, e não perguntas sobre a arquitetura da
+ontologia, que qualquer ontologia responderia do mesmo modo. A comparação entre iniciativas exigiu
+um segundo observatório, sintético, declarado como limitação (§8). A segunda frente é a
+**verificação de conformidade à UFO** sobre a linha de base e o modelo revisado, que atesta
+conformidade sintática e semântica, não substância. A terceira é a **detecção de *pitfalls* na
+OWL** [poveda2014oops], igualmente executada antes e depois. As duas últimas só produzem evidência
+como diferença entre execuções, e por isso cada verificador foi submetido a controle positivo —
+execução deliberada sobre um modelo com defeito conhecido, que prova que a regra dispara —, sem o
+que um relatório vazio não distinguiria *sem problemas* de *regra que nunca dispara*. Consultas,
+resultados completos e relatórios estão no depósito aberto que acompanha o artigo, reexecutáveis a
+partir dele.
