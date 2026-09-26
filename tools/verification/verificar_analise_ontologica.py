@@ -455,16 +455,18 @@ def verificar_tabela(texto: str, res: Resultado) -> None:
             continue
         celulas = linhas[codigo]
         res.exigir(
-            len(celulas) == 4 and all(celulas[1:]),
-            f"{codigo}: a Tabela 1 tem celula vazia — deficiencia, classificacao e traco",
+            len(celulas) == 6 and all(celulas[1:]),
+            f"{codigo}: a Tabela 1 tem celula vazia — fonte, decisao, problema, correcao e classificacao",
         )
-        classificacao = celulas[2].lower()
+        if len(celulas) != 6 or not all(celulas[1:]):
+            continue
+        classificacao = celulas[5].lower()
         res.exigir(
             any(t in classificacao for t in TIPOLOGIA) or MARCA_FORA in classificacao,
-            f"{codigo}: classificacao «{celulas[2]}» nao e da tipologia nem esta marcada "
+            f"{codigo}: classificacao «{celulas[5]}» nao e da tipologia nem esta marcada "
             "como fora dela",
         )
-        traco = celulas[3]
+        traco = celulas[1]
         res.exigir(
             len(traco.split()) >= 4,
             f"{codigo}: o traco ate o MPO esta vazio ou generico demais («{traco}»)",
@@ -474,7 +476,7 @@ def verificar_tabela(texto: str, res: Resultado) -> None:
             f"{codigo} aparece so na Tabela 1: a prosa precisa dizer o que foi observado, "
             "por que e deficiencia e como foi corrigida",
         )
-    fora = [c for c, cel in linhas.items() if MARCA_FORA in cel[2].lower()]
+    fora = [c for c, cel in linhas.items() if len(cel) == 6 and MARCA_FORA in cel[5].lower()]
     if fora:
         res.exigir(
             all(c in prosa for c in fora)

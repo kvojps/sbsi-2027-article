@@ -506,14 +506,11 @@ def verificar_introducao(texto: str, res: Resultado) -> None:
         "o Desafio 2 nao aparece como alinhamento secundario",
     )
     res.exigir(
-        re.search(r"contribui[çc][ãa]o", minusculo) is not None
-        and re.search(r"an[áa]lise ontol[óo]gica", minusculo) is not None
-        and re.search(r"modelo revisado", minusculo) is not None,
-        "a contribuicao declarada — a analise e o modelo revisado — nao esta explicita",
+        all(t in minusculo for t in ("procedimento reusável", "ontompo revisada", "pacote de evidências reexecutáveis")),
+        "a introducao nao enumera procedimento, modelo revisado e evidencias reexecutaveis",
     )
     res.exigir(
-        re.search(r"n[ãa]o (é|e) formalizar o MPO|n[ãa]o (é|e) a formaliza[çc][ãa]o", corpo)
-        is not None,
+        re.search(r"n[ãa]o se trata de formalizar o\s+MPO", corpo) is not None,
         "a introducao nao diz que a contribuicao NAO e formalizar o MPO",
     )
     secoes_citadas = set(re.findall(r"§(\d)", corpo))
@@ -614,6 +611,7 @@ def verificar_relacionados(texto: str, res: Resultado) -> None:
     )
     analises = {
         "recker2011ontological",
+        "bernasconi2022semantic",
         "guizzardi2005ontological",
         "gonccalves2011using",
         "mario2020handling",
@@ -629,8 +627,8 @@ def verificar_relacionados(texto: str, res: Resultado) -> None:
         "a lacuna nao esta nomeada: o revisor de Novidade precisa le-la, nao inferi-la",
     )
     res.exigir(
-        re.search(r"nenhum(a)?\b", corpo, re.IGNORECASE) is not None,
-        "a lacuna nao diz o que nenhum dos trabalhos faz",
+        "A lacuna é positiva e delimitada" in corpo,
+        "a lacuna nao delimita positivamente a combinacao que o artigo investiga",
     )
 
 

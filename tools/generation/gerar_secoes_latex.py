@@ -5,7 +5,10 @@
 Uso: python tools/generation/gerar_secoes_latex.py [diretorio-do-artigo]
 
 O texto do artigo mora em `artifacts/paper/secoes/*.md`, uma superficie por secao, e
-e' de la' que os verificadores dos tickets 10, 11 e 12 o conferem. Este gerador
+e' de la' que os verificadores dos tickets 10, 11 e 12 o conferem. O ticket 17
+conserva as nove superficies: as secoes 2 e 3 formam um bloco argumentativo
+integrado, mas permanecem arquivos distintos para preservar a numeracao e os
+tracos aos artefatos. Este gerador
 porta cada uma para `artifacts/paper/secoes-tex/*.tex`, que o `artigo.tex` da' `\\input`.
 
 **Por que gerar em vez de portar a mao.** Transcrever 9.300 palavras para LaTeX
@@ -51,7 +54,8 @@ from pathlib import Path
 ARTIGO_PADRAO = Path("artifacts/paper")
 
 # Cada superficie, o numero da secao que ela ocupa no artigo e o titulo que o
-# esqueleto declara. O `# N. Titulo` do Markdown e' conferido contra isto: uma
+# esqueleto declara. §§2--3 permanecem separadas aqui apesar de formarem o
+# bloco fundamentos--lacuna; o `# N. Titulo` e' conferido contra isto: uma
 # secao renomeada de um lado so' aborta a geracao.
 SECOES = [
     ("01-introducao.md", "1", "Introdução"),
@@ -81,6 +85,8 @@ CORPO_DA_TABELA = "\\scriptsize"
 SUBSTITUICOES = {
     "\u201c": "``",
     "\u201d": "''",
+    "\u00ab": "\\guillemotleft{}",
+    "\u00bb": "\\guillemotright{}",
     "\u2014": "---",
     "\u2013": "--",
     "\u00a7": "\\S{}",

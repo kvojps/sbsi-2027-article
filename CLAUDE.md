@@ -11,6 +11,34 @@
 - **Todo ticket ganha um verificador** em `tools/verification/`, que lê o artefato como terceiro, sem
   importar do código que o gerou. Execute-os da raiz do repositório.
 
+## Gerar LaTeX e PDF do artigo
+
+O Markdown em `artifacts/paper/secoes/` é a fonte do texto. Para gerar os arquivos LaTeX em
+`artifacts/paper/secoes-tex/`, execute da raiz:
+
+```sh
+python3 tools/generation/gerar_secoes_latex.py
+```
+
+Não edite `secoes-tex/*.tex` à mão. Para gerar `artifacts/paper/artigo.pdf`, execute o ciclo abaixo:
+
+```sh
+TEXLIVE_BIN=/home/kvojps/texlive/2026/bin/x86_64-linux
+cd artifacts/paper
+"$TEXLIVE_BIN/pdflatex" -interaction=nonstopmode artigo.tex
+"$TEXLIVE_BIN/bibtex" artigo
+"$TEXLIVE_BIN/pdflatex" -interaction=nonstopmode artigo.tex
+"$TEXLIVE_BIN/pdflatex" -interaction=nonstopmode artigo.tex
+```
+
+A instalação TeX Live não entra automaticamente no `PATH`. Para conferir o PDF gerado, volte à raiz
+e rode:
+
+```sh
+TEXLIVE_BIN=/home/kvojps/texlive/2026/bin/x86_64-linux \
+  PATH="$TEXLIVE_BIN:$PATH" python3 tools/verification/verificar_port_latex.py
+```
+
 Mapa em `README.md`, vocabulário em `CONTEXT.md`, razões em `docs/adr/0001-layout-do-repositorio.md`.
 
 ## Agent skills

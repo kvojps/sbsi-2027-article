@@ -7,7 +7,7 @@ Convenções em `06-ontompo-revisada.md`; conferência em
 `tools/verification/verificar_seccoes_ontologia_avaliacao_conclusao.py`.
 
 **Pendência humana (ticket 14):** conferir, antes da submissão, se o texto abaixo corresponde ao uso
-efetivo — a declaração é de responsabilidade de quem assina, e uma declaração imprecisa é pior que
+efetivo; a declaração é de responsabilidade de quem assina, e uma declaração imprecisa é pior que
 nenhuma. Nomear ferramenta é exigência do Código de Conduta e não identifica autoria; a varredura de
 anonimato do ticket 14 confere isso.
 -->

@@ -6,33 +6,28 @@ Superfície de escrita da seção 3. Convenções em `01-introducao.md`; confer�
 
 A lacuna precisa ficar **nomeada**, e não implícita: é o que o critério de Novidade avalia. -->
 
-Ontologias já foram empregadas em contextos de observatório, sempre como meio de integrar e
-recuperar os dados do fenômeno observado. Numa delas, o casamento semântico entre pedidos de
-usuários e serviços de processamento de imagens sustenta um observatório virtual multiagente
-[chen2008apply]; o *Virtual Solar-Terrestrial Observatory* organiza dados de física solar sob
-ontologias que ocultam a heterogeneidade das fontes [fox2009ontology]; no monitoramento ambiental,
-uma ontologia modular fundamentada na Basic Formal Ontology integra desastres, sensores e medições
-e habilita inferência sobre dados de precipitação [masmoudi2018ontology]; e, na saúde, um modelo
-conceitual de observatórios incorpora camada semântica para estruturar o conhecimento que sustenta
-políticas públicas [yoshiura2018towards]. Em todos, a ontologia é infraestrutura para os dados
-observados; nenhum toma como objeto o modelo conceitual que descreve o próprio observatório.
+O posicionamento compara papéis; não pretende inventariar toda a literatura. Ontologias em
+observatórios servem como infraestrutura para dados observados, como os de serviços de imagens
+[chen2008apply], dados solar-terrestres [fox2009ontology], desastres e sensores
+[masmoudi2018ontology] e políticas de saúde [yoshiura2018towards]. Em outro eixo, a análise
+ontológica toma modelos conceituais como objeto: a Representation Theory examina gramáticas
+[recker2011ontological], e o *ontological unpacking* revisa o Viral Conceptual Model com OntoUML
+para explicitar sua semântica e apoiar interoperabilidade [bernasconi2022semantic]. A reconciliação
+de modelos de domínio com a UFO também foi aplicada à administração pública brasileira [detoni2019ontologia].
 
-Na direção complementar, há trabalhos que tomam modelos conceituais como objeto e os avaliam
-ontologicamente. A Representation Theory foi aplicada a gramáticas de modelagem de processos para
-identificar deficiências representacionais e medir seu efeito percebido sobre quem as usa
-[recker2011ontological]. Na linha da UFO, a avaliação ontológica de linguagens e modelos é o
-método que fundamenta a própria OntoUML [guizzardi2005ontological], e há ontologias de referência
-construídas por reconciliação de um modelo de domínio preexistente com as categorias da UFO — na
-cardiologia [gonccalves2011using], no direito penal [mario2020handling] e na administração pública
-brasileira, em que a autorização orçamentária e a execução da despesa recebem ontologia de
-referência publicada na iSys [detoni2019ontologia]. Esses trabalhos demonstram o método; nenhum
-deles tem por objeto um modelo de referência do domínio de observatórios.
+**Quadro comparativo dos trabalhos mais próximos.**
 
-A lacuna que este artigo ocupa está no cruzamento das duas linhas, e tem três marcas. Primeira:
-nenhum trabalho submete um modelo de referência publicado do domínio de observatórios a uma
-análise ontológica crítica. Segunda: nos trabalhos que analisam modelos, o resultado é a ontologia
-construída; aqui o resultado declarado são as deficiências que a formalização publicada expôs,
-classificadas por uma teoria de SI, com cada achado rastreado até o ponto do texto do modelo de
-referência que o permitiu — é o que converte correção de um artefato em conhecimento sobre o modelo
-que o originou. Terceira: a evidência é a diferença entre um estado anterior e um posterior, ambos
-publicados e reexecutáveis, e não uma afirmação sobre a qualidade do resultado final.
+| Linha de trabalho | Objeto | Fundamentação | Traço à fonte | Artefato e avaliação |
+| --- | --- | --- | --- | --- |
+| Ontologias de observatórios | Dados observados | Ontologia de domínio | Não é o foco | Infraestrutura e inferência sobre dados |
+| *Ontological unpacking* | Modelo conceitual viral | UFO e OntoUML | Modelo para semântica explicitada | OntoVCM e aplicações de interoperabilidade |
+| Este trabalho | Modelo de referência de observatórios de projetos | UFO e Representation Theory | Prosa, decisão e correção | OntoMPO revisada; comparação antes/depois reexecutável |
+
+A lacuna é positiva e delimitada: falta articular, para um modelo de referência de observatórios de
+projetos, o traço da prosa até a decisão de formalização e sua correção, a classificação dos achados
+pela Representation Theory e a evidência reexecutável da diferença entre linha de base e revisão.
+O trabalho se restringe a essa combinação: não reduz as ontologias de observatórios à análise de
+seus modelos, nem confunde o *unpacking* do VCM com uma comparação operacional antes/depois. A
+contribuição consiste em uma análise rastreável, na OntoMPO revisada e no pacote de evidências que
+permite reexecutar suas capacidades. A próxima seção explicita o desenho que produz os achados, o
+artefato e a evidência avaliativa.

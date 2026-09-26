@@ -71,15 +71,15 @@ entram no PDF.
 | # | Seção | Label do resumo estruturado | Páginas |
 |---|-------|-----------------------------|---------|
 | — | Frontmatter (título, abstract estruturado, resumo, palavras-chave) | todos os sete | 1,18 |
-| 1 | Introdução | Research Context; Scientific and/or Practical Problem | 1,26 |
-| 2 | Referencial Teórico | Research Context; Related IS Theory | 2,29 |
+| 1 | Introdução | Research Context; Scientific and/or Practical Problem; Research Method; Contributions and Impact to IS area | 1,20 |
+| 2 | Referencial Teórico | Research Context; Related IS Theory | 1,70 |
 | 3 | Trabalhos Relacionados | Research Context | 0,80 |
-| 4 | Método de Pesquisa | Research Method | 1,37 |
-| 5 | Análise Ontológica do MPO | Proposed Solution and/or Analysis | 3,43 |
-| 6 | A OntoMPO Revisada | Proposed Solution and/or Analysis | 2,34 |
-| 7 | Avaliação | Research Method; Summary of Results | 1,67 |
-| 8 | Discussão e Limitações | Summary of Results; Contributions and Impact to IS area | 1,05 |
-| 9 | Conclusão e Trabalhos Futuros | Contributions and Impact to IS area | 0,84 |
+| 4 | Método de Pesquisa | Research Method | 1,45 |
+| 5 | Análise Ontológica do MPO | Proposed Solution and/or Analysis | 3,65 |
+| 6 | A OntoMPO Revisada | Proposed Solution and/or Analysis | 2,25 |
+| 7 | Avaliação | Research Method; Summary of Results | 1,95 |
+| 8 | Discussão e Limitações | Summary of Results; Contributions and Impact to IS area | 1,25 |
+| 9 | Conclusão e Trabalhos Futuros | Contributions and Impact to IS area | 0,80 |
 | — | Declaração de uso de IA generativa | — | 0,32 |
 | — | Referências | — | 2,77 |
 | — | Apêndice A — Consultas SPARQL e resultados completos | — | 0,65 |
@@ -90,8 +90,16 @@ não um detalhe de contabilidade.** Cada bloco tem duas centésimas acima do que
 do orçamento um alarme: qualquer parágrafo acrescentado reprova o verificador da seção antes de
 chegar ao PDF. Acrescentar texto a partir daqui exige cortar em outro lugar na mesma passada.
 
-A seção 5 não é candidata a corte: é onde a contribuição mora. O texto escrito mede **3,41 páginas**
-no porte compilado, dentro do que a tabela lhe dá.
+A estrutura conserva nove seções para não criar uma segunda renumeração no artigo e nos artefatos,
+mas §§2--3 funcionam como um só bloco argumentativo: §2 estabelece os fundamentos necessários para
+ler o MPO e §3 o compara à literatura e encerra com a lacuna. A sequência de leitura é, portanto,
+**problema → lacuna → desenho → achados → artefato → avaliação → implicações**. Os números acima
+redistribuem o mesmo corpo de 15,05 páginas; a próxima compilação é a medida que confirma o porte,
+não autorização para acrescentar texto.
+
+Registro de calibração do porte do ticket 13: a versão então composta da seção 5 mede **3,41
+páginas**. Esse valor é apenas a régua dos verificadores sem LaTeX; o orçamento de 3,65 páginas
+acima é o limite da redistribuição e deverá ser confirmado por compilação.
 
 Os sete labels do resumo estruturado, na ordem exigida pela chamada: *Research Context*; *Scientific
 and/or Practical Problem*; *Proposed Solution and/or Analysis*; *Related IS Theory*; *Research
@@ -119,7 +127,8 @@ forma economiza 0,15 página de `\parskip`.
 
 ## 1. Introdução
 
-*Labels: Research Context; Scientific and/or Practical Problem. Orçamento: 1,26 página. Ticket 11.*
+*Labels: Research Context; Scientific and/or Practical Problem; Research Method; Contributions and
+Impact to IS area. Orçamento: 1,20 página. Tickets 11, 15--17.*
 
 **Texto escrito:** `secoes/01-introducao.md`. Conferência (as quatro seções de uma vez):
 `python tools/verification/verificar_seccoes_introducao_metodo.py`.
@@ -136,6 +145,7 @@ Deve entregar:
   secundariamente o Desafio 2, "SI Inteligentes sob a Perspectiva Sociotécnica".
 - Declaração explícita da contribuição: a análise ontológica e o modelo revisado — não a
   formalização do MPO.
+- As duas perguntas de pesquisa, o limite inferencial de cada uma e as três contribuições.
 - Mapa do artigo.
 
 <!-- conteúdo: secoes/01-introducao.md (ticket 11) -->
@@ -144,7 +154,7 @@ Deve entregar:
 
 ## 2. Referencial Teórico
 
-*Labels: Research Context; Related IS Theory. Orçamento: 2,29 páginas. Ticket 11.*
+*Labels: Research Context; Related IS Theory. Orçamento: 1,70 página. Tickets 11 e 17.*
 
 **Texto escrito:** `secoes/02-referencial.md`.
 
@@ -162,7 +172,8 @@ Deve entregar:
 
 Sem nenhum resquício da defesa de "lightweight ontology" — foi abandonada pela spec. Sem repetir na
 seção 4 o que for dito aqui sobre Methontology: a redundância entre seções foi crítica explícita de
-um parecer.
+um parecer. Esta seção abre o bloco integrado de fundamentos e trabalhos relacionados; a §3 o fecha
+com o quadro comparativo e a lacuna delimitada.
 
 <!-- conteúdo: secoes/02-referencial.md (ticket 11) -->
 
@@ -170,7 +181,7 @@ um parecer.
 
 ## 3. Trabalhos Relacionados
 
-*Label: Research Context. Orçamento: 0,80 página. Ticket 11.*
+*Label: Research Context. Orçamento: 0,80 página. Tickets 11, 15 e 17.*
 
 **Texto escrito:** `secoes/03-trabalhos-relacionados.md`.
 
@@ -179,7 +190,7 @@ Deve entregar:
 - Ontologias em contextos de observatório (virtual, solar-terrestre, ambiental, de saúde).
 - Análises ontológicas de modelos conceituais fundamentadas em UFO ou em BWW.
 - O que este trabalho faz que nenhum deles faz — a lacuna precisa ficar nomeada, não implícita, para
-  o revisor que avalia **Novidade**.
+  o revisor que avalia **Novidade**. Ela encerra o bloco §§2--3 e prepara o desenho da §4.
 
 <!-- conteúdo: secoes/03-trabalhos-relacionados.md (ticket 11) -->
 
@@ -187,7 +198,7 @@ Deve entregar:
 
 ## 4. Método de Pesquisa
 
-*Label: Research Method. Orçamento: 1,37 página. Ticket 11.*
+*Label: Research Method. Orçamento: 1,45 página. Tickets 11, 16 e 17.*
 
 **Texto escrito:** `secoes/04-metodo.md`.
 
@@ -207,7 +218,7 @@ Deve entregar:
 
 ## 5. Análise Ontológica do MPO
 
-*Label: Proposed Solution and/or Analysis. Orçamento: 3,43 páginas. Ticket 10.*
+*Label: Proposed Solution and/or Analysis. Orçamento: 3,65 páginas. Tickets 10 e 17.*
 
 **Texto escrito:** `secoes/05-analise-ontologica.md`. Conferência:
 `python tools/verification/verificar_analise_ontologica.py`.
@@ -252,7 +263,7 @@ relatório do plugin e no texto desta seção. Achado órfão é defeito.
 
 ## 6. A OntoMPO Revisada
 
-*Label: Proposed Solution and/or Analysis. Orçamento: 2,34 páginas, a Figura 1 incluída. Ticket 12; a figura é do 13.*
+*Label: Proposed Solution and/or Analysis. Orçamento: 2,25 páginas, a Figura 1 incluída. Tickets 12 e 17; a figura é do 13.*
 
 Deve entregar:
 
@@ -271,7 +282,7 @@ uma vez): `python tools/verification/verificar_seccoes_ontologia_avaliacao_concl
 
 ## 7. Avaliação
 
-*Labels: Research Method; Summary of Results. Orçamento: 1,67 página. Ticket 12.*
+*Labels: Research Method; Summary of Results. Orçamento: 1,95 página. Tickets 12, 16 e 17.*
 
 Deve entregar as três frentes, nesta ordem de importância:
 
@@ -291,7 +302,7 @@ sumarizados: a avaliação sumarizada foi crítica explícita de um parecer.
 
 ## 8. Discussão e Limitações
 
-*Labels: Summary of Results; Contributions and Impact to IS area. Orçamento: 1,05 página. Ticket 12.*
+*Labels: Summary of Results; Contributions and Impact to IS area. Orçamento: 1,25 página. Tickets 12 e 17.*
 
 Deve entregar:
 
@@ -311,7 +322,7 @@ Deve entregar:
 
 ## 9. Conclusão e Trabalhos Futuros
 
-*Label: Contributions and Impact to IS area. Orçamento: 0,84 página. Ticket 12.*
+*Label: Contributions and Impact to IS area. Orçamento: 0,80 página. Tickets 12 e 17.*
 
 Deve entregar:
 

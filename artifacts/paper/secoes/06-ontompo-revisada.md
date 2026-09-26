@@ -9,14 +9,14 @@ aqui e nas seções 7 a 9:
 
   - aspas curvas “…” marcam citação **verbatim** da fonte, e só isso;
   - «…» marcam estereótipo de OntoUML, nunca citação;
-  - todo número é conferido contra o artefato que o produziu — as métricas contra
+  - todo número é conferido contra o artefato que o produziu; as métricas contra
     `artifacts/ontology/owl/metricas.md`, a contagem de elementos contra o relatório do plugin;
   - nada atribui as deficiências ao MPO em linguagem natural.
 -->
 
 O artefato revisado reúne 44 classes, 35 relações e 21 generalizações, com duas partições disjuntas
-e completas, e acompanha as três dimensões do modelo de referência (Figura 1). Todas as classes
-chegam definidas, o que o artefato analisado não fazia: 24 definições vêm do glossário do apêndice
+e completas, e acompanha as três dimensões do modelo de referência (Figura 1). Ao contrário do
+artefato analisado, todas as classes estão definidas: 24 definições vêm do glossário do apêndice
 da conceituação, cinco foram redigidas a partir do papel que o conceito exerce nos diagramas, e
 quinze nasceram com os conceitos que as rodadas introduziram.
 
@@ -26,7 +26,7 @@ Na camada de **agentes**, `Agent` deixou de fornecer princípio de identidade e 
 não-sortal, partida em `PhysicalAgent` e `SocialAgent`. Sob a primeira está `Person`, e sob ela o
 «role» `ObservatoryUser`, de quem consulta ou alimenta o observatório; sob a segunda,
 `Organization`. `StakeHolder` é «roleMixin», porque a definição de parte interessada abrange
-indivíduo, grupo e organização — três princípios de identidade — e nenhum sortal único a comporta.
+indivíduo, grupo e organização, que têm três princípios de identidade, e nenhum sortal único a comporta.
 `System`, o ator não-humano que troca dados com o observatório, é papel de `ComputationalSystem`, o
 tipo que lhe dá identidade e que a formalização deixara implícito; `ObservatoryGroup` é
 «collective».
@@ -38,8 +38,8 @@ responde pela coleta, pelo tratamento, pelo armazenamento e pela disponibilizaç
 observatório por «componentOf» e se especializam nos papéis que o modelo distingue: o gerenciamento
 em `Collector`, `Processor`, `Storer` e `CrudRepository`; a interface em `Disseminator`, que divulga
 dados e análises, `Reporter`, que coordena a interação entre usuários, projetos e sistemas, e
-`CrudView`, que dispara operações sobre o repositório. Os conteúdos são `Project`, `Knowledge` — o
-que a observação produz — e `DataSource`; a infraestrutura reúne `Hardware`, `Network` e `Service`.
+`CrudView`, que dispara operações sobre o repositório. Os conteúdos são `Project`, `Knowledge`, que
+a observação produz, e `DataSource`; a infraestrutura reúne `Hardware`, `Network` e `Service`.
 Sete relatores reificam os vínculos que a prosa enuncia por verbo: `ProjectDataManagement` liga um
 gerenciamento ao projeto por cujos dados ele responde e `ViewProvision`, à interface que ele
 disponibiliza; `SocialInteraction` e `Log` ligam um agente à interface com que ele interage e à que
@@ -51,27 +51,26 @@ A camada de **processos** é a que não existia. `EtlProcess` é «event» compl
 na extração, os de coleta e processamento na transformação, os de processamento e armazenamento na
 carga. `CrudOperation` é evento partido em `CreateOperation`, `ReadOperation`, `UpdateOperation` e
 `DeleteOperation`, e `Observation` é o evento pelo qual um agente observa um conteúdo divulgado, do
-qual nasce o `Knowledge` correspondente. É essa camada que dá ao artefato um *quando* e um *quem*, e
-dela dependem quatro das sete questões de competência (§7).
+qual nasce o `Knowledge` correspondente. Essa camada permite indicar *quando* e *quem*; dela dependem
+quatro das sete questões de competência (§7).
 
 ## 6.2. Do modelo em OntoUML à ontologia em OWL
 
-A implementação não foi traduzida à mão: o modelo revisado passa pela transformação gUFO oficial
-[almeida2019gufo], executada pela `ontouml-js`, e cada elemento da OWL corresponde ao elemento do
-modelo que o gerou — é essa correspondência a garantia de preservação semântica que uma tradução
-manual não oferece.
+A implementação resulta da transformação gUFO oficial [almeida2019gufo], executada pela
+`ontouml-js`, e não de tradução manual. Cada elemento da OWL corresponde ao elemento do modelo que o
+gerou; essa correspondência preserva a semântica de modo que uma tradução manual não garante.
 
 Sobre o gerado incidem cinco customizações, todas **aditivas por regra**: nenhuma tripla produzida
 pela transformação é removida ou alterada, e a contenção do gerado dentro do customizado é conferida
-a cada execução. A **C1** declara localmente os termos da gUFO que o artefato referencia — tipo,
-rótulo, domínio e alcance —, para que o arquivo se sustente quando a importação não é resolvida; a
+a cada execução. A **C1** declara localmente os termos da gUFO que o artefato referencia, como tipo,
+rótulo, domínio e alcance, para que o arquivo se sustente quando a importação não é resolvida; a
 **C2** devolve a cada classe sua definição e seus rótulos preferidos; a **C3** declara disjuntos os
 «kind» do modelo, consequência da semântica do estereótipo que a transformação não carrega, e os
 três subtipos de `Software`; a **C4** dá nome à inversa de cada propriedade de objeto, sem o que a
 proveniência teria de ser percorrida por caminho invertido a cada passo; e a **C5** acrescenta
 título, licença e versão. Somam 648 triplas, publicadas à parte como o acréscimo exato.
 
-Três decisões foram deliberadamente **não** tomadas: os identificadores não foram renomeados, porque
+Três decisões foram deliberadamente deixadas de fora: os identificadores não foram renomeados, porque
 isso quebraria a correspondência com o modelo; os papéis irmãos não foram declarados disjuntos,
 porque nada na fonte impede que um componente colete e armazene; e nenhuma axiomatização pesada foi
 acrescentada, por decisão de escopo (§8).

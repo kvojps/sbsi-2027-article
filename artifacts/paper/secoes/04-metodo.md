@@ -4,18 +4,18 @@
 Superfície de escrita da seção 4. Convenções em `01-introducao.md`; conferência em
 `tools/verification/verificar_seccoes_introducao_metodo.py`.
 
-Esta é a única seção que descreve a Methontology, e ela descreve o **desenho** da avaliação — os
+Esta é a única seção que descreve a Methontology e o **desenho** da avaliação. Os
 resultados são da seção 7. -->
 
 O envelope metodológico é o Design Science Research, que trata a pesquisa como construção e
 avaliação de artefatos para resolver problemas de classe identificada [hevner2004design,
-peffers2007design]. A escolha não abre um ciclo novo: o próprio MPO é artefato de um ciclo de DSR
+peffers2007design]. A escolha não inaugura um ciclo novo: o próprio MPO é artefato de um ciclo de DSR
 em curso, construído a partir de estudos exploratórios [vieira2020universal], publicado em versão
 preliminar [vieira2021model] e evoluído por avaliações com especialistas e estudos de caso
 publicados nos Anais do SBSI [vieira2022evaluating] e por survey [vieira2023survey], até sua
-versão consolidada [vieira2022thesis]. Este trabalho é nova iteração desse ciclo: submete o modelo
-a um critério que as avaliações anteriores não aplicaram — a consistência de seus compromissos
-ontológicos — e devolve ao ciclo um modelo revisado com a evidência que justifica cada revisão.
+versão consolidada [farias2025conceptual]. Este trabalho é nova iteração desse ciclo: submete o modelo
+a um critério que as avaliações anteriores não aplicaram, a consistência de seus compromissos
+ontológicos, e devolve ao ciclo um modelo revisado com a evidência que justifica cada revisão.
 
 O método de construção do artefato ontológico é a Methontology [fernandez1997methontology], que
 organiza o desenvolvimento em especificação, conceitualização, formalização, integração,
@@ -24,9 +24,9 @@ alternativas foram consideradas: a NeOn [suarez2012neon] organiza o desenvolvime
 centrados no reuso de recursos ontológicos e em redes de ontologias, e sua força não é exercida
 aqui, onde a fonte é um único documento em prosa; a LOT [poveda2022lot] elicita requisitos junto a
 interlocutores em ciclos iterativos, e pressupõe disponibilidade de especialistas, que está fora do
-escopo deste trabalho (§8). A Methontology foi mantida por duas razões. A primeira é a
-rastreabilidade: seus artefatos intermediários — glossário de termos, árvore de classificação de
-conceitos, dicionário de verbos e tabelas de fórmulas e regras — ligam cada termo do documento em
+escopo deste trabalho (§8). A escolha pela Methontology se deve a duas razões. A primeira é a
+rastreabilidade: seus artefatos intermediários incluem glossário de termos, árvore de classificação
+de conceitos, dicionário de verbos e tabelas de fórmulas e regras. Eles ligam cada termo do documento em
 prosa ao elemento formal que dele derivou, e é essa cadeia que torna auditável o traço de cada
 deficiência até o ponto do modelo que a permitiu. A segunda é a comparabilidade: a formalização
 analisada foi construída sob a mesma metodologia, e assim o antes e o depois se comparam etapa a
@@ -34,32 +34,38 @@ etapa.
 
 O procedimento da análise teve quatro passos. **Reconstrução:** a formalização publicada foi
 remontada em OntoUML como linha de base, a partir dos diagramas em resolução de origem e dos
-artefatos de conceitualização, sem nenhuma correção — corrigi-la destruiria seu valor como termo
+artefatos de conceitualização, sem nenhuma correção, pois corrigi-la destruiria seu valor como termo
 de comparação. **Leitura:** cada classe, estereótipo e relação da linha de base foi confrontado
 com o trecho do modelo de referência que o originou. **Qualificação:** contou como deficiência
-todo ponto que satisfez dois testes simultâneos — o modelo formal se compromete com algo que a UFO
+todo ponto que satisfez dois testes simultâneos: o modelo formal se compromete com algo que a UFO
 proíbe ou deixa de distinguir, *e* esse compromisso não é imposto pelo texto do modelo de
 referência. Sem o primeiro teste o achado seria preferência de modelagem; sem o segundo, conserto
 de erro próprio. **Classificação:** cada achado recebeu uma das quatro categorias da Representation
 Theory [wand1993ontological] quando é deficiência de mapeamento, ou foi marcado como fora da
-tipologia, com a razão registrada. As correções foram aplicadas em duas rodadas — a primeira
-estrutural, a segunda de adoção das microteorias de eventos e de agentes —, preservadas em
+tipologia, com a razão registrada. As correções foram aplicadas em duas rodadas, a primeira
+estrutural e a segunda voltada à adoção das microteorias de eventos e agentes, preservadas em
 separado, de modo que linha de base e rodadas sejam comparáveis entre si. O modelo revisado foi
 transformado em OWL pela transformação gUFO oficial [almeida2019gufo], com customização aditiva
-sobre o gerado e publicação do *diff* (§6).
+sobre o gerado e publicação do *diff* (§6). Reconstrução, leitura, qualificação e classificação
+respondem à **RQ1**: tornam rastreável a passagem da abertura na fonte à decisão da formalização,
+ao problema ontológico e à correção, sem inferir que outro formalizador necessariamente decidiria
+do mesmo modo.
 
-A avaliação foi desenhada em três frentes, com pesos distintos. A primeira, e única que valida as
-afirmações substantivas do artigo, é a **instanciação seguida de consulta**: a ontologia revisada
+A avaliação foi desenhada em três frentes, com funções probatórias distintas para a **RQ2**. A
+primeira é a **instanciação seguida de consulta**: ela demonstra, no cenário, que o artefato
+representa fatos do domínio e permite consultas que dependem das correções. A ontologia revisada
 foi povoada com os dados de um observatório de projetos de pesquisa e extensão de uma universidade
 pública brasileira, documentado nos Anais Estendidos do SBSI [sbsi_estendido], e interrogada por
-sete questões de competência em SPARQL. As sete são questões de domínio — quem executou uma carga
+sete questões de competência em SPARQL. As sete são questões de domínio: quem executou uma carga
 e quando, qual a cadeia de proveniência de um conteúdo divulgado, se dois observatórios que se
-dizem aderentes ao modelo cobrem os mesmos conceitos —, e não perguntas sobre a arquitetura da
+dizem aderentes ao modelo cobrem os mesmos conceitos. Não são perguntas sobre a arquitetura da
 ontologia, que qualquer ontologia responderia do mesmo modo; a comparação entre iniciativas exigiu
 um segundo observatório, sintético, declarado como limitação (§8). A segunda frente é a
-**verificação de conformidade à UFO** sobre a linha de base e o modelo revisado, que atesta
-conformidade sintática e semântica, não substância; a terceira é a **detecção de *pitfalls* na
-OWL** [poveda2014oops], igualmente executada antes e depois. As duas últimas só produzem evidência
-como diferença entre execuções, e por isso cada verificador foi submetido a controle positivo —
-execução deliberada sobre um modelo com defeito conhecido, que prova que a regra dispara —, sem o
-que um relatório vazio não distinguiria *sem problemas* de *regra que nunca dispara*.
+**verificação de conformidade à UFO** sobre a linha de base e o modelo revisado: ela cobre somente
+as restrições estruturais e semânticas que suas regras expressam. A terceira é a **detecção de
+*pitfalls* na OWL** [poveda2014oops], igualmente executada antes e depois, que informa a qualidade
+da implementação OWL. As duas últimas produzem evidência de conformidade estrutural ou de qualidade
+de implementação apenas como diferença entre execuções; não validam substantivamente o domínio. Por
+isso cada verificador foi submetido a controle positivo, uma execução deliberada sobre um modelo com
+defeito conhecido que prova que a regra dispara. Sem isso, um relatório vazio não distinguiria
+*sem problemas* de *regra que nunca dispara*.

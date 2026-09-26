@@ -39,7 +39,7 @@ CONTEXT.md                   o glossário do domínio
 
 1. **`CONTEXT.md`** — o vocabulário. *MPO*, *baseline*, *rodada*, *deficiência*, *QC*, *seam*.
 2. **`.scratch/sbsi-2027-artigo/spec.md`** — o que é o artigo, e por que ele existe nesta forma.
-3. **`.scratch/sbsi-2027-artigo/issues/`** — os 14 tickets, na ordem. O `Status:` de cada um diz onde
+3. **`.scratch/sbsi-2027-artigo/issues/`** — os tickets, na ordem. O `Status:` de cada um diz onde
    o trabalho está.
 4. **`artifacts/ontology/README.md`** — os artefatos, o que mede o antes/depois, e como reproduzir.
 
@@ -103,6 +103,9 @@ python tools/generation/gerar_deposito.py                         # monta artifa
 python tools/verification/verificar_deposito.py                   # confere a checklist do 09
 python tools/verification/verificar_analise_ontologica.py         # confere a checklist do 10
 python tools/verification/verificar_seccoes_introducao_metodo.py  # confere a checklist do 11
+python tools/verification/verificar_posicionamento_lacuna.py      # confere posicionamento e lacuna (15)
+python tools/verification/verificar_perguntas_pesquisa_evidencia.py # confere RQs e evidência (16)
+python tools/verification/verificar_fluxo_contribuicao.py         # confere fluxo e orçamento (17)
 python tools/verification/verificar_seccoes_ontologia_avaliacao_conclusao.py  # a checklist do 12
 
 python tools/generation/gerar_secoes_latex.py                     # porta secoes/*.md -> secoes-tex/ (13)

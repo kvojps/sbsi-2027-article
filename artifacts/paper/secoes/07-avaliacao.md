@@ -12,15 +12,12 @@ relatórios do plugin, do verificador estrutural e do OOPS!.
 
 ## 7.1. As questões de competência sobre o cenário instanciado
 
-A instanciação deriva cada indivíduo de um trecho identificado da publicação do cenário
-[sbsi_estendido]: o observatório e seu gerenciamento de conteúdo, as oito funcionalidades, os três
-perfis de usuário levantados com 25 participantes e o sistema institucional que não se integra a
-ele. O que foi acrescentado está declarado item a item — uma segunda fonte de dados, a cadeia de ETL
-com carimbos de tempo, um segundo componente de gerenciamento, dois projetos-exemplo e duas
-observações datadas —, e o mapa entre trecho e indivíduo acompanha o depósito, junto do observatório
-municipal de obras públicas que a comparação da QC7 exigiu, sintético e declarado como limitação
-(§8). As sete consultas retornaram resultado não-vazio e semanticamente correto (Tabela 3), e
-nenhuma interroga a arquitetura do artefato.
+A instanciação deriva cada indivíduo de trecho identificado da publicação do cenário
+[sbsi_estendido], e declara cada acréscimo: segunda fonte, ETL temporal, componente adicional,
+projetos e observações. O depósito traz o mapa trecho--indivíduo e o segundo observatório municipal,
+sintético, exigido pela QC7 e limitado na §8. As sete consultas retornaram resultado não-vazio e
+semanticamente correto (Tabela 3), sem interrogar a arquitetura. É evidência de **capacidade do
+artefato no cenário**, não de eficácia de uma implantação organizacional.
 
 **Tabela 3. As sete questões de competência sobre o cenário instanciado.**
 
@@ -34,58 +31,44 @@ nenhuma interroga a arquitetura do artefato.
 | QC6 | Qual a proveniência de um conteúdo? | 4 | a parthood de `EtlProcess`, de A5 |
 | QC7 | Dois observatórios cobrem o mesmo? | 31 | as classes revisadas, com a C2 |
 
-As consultas e seus resultados completos estão no Apêndice A e, na íntegra, no depósito aberto, com
-um script que as reexecuta e confere cada uma contra o arquivo gravado.
+As consultas e seus resultados completos estão no Apêndice A e no depósito aberto, que inclui um
+script para reexecutá-las e conferir cada resultado contra o arquivo gravado.
 
-**As divergências foram registradas, inclusive as que desfavorecem o artefato.** Cada questão correu
-contra expectativa escrita antes, e quatro apontam limite do modelo revisado: a QC2 responde sobre o
-recorte do relator que medeia agente e interface de relacionamento, não sobre acesso amplo; na QC3,
-quem participa da carga são papéis de um componente de software, não pessoa; a QC4 só distingue um
-projeto do outro porque o cenário dá a cada um um gerenciamento diferente; e a cadeia da QC6 abre em
-leque, entregando todos os processos de ETL do gerenciamento responsável, não o que produziu o
-conteúdo.
+As divergências, inclusive as que desfavorecem o artefato, foram registradas. Cada questão foi
+executada contra uma expectativa escrita previamente: QC2 responde pelo relator, não por acesso amplo; QC3 identifica
+papéis de software, não pessoa; QC4 depende de gerenciamentos distintos; e QC6 retorna os processos
+do gerenciamento responsável, não o produtor do conteúdo. São limites do modelo revisado.
 
-A QC7 sustenta a tese: dos 31 conceitos que ao menos uma das iniciativas instancia, **23 são comuns
-e oito divergem** — conhecimento, grupo do observatório, interação social, observação, parte
+A QC7 compara cobertura conceitual em cenário controlado: dos 31 conceitos que ao menos uma das
+iniciativas instancia, **23 são comuns e oito divergem**: conhecimento, grupo do observatório, interação social, observação, parte
 interessada e relacionamento aparecem só no primeiro; agente social e organização, só no segundo.
-Duas iniciativas aderentes ao mesmo modelo cobrem recortes conceituais distintos, e a divergência
-deixou de ser argumento para virar medida.
+Ela demonstra que a OntoMPO revisada permite medir a divergência entre os dois conjuntos
+instanciados; não prova aderência de observatórios reais ao MPO nem sua frequência fora desse
+cenário.
 
 ## 7.2. Conformidade à UFO, antes e depois
 
 O verificador de conformidade sintática e semântica devolve **zero problema sobre os três modelos**,
-inclusive sobre a linha de base defeituosa, e apresentar esse zero como efeito da revisão seria
-enganoso: nenhuma das suas 24 regras alcança restrição meronímica, aridade de relator ou a distinção
-entre endurante e perdurante. O que ele atesta é que a revisão trocou dois estereótipos por camada
-inteira sem quebrar nenhuma das regras que ele tem; quatro mutações conhecidas mostram que ele
-acusaria se elas quebrassem.
+inclusive a linha de base defeituosa; tratá-lo como efeito da revisão seria enganoso, pois suas 24
+regras não alcançam meronímia, aridade de relator ou a distinção endurante/perdurante. Quatro
+mutações conhecidas confirmam que acusa violações. É evidência de conformidade estrutural no alcance
+das regras, não validação substantiva do artefato.
 
-A distância entre os modelos é medida por nove regras estruturais escritas para esta análise, que
-operacionalizam restrições fora daquele alcance e correm sobre os três modelos pelo mesmo caminho de
-código, e cai de **12 na linha de base para 3 depois da primeira rodada e 0 depois da segunda**:
-somem as relações de membro com o coletivo na ponta errada, a meronímica sem extremidade declarada,
-as mediações com mínimo zero, a colisão de nome com o metaconceito, os relatores acima de binário e
-as duas regras da ausência da microteoria de eventos. Sete delas medem, e têm por controle positivo
-a própria linha de base — a execução reprova se alguma deixar de disparar ali; as outras duas vigiam
-um evento sem participante e uma participação invertida, que só a revisão produz, e seu controle é
-uma mutação do revisado, acusada nas duas.
+A distância medida por nove regras estruturais cai de **12 na linha de base para 3 depois da primeira
+rodada e 0 depois da segunda**. Elas cobrem, entre outras restrições, membro invertido, mediação com
+mínimo zero, relator acima de binário e ausência da microteoria de eventos. Sete têm a linha de base
+como controle positivo; as duas que vigiam evento sem participante e participação invertida usam
+mutações do revisado, acusadas nas duas.
 
 ## 7.3. *Pitfalls* na OWL, antes e depois
 
-As duas execuções do detector de *pitfalls* [poveda2014oops] submetem a mesma coisa pelo mesmo
-caminho de código, e é essa igualdade que os torna comparáveis. O total de elementos apontados cai
-de **105 para 56**, e a leitura do artefato de domínio é mais nítida: entre os elementos que o
-serviço lista, os que pertencem à OntoMPO caem de **60 para zero** — eram todos ausências de
-anotação, fechadas pela C2. Dois *pitfalls* ficam fora dessa contagem porque o serviço não lista os
-elementos afetados: a convenção de nome, deliberadamente não fechada, e a ausência de inversa
-declarada, que cai de 21 para 7 — o número de propriedades emprestadas da gUFO que o arquivo
-declara.
+As execuções do detector de *pitfalls* [poveda2014oops] seguem o mesmo caminho de código. O total
+cai de **105 para 56**; entre os elementos listados que pertencem à OntoMPO, cai de **60 para zero**,
+ausências de anotação fechadas pela C2. Ficam fora dessa contagem a convenção de nome, deliberadamente
+aberta, e a inversa declarada, de 21 para 7 propriedades da gUFO.
 
-A diferença entre as leituras não é ruído, e o custo precisa estar escrito: ao declarar localmente
-os termos da ontologia de fundamentação, a C1 os transforma em elementos que o serviço passa a
-avaliar — sem anotação própria e, num caso, sem domínio nomeado. Fechar isso exigiria embutir a
-gUFO no arquivo, que é o que a importação existe para evitar. Pela mesma razão, o *pitfall* de
-classe não tipada sobe de 13 para 16: some a metade nomeada e sobra a anônima. Por fim, os dois
-artefatos OWL são **consistentes**: um raciocinador do perfil OWL 2 RL não encontra contradição em
-nenhum deles, e oito mutações confirmam que ele acusaria — quatro nos dois e quatro só no
-customizado, medida do conteúdo lógico que a customização acrescentou (§8).
+A C1 transforma termos da gUFO em elementos avaliados pelo serviço; fechá-los exigiria embutir a
+importação. Por isso, classe não tipada sobe de 13 para 16. Ambos os artefatos OWL são
+**consistentes** no perfil OWL 2 RL, e oito mutações confirmam que o raciocinador acusa, quatro nos
+dois e quatro só no customizado. Junto aos *pitfalls*, isso informa a qualidade da implementação
+OWL; não substitui a evidência de capacidade das questões de competência.
