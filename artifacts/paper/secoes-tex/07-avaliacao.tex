@@ -10,7 +10,8 @@ A instanciação deriva cada indivíduo de trecho identificado da publicação d
 \caption{As sete questões de competência sobre o cenário instanciado.}
 \label{tab:3}
 \scriptsize
-\begin{tabular}{>{\centering\arraybackslash}p{\dimexpr0.0706\linewidth-2\tabcolsep\relax}p{\dimexpr0.4588\linewidth-2\tabcolsep\relax}>{\centering\arraybackslash}p{\dimexpr0.0706\linewidth-2\tabcolsep\relax}p{\dimexpr0.4000\linewidth-2\tabcolsep\relax}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{c>{\raggedright\arraybackslash\hsize=0.9687\hsize}Xc>{\raggedright\arraybackslash\hsize=1.0313\hsize}X}
 \hline
  & \textbf{Pergunta} & \textbf{Linhas} & \textbf{Construto de que depende} \\
 \hline
@@ -22,10 +23,12 @@ QC5 & Que motivações movem cada tipo de ator? & 7 & a taxonomia de \texttt{Age
 QC6 & Qual a proveniência de um conteúdo? & 4 & a parthood de \texttt{EtlProcess}, de A5 \\
 QC7 & Dois observatórios cobrem o mesmo? & 31 & as classes revisadas, com a C2 \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 As consultas e seus resultados completos estão no Apêndice A e no depósito aberto, que inclui um script para reexecutá-las e conferir cada resultado contra o arquivo gravado.
+
+Depósito suplementar: \textit{Zenodo}\footnote{\url{https://zenodo.org/records/22969990?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImRhOThkYzljLTdhNWItNDRkNC05ZmFkLTU1MzYxM2Q5ODM4YyIsImRhdGEiOnt9LCJyYW5kb20iOiJkYmU3YjYyODM4YzYwODc3OGQyMmJlYmQwMTMyMTJkYSJ9.ShohIhZWp6RjaaQjTbTIqyrm7vfUaAP9I63o0L94Xb3UejO1DYRM7EnAj-CqB4ou-C7c9z61bqWwxXsU_KB3gw}}.
 
 As divergências, inclusive as que desfavorecem o artefato, foram registradas. Cada questão foi executada contra uma expectativa escrita previamente: QC2 responde pelo relator, não por acesso amplo; QC3 identifica papéis de software, não pessoa; QC4 depende de gerenciamentos distintos; e QC6 retorna os processos do gerenciamento responsável, não o produtor do conteúdo. São limites do modelo revisado.
 

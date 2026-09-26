@@ -34,6 +34,8 @@ artefato no cenário**, não de eficácia de uma implantação organizacional.
 As consultas e seus resultados completos estão no Apêndice A e no depósito aberto, que inclui um
 script para reexecutá-las e conferir cada resultado contra o arquivo gravado.
 
+Depósito suplementar: [Zenodo](https://zenodo.org/records/22969990?preview=1&token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImRhOThkYzljLTdhNWItNDRkNC05ZmFkLTU1MzYxM2Q5ODM4YyIsImRhdGEiOnt9LCJyYW5kb20iOiJkYmU3YjYyODM4YzYwODc3OGQyMmJlYmQwMTMyMTJkYSJ9.ShohIhZWp6RjaaQjTbTIqyrm7vfUaAP9I63o0L94Xb3UejO1DYRM7EnAj-CqB4ou-C7c9z61bqWwxXsU_KB3gw).
+
 As divergências, inclusive as que desfavorecem o artefato, foram registradas. Cada questão foi
 executada contra uma expectativa escrita previamente: QC2 responde pelo relator, não por acesso amplo; QC3 identifica
 papéis de software, não pessoa; QC4 depende de gerenciamentos distintos; e QC6 retorna os processos

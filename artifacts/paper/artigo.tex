@@ -35,6 +35,15 @@
 %   - array, fancyvrb e tikz entraram no ticket 13: as tabelas geradas usam
 %     colunas p{} centralizadas, o par antes/depois da 5.1 sai como BVerbatim
 %     centralizado, e as figuras sao TikZ gerado do modelo revisado.
+%   - tabularx entrou para as tabelas geradas: colunas de rotulo na largura
+%     natural, as de texto dividindo o resto. Com larguras fixas, "A1" e
+%     "ComputationalSystem" vazavam para a coluna vizinha.
+%   - \raggedbottom sobrepoe o \flushbottom do sbc-template: as tabelas entram
+%     com [H], e a pagina que nao comporta a seguinte era esticada ate o pe,
+%     abrindo vaos em volta dos titulos de secao.
+%   - Links do Markdown saem em nota de rodape (\url), e \UrlBreaks abaixo
+%     permite quebrar em qualquer letra ou digito: o URL do deposito carrega
+%     um token longo sem pontuacao, e estourava a margem em quase 19 cm.
 %   - O \nocite{*} do scaffold SAIU. Ele existia para forcar as 73 entradas do
 %     .bib a passarem pelo sbc.bst antes de haver citacao real; agora as
 %     citacoes existem, e a bibliografia traz so' o que o texto cita.
@@ -48,12 +57,27 @@
 \usepackage[T1]{fontenc}
 \usepackage[brazilian]{babel}
 \usepackage{array}
+\usepackage{tabularx}
 \usepackage{fancyvrb}
 \usepackage{float}
 \usepackage{tikz}
 \usetikzlibrary{positioning,fit,backgrounds,arrows.meta,calc}
 
 \sloppy
+\raggedbottom
+
+% Quebra de URL em qualquer letra ou digito, alem da pontuacao padrao do url.
+\makeatletter
+\g@addto@macro\UrlBreaks{%
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m%
+  \do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z%
+  \do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M%
+  \do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z%
+  \do\0\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9}
+\makeatother
+\Urlmuskip=0mu plus 1mu
+% Nota de rodape inteira na mesma pagina: a do deposito se partia entre duas.
+\interfootnotelinepenalty=10000
 
 \title{OntoMPO: Ontological Analysis and Refinement of the\\ Model for Project Observatories}
 

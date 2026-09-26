@@ -280,6 +280,9 @@ def trechos_do_markdown(markdown: str) -> list[str]:
         if not paragrafo or paragrafo.startswith("#") or paragrafo.lstrip().startswith("|"):
             continue
         paragrafo = re.sub(r"^\s*-\s+", "", paragrafo, flags=re.MULTILINE)
+        # Links Markdown aparecem no PDF apenas pelo texto visível do rótulo;
+        # descarte o destino antes de comparar a prosa portada.
+        paragrafo = re.sub(r"\[([^\]]+)\]\(https?://[^)]+\)", r"\1", paragrafo)
         paragrafo = paragrafo.replace("**", "").replace("*", "").replace("`", "")
         for pedaco in CITACAO_NO_MARKDOWN.sub("\x00", paragrafo).split("\x00"):
             if len(pedaco.split()) >= 6:

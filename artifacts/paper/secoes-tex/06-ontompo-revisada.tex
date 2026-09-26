@@ -37,7 +37,8 @@ A Tabela 2 conta o que está nos arquivos, sem a gUFO importada.
 \caption{Métricas dos artefatos OWL.}
 \label{tab:2}
 \scriptsize
-\begin{tabular}{p{\dimexpr0.3421\linewidth-2\tabcolsep\relax}>{\centering\arraybackslash}p{\dimexpr0.1711\linewidth-2\tabcolsep\relax}>{\centering\arraybackslash}p{\dimexpr0.2105\linewidth-2\tabcolsep\relax}>{\centering\arraybackslash}p{\dimexpr0.2763\linewidth-2\tabcolsep\relax}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash\hsize=1.0000\hsize}Xccc}
 \hline
  & \textbf{linha de base} & \textbf{revisada, gerada} & \textbf{revisada, customizada} \\
 \hline
@@ -51,7 +52,7 @@ axiomas & 381 & 558 & 809 \\
 anotações & 60 & 78 & 475 \\
 triplas & 441 & 636 & 1284 \\
 \hline
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 Duas linhas pedem leitura. As \textbf{propriedades de dados são zero} nas três colunas, e é número para declarar, não para esconder: a conceituação especifica atributos para cada conceito, e nenhum chegou ao diagrama (\S{}8). O salto nas \textbf{anotações} é a C2 medida.

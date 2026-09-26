@@ -31,9 +31,9 @@ Constructos convertidos, e nada alem deles:
     e `\\texttt`;
   - `[chave]` e `[chave1, chave2]` viram `\\cite{...}`, com cada chave conferida
     contra o `referencias.bib` — chave ausente aborta a geracao;
-  - tabelas Markdown viram `table` + `tabular`, com a legenda em negrito que as
-    precede virando `\\caption` e a largura de cada coluna proporcional ao seu
-    conteudo. Elas entram com `[H]`, e nao flutuando: como flutuantes, tabela e
+  - tabelas Markdown viram `table` + `tabularx`, com a legenda em negrito que as
+    precede virando `\\caption`, as colunas estreitas na largura natural e as de
+    texto dividindo o resto na proporcao do seu conteudo. Elas entram com `[H]`, e nao flutuando: como flutuantes, tabela e
     figura atravessavam a fronteira entre secoes conforme o texto mudava, e a
     paginacao por secao oscilava quase uma pagina — o que torna o orcamento do
     esqueleto inconferivel;
@@ -141,7 +141,18 @@ def inline(texto: str, chaves: set[str], origem: str) -> str:
 
     texto = re.sub(r"`([^`]+)`", _codigo, texto)
 
-    # 2. citacoes: [chave] ou [chave1, chave2]. Chave inexistente aborta.
+    # 2. links Markdown: [rotulo](https://...). O rotulo fica no texto e o URL
+    # vai para nota de rodape, sem escape, no comando url: no corpo, um URL
+    # longo (o do deposito tem um token de 200 caracteres) estourava a margem.
+    # A quebra em qualquer caractere e' configurada no preambulo do artigo.
+    def _link(m: re.Match[str]) -> str:
+        rotulo = _escapar(m.group(1))
+        url = m.group(2)
+        return guardar("\\textit{" + rotulo + "}\\footnote{\\url{" + url + "}}")
+
+    texto = re.sub(r"\[([^\]]+)\]\((https?://[^)]+)\)", _link, texto)
+
+    # 3. citacoes: [chave] ou [chave1, chave2]. Chave inexistente aborta.
     def _citacao(m: re.Match[str]) -> str:
         cru = m.group(1)
         itens = [k.strip() for k in cru.split(",")]
@@ -157,10 +168,10 @@ def inline(texto: str, chaves: set[str], origem: str) -> str:
 
     texto = re.sub(r"\[([^\]\[]+)\]", _citacao, texto)
 
-    # 3. o que sobrou e' texto: escapar antes de introduzir comandos.
+    # 4. o que sobrou e' texto: escapar antes de introduzir comandos.
     texto = _escapar(texto)
 
-    # 4. enfase. Negrito antes de italico, e o miolo do negrito passa pelo
+    # 5. enfase. Negrito antes de italico, e o miolo do negrito passa pelo
     # italico na mesma varredura: `**detecção de *pitfalls* na OWL**` aninha.
     def _italico(s: str) -> str:
         return re.sub(r"\*([^*]+)\*", lambda m: "\\textit{" + m.group(1) + "}", s)
@@ -177,10 +188,6 @@ def inline(texto: str, chaves: set[str], origem: str) -> str:
 
 
 # -------------------------------------------------------------------- tabelas
-
-
-def _largura_coluna(celulas: list[str]) -> int:
-    return max(len(c) for c in celulas)
 
 
 def tabela(
@@ -210,18 +217,34 @@ def tabela(
         corpo_col = [g[j] for g in corpo]
         # O piso evita que uma coluna de rotulos curtos ("A1", "QC1") fique
         # estreita demais para caber sem quebrar no meio.
-        pesos.append(min(max(_largura_coluna(coluna), 6), 40))
+        # O peso e' o comprimento medio das celulas: com o maximo, uma unica
+        # celula longa roubava largura de colunas mais cheias. O piso pela
+        # palavra mais longa garante que um identificador inquebravel
+        # (`ComputationalSystem`, em fonte monoespacada, mais larga) caiba.
+        media = sum(len(c) for c in coluna) / len(coluna)
+        palavra = max(len(w) for c in coluna for w in c.replace("`", "").split() or [""])
+        pesos.append(max(media, 2.5 * palavra))
         estreitas.append(all(len(c) <= 12 for c in corpo_col))
 
-    total = sum(pesos)
+    # Colunas estreitas ("A1", "QC1", contagens) saem com a largura natural
+    # (`c`): largura proporcional fixa as deixava mais finas que o proprio
+    # rotulo, e o texto vazava para a coluna vizinha. As de texto corrido
+    # dividem o resto da linha como `X` do tabularx, na proporcao dos pesos, e
+    # alinhadas a esquerda: justificadas em 8pt, abriam vaos no meio da celula.
+    largas = [j for j in range(ncols) if not estreitas[j]]
+    if not largas:
+        raise ErroDePorte(f"{origem}: tabela sem coluna de texto para ocupar a linha")
+    total = sum(pesos[j] for j in largas)
     spec = []
     for j in range(ncols):
-        frac = pesos[j] / total
-        largura = f"\\dimexpr{frac:.4f}\\linewidth-2\\tabcolsep\\relax"
         if estreitas[j]:
-            spec.append(f">{{\\centering\\arraybackslash}}p{{{largura}}}")
+            spec.append("c")
         else:
-            spec.append(f"p{{{largura}}}")
+            # hsize relativo: a soma sobre as colunas X tem de dar o numero delas.
+            fator = pesos[j] / total * len(largas)
+            spec.append(
+                f">{{\\raggedright\\arraybackslash\\hsize={fator:.4f}\\hsize}}X"
+            )
 
     def linha_latex(celulas: list[str], negrito: bool) -> str:
         saida = []
@@ -246,14 +269,17 @@ def tabela(
         partes.append("\\caption{" + inline(m.group(2), chaves, origem) + "}")
         partes.append(f"\\label{{tab:{numero_esperado}}}")
     partes.append(CORPO_DA_TABELA)
-    partes.append("\\begin{tabular}{" + "".join(spec) + "}")
+    # Meio espaco entre colunas: a 8pt, o padrao de 6pt por lado come quase um
+    # decimo da linha numa tabela de seis colunas.
+    partes.append("\\setlength{\\tabcolsep}{3pt}")
+    partes.append("\\begin{tabularx}{\\linewidth}{" + "".join(spec) + "}")
     partes.append("\\hline")
     partes.append(linha_latex(cabecalho, negrito=True))
     partes.append("\\hline")
     for celulas in corpo:
         partes.append(linha_latex(celulas, negrito=False))
     partes.append("\\hline")
-    partes.append("\\end{tabular}")
+    partes.append("\\end{tabularx}")
     partes.append("\\end{table}")
     return "\n".join(partes)
 
